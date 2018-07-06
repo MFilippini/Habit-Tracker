@@ -10,4 +10,8 @@ import UIKit
 
 class HabitCell: UICollectionViewCell {
     
+    @IBOutlet weak var viewForProgressWheel: UIView!
+    @IBOutlet weak var labelHabitName: UILabel!
+    // connect elements that are in the cell to here
+    
 }
