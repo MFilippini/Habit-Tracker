@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,7 +40,7 @@
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ExJ-OJ-dp5">
-                                <rect key="frame" x="16" y="101" width="343" height="661"/>
+                                <rect key="frame" x="16" y="101" width="343" height="600"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sON-yr-43W">
@@ -56,20 +57,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="161" height="215"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9de-fH-Src">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Goal " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9de-fH-Src">
                                                     <rect key="frame" x="53" y="166" width="54" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMy-4j-siK">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMy-4j-siK">
                                                     <rect key="frame" x="0.0" y="0.0" width="161" height="158"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29585830479452052" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="cMy-4j-siK" firstAttribute="leading" secondItem="Zkn-EU-neB" secondAttribute="leading" id="0WX-td-Ylb"/>
+                                            <constraint firstAttribute="trailing" secondItem="cMy-4j-siK" secondAttribute="trailing" id="2kD-IZ-ule"/>
+                                            <constraint firstItem="cMy-4j-siK" firstAttribute="centerX" secondItem="9de-fH-Src" secondAttribute="centerX" id="KfG-UW-pYW"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="9de-fH-Src" secondAttribute="bottom" constant="-14" id="OGT-hV-lb5"/>
+                                            <constraint firstItem="9de-fH-Src" firstAttribute="top" secondItem="cMy-4j-siK" secondAttribute="bottom" constant="8" symbolic="YES" id="RNY-Rh-nEr"/>
+                                            <constraint firstItem="cMy-4j-siK" firstAttribute="top" secondItem="Zkn-EU-neB" secondAttribute="top" id="UP3-Df-oPP"/>
+                                        </constraints>
                                         <size key="customSize" width="161" height="215"/>
                                         <connections>
                                             <outlet property="labelHabitName" destination="9de-fH-Src" id="hEs-rb-RD7"/>
@@ -78,8 +85,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Y8-Os-r4o">
+                                <rect key="frame" x="125" y="709" width="125" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="UPDATE"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5Y8-Os-r4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="132" id="ahd-p7-LvP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Y8-Os-r4o" secondAttribute="bottom" constant="110" id="wHP-pM-maU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>

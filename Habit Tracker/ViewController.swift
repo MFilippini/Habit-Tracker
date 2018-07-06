@@ -12,8 +12,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var habitPanels: UICollectionView!
     
-    var habitNamesArray = ["Workout"]
-    var viewWithProgressTracker = [UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))]
+    var habitNamesArray = ["Workout","Eat Salad","Take a Shower"]
+    var viewProgressTrackerArray = [Common.Global.blue,Common.Global.green,Common.Global.purple]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +33,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
-        cell.viewForProgressWheel = viewWithProgressTracker[indexPath.item]
+        cell.viewForProgressWheel.backgroundColor = viewProgressTrackerArray[indexPath.item]
         cell.labelHabitName.text = habitNamesArray[indexPath.item]
         return cell
     }
+    
+    
+    
 }
 
