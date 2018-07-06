@@ -57,25 +57,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="161" height="215"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMy-4j-siK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="158"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Goal " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9de-fH-Src">
-                                                    <rect key="frame" x="53" y="192" width="54" height="29"/>
+                                                    <rect key="frame" x="53" y="166" width="54" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMy-4j-siK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="158"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29585830479452052" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="cMy-4j-siK" firstAttribute="leading" secondItem="Zkn-EU-neB" secondAttribute="leading" id="0WX-td-Ylb"/>
                                             <constraint firstAttribute="trailing" secondItem="cMy-4j-siK" secondAttribute="trailing" id="2kD-IZ-ule"/>
                                             <constraint firstItem="cMy-4j-siK" firstAttribute="centerX" secondItem="9de-fH-Src" secondAttribute="centerX" id="KfG-UW-pYW"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="9de-fH-Src" secondAttribute="bottom" constant="-14" id="OGT-hV-lb5"/>
-                                            <constraint firstItem="9de-fH-Src" firstAttribute="top" secondItem="cMy-4j-siK" secondAttribute="bottom" constant="8" symbolic="YES" id="RNY-Rh-nEr"/>
                                             <constraint firstItem="cMy-4j-siK" firstAttribute="top" secondItem="Zkn-EU-neB" secondAttribute="top" id="UP3-Df-oPP"/>
+                                            <constraint firstItem="9de-fH-Src" firstAttribute="top" secondItem="cMy-4j-siK" secondAttribute="bottom" constant="8" id="Wos-PJ-BTS"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="9de-fH-Src" secondAttribute="bottom" constant="12" id="ggD-gs-vkW"/>
                                         </constraints>
                                         <size key="customSize" width="161" height="215"/>
                                         <connections>
@@ -104,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-98.400000000000006" y="118.22660098522168"/>
+            <point key="canvasLocation" x="-1394" y="119"/>
         </scene>
     </scenes>
 </document>

@@ -34,23 +34,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     func makeCircle(cell: HabitCell) -> CAShapeLayer{
-        var circle = CAShapeLayer()
-        
-        
-        circle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center , radius: 20, startAngle: CGFloat(-Float.pi), endAngle: 0, clockwise: true).cgPath
-        circle.fillColor = UIColor.black.cgColor
+        let circle = CAShapeLayer()
+        circle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
+        circle.fillColor = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1).cgColor
         circle.strokeColor = Common.Global.purple.cgColor
-        circle.lineWidth = 5
+        circle.lineWidth = 8
         circle.strokeEnd = 0.0
         return circle
     }
     
-    
-    
-    
-    
-    
-    
+    func circleAnimate(circle: CAShapeLayer, indexOfCell: Int, cell: HabitCell){
+        let progressBarAnimate = CABasicAnimation(keyPath: "strokeEnd")
+        progressBarAnimate.fromValue = CGFloat(-0.5*Float.pi)
+        progressBarAnimate.toValue = CGFloat(1.5*Float.pi)
+        progressBarAnimate.duration = 3.5
+        //
+        //          CHANGE COLOR OF STROKE BASED ON ITS INDEX
+        //
+        circle.strokeColor = Common.Global.red.cgColor
+        progressBarAnimate.isRemovedOnCompletion = false
+        progressBarAnimate.fillMode = kCAFillModeForwards
+        circle.add(progressBarAnimate,forKey: nil)
+    }
+
     // collection view
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,10 +64,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
-        cell.viewForProgressWheel.layer.addSublayer( makeCircle(cell: cell) )
+        let cellCircle = makeCircle(cell: cell)
+        cell.viewForProgressWheel.layer.addSublayer(cellCircle)
         cell.labelHabitName.text = habitNamesArray[indexPath.item]
+        circleAnimate(circle: cellCircle, indexOfCell: indexPath.item, cell: cell)
         return cell
     }
     
