@@ -16,7 +16,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var editClicked = false
     
     // Data for Cells
-    var habitNamesArray = ["Workout","Eat Salad","Take a Shower"]
+    var habitNamesArray = ["nice!"]
     var viewProgressTrackerArray = [Common.Global.blue,Common.Global.green,Common.Global.purple]
     
     override func viewDidLoad() {
@@ -36,6 +36,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         circle.fillColor = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1).cgColor
         circle.lineWidth = 8
         circle.strokeEnd = 0
+        
+        circle.zPosition = -5
+        
         cell.viewForProgressWheel.layer.addSublayer(circle)
         circleAnimate(circle: circle, indexOfCell: indexOfCell)
     }
@@ -66,6 +69,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
         cell.labelHabitName.text = habitNamesArray[indexPath.item]
+        //cell.labelHabitName.textColor = some array position
         makeCircle(cell: cell, indexOfCell: indexPath.item)
         return cell
     }

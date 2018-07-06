@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,39 +43,47 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sON-yr-43W">
-                                    <size key="itemSize" width="161" height="215"/>
+                                    <size key="itemSize" width="161" height="204"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zkn-EU-neB" customClass="HabitCell" customModule="Habit_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="161" height="215"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="161" height="204"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="161" height="215"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="161" height="204"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMy-4j-siK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="158"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="204"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Goal " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9de-fH-Src">
+                                                            <rect key="frame" x="30.666666666666671" y="67" width="100.00000000000001" height="70"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="70" id="iee-0c-IbP"/>
+                                                                <constraint firstAttribute="width" constant="100" id="nKz-xS-fcZ"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="9de-fH-Src" firstAttribute="centerX" secondItem="cMy-4j-siK" secondAttribute="centerX" priority="750" id="OK4-a0-oAM"/>
+                                                        <constraint firstItem="9de-fH-Src" firstAttribute="centerY" secondItem="cMy-4j-siK" secondAttribute="centerY" priority="750" id="egy-x4-YeG"/>
+                                                    </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Goal " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9de-fH-Src">
-                                                    <rect key="frame" x="53" y="166" width="54" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="cMy-4j-siK" firstAttribute="leading" secondItem="Zkn-EU-neB" secondAttribute="leading" id="0WX-td-Ylb"/>
-                                            <constraint firstAttribute="trailing" secondItem="cMy-4j-siK" secondAttribute="trailing" id="2kD-IZ-ule"/>
-                                            <constraint firstItem="cMy-4j-siK" firstAttribute="centerX" secondItem="9de-fH-Src" secondAttribute="centerX" id="KfG-UW-pYW"/>
-                                            <constraint firstItem="cMy-4j-siK" firstAttribute="top" secondItem="Zkn-EU-neB" secondAttribute="top" id="UP3-Df-oPP"/>
-                                            <constraint firstItem="9de-fH-Src" firstAttribute="top" secondItem="cMy-4j-siK" secondAttribute="bottom" constant="8" id="Wos-PJ-BTS"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="9de-fH-Src" secondAttribute="bottom" constant="12" id="ggD-gs-vkW"/>
+                                            <constraint firstItem="cMy-4j-siK" firstAttribute="top" secondItem="Zkn-EU-neB" secondAttribute="top" id="fct-Ha-d7o"/>
+                                            <constraint firstItem="cMy-4j-siK" firstAttribute="leading" secondItem="Zkn-EU-neB" secondAttribute="leading" id="fyu-Hi-Vcd"/>
+                                            <constraint firstAttribute="trailing" secondItem="cMy-4j-siK" secondAttribute="trailing" id="mhg-Zj-0qr"/>
+                                            <constraint firstAttribute="bottom" secondItem="cMy-4j-siK" secondAttribute="bottom" id="nEx-aG-xL7"/>
                                         </constraints>
-                                        <size key="customSize" width="161" height="215"/>
+                                        <size key="customSize" width="161" height="204"/>
                                         <connections>
                                             <outlet property="labelHabitName" destination="9de-fH-Src" id="hEs-rb-RD7"/>
                                             <outlet property="viewForProgressWheel" destination="cMy-4j-siK" id="ta2-35-OCu"/>
@@ -103,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1394" y="119"/>
+            <point key="canvasLocation" x="-1394.4000000000001" y="118.96551724137932"/>
         </scene>
     </scenes>
 </document>
