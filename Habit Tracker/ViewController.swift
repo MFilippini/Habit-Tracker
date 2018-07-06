@@ -16,8 +16,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var editClicked = false
     
     // Data for Cells
-    var habitNamesArray = ["nice!"]
-    var viewProgressTrackerArray = [Common.Global.blue,Common.Global.green,Common.Global.purple]
+    var habitNamesArray = ["Workout","Walk the Dog","Read","Ddfgudrtijdrr trtrtrtftfff tfthcrfftcftcfcf ccfcftytyty wafnjdf "]
+    var viewProgressTrackerArray = [[Common.Global.blue],[Common.Global.green],[Common.Global.purple],[Common.Global.yellow]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //
         //          CHANGE COLOR OF STROKE BASED ON ITS INDEX
         //
-        let color = Common.Global.red.cgColor
+        let colorArray = viewProgressTrackerArray[indexOfCell]
+        let color = colorArray[0].cgColor
         circle.strokeColor = color
         //
         //
