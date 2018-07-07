@@ -69,23 +69,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         progressBarAnimate.isRemovedOnCompletion = false
         progressBarAnimate.fillMode = kCAFillModeForwards
         
-        outsideRing.add(progressBarAnimate,forKey: nil)
+        outsideRing.add(progressBarAnimate,forKey: "anim")
         
         return viewSet
     }
     
-//    func ringAnimate(ring: CAShapeLayer, indexOfCell: Int, viewSet: UIView) -> UIView{
-//        let progressBarAnimate = CABasicAnimation(keyPath: "strokeEnd")
-//        let progressPercent = Float32(timesCompleteArray[indexOfCell]) / Float32(timesPerDayArray[indexOfCell])
-//        progressBarAnimate.toValue = CGFloat(progressPercent)
-//        progressBarAnimate.duration = 0.7
-//        ring.strokeColor = colorsArray[indexOfCell].cgColor
-//        progressBarAnimate.isRemovedOnCompletion = false
-//        progressBarAnimate.fillMode = kCAFillModeForwards
-//
-//        ring.add(progressBarAnimate,forKey: nil)
-//        return viewSet
-//    }
 
     // collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -100,7 +88,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     @IBAction func updateTapped(_ sender: Any) {
+        habitNamesArray = [""]
+        habitPanels.reloadData()
+        habitNamesArray = ["Walk the Dog","Make my Bed","Take out Garbage","Workout","Read","Pray","Call Clients"]
         timesCompleteArray = [2,1,1,1,2,4,3]
+        colorsArray = [Common.Global.yellow,Common.Global.red,Common.Global.green,Common.Global.blue,Common.Global.orange,Common.Global.yellow,Common.Global.purple]
         habitPanels.reloadData()
     }
     
