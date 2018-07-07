@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,30 +19,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6eD-12-hgm">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eD-12-hgm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Habits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugP-49-t1F">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugP-49-t1F">
                                         <rect key="frame" x="148" y="51" width="79" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <color key="textColor" red="0.92015037140304567" green="0.92015037140304567" blue="0.92015037140304567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQf-8E-5oU">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQf-8E-5oU">
                                         <rect key="frame" x="281" y="51" width="86" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="86" id="S4H-PZ-LCD"/>
+                                            <constraint firstAttribute="height" constant="30" id="ffp-OI-tv7"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Edit"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Y8-Os-r4o">
+                                        <rect key="frame" x="15" y="42" width="125" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <state key="normal" title="UPDATE"/>
+                                        <connections>
+                                            <action selector="updateClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D7Q-ed-ef1"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="5Y8-Os-r4o" firstAttribute="top" secondItem="6eD-12-hgm" secondAttribute="top" constant="42" id="4Pf-0d-Sfi"/>
+                                    <constraint firstItem="TQf-8E-5oU" firstAttribute="trailing" secondItem="6eD-12-hgm" secondAttribute="trailingMargin" id="HId-XY-VYp"/>
+                                    <constraint firstItem="TQf-8E-5oU" firstAttribute="top" secondItem="ugP-49-t1F" secondAttribute="top" id="Ud0-hA-40q"/>
+                                    <constraint firstItem="TQf-8E-5oU" firstAttribute="leading" secondItem="ugP-49-t1F" secondAttribute="trailing" constant="54" id="WVk-1h-QIa"/>
+                                    <constraint firstItem="ugP-49-t1F" firstAttribute="leading" secondItem="5Y8-Os-r4o" secondAttribute="trailing" constant="8" symbolic="YES" id="bTt-Pw-Q66"/>
+                                    <constraint firstItem="5Y8-Os-r4o" firstAttribute="leading" secondItem="6eD-12-hgm" secondAttribute="leading" constant="15" id="pDL-pC-qPA"/>
+                                    <constraint firstItem="5Y8-Os-r4o" firstAttribute="centerY" secondItem="ugP-49-t1F" secondAttribute="centerY" id="tgD-Xq-kKx"/>
+                                    <constraint firstAttribute="bottom" secondItem="TQf-8E-5oU" secondAttribute="bottom" constant="12" id="zyT-lP-loE"/>
+                                </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ExJ-OJ-dp5">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ExJ-OJ-dp5">
                                 <rect key="frame" x="16" y="101" width="343" height="600"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="f2D-7y-y0K"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sON-yr-43W">
                                     <size key="itemSize" width="161" height="204"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -88,23 +110,35 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Y8-Os-r4o">
-                                <rect key="frame" x="125" y="709" width="125" height="53"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <state key="normal" title="UPDATE"/>
-                                <connections>
-                                    <action selector="updateTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DAM-Ys-w4A"/>
-                                </connections>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j8-7V-n4I">
+                                <rect key="frame" x="63" y="709" width="250" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="WIx-H1-ojc"/>
+                                    <constraint firstAttribute="width" constant="250" id="d0q-HL-8ga"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="Add new Habit">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="5Y8-Os-r4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="125" id="ahd-p7-LvP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Y8-Os-r4o" secondAttribute="bottom" constant="16" id="wHP-pM-maU"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="6j8-7V-n4I" secondAttribute="bottom" constant="1" id="59n-Sx-Uag"/>
+                            <constraint firstItem="6j8-7V-n4I" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BxJ-Gc-xIf"/>
+                            <constraint firstItem="ExJ-OJ-dp5" firstAttribute="top" secondItem="6eD-12-hgm" secondAttribute="bottom" constant="8" id="DfD-NP-0hI"/>
+                            <constraint firstItem="ExJ-OJ-dp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OVf-rx-3xe"/>
+                            <constraint firstItem="6j8-7V-n4I" firstAttribute="top" secondItem="ExJ-OJ-dp5" secondAttribute="bottom" constant="8" symbolic="YES" id="Os7-JL-HdH"/>
+                            <constraint firstItem="6j8-7V-n4I" firstAttribute="centerX" secondItem="6eD-12-hgm" secondAttribute="centerX" id="fRw-eC-j8w"/>
+                            <constraint firstItem="ExJ-OJ-dp5" firstAttribute="top" secondItem="6eD-12-hgm" secondAttribute="bottom" constant="8" symbolic="YES" id="mcu-XD-Ykb"/>
+                            <constraint firstItem="6j8-7V-n4I" firstAttribute="centerX" secondItem="ExJ-OJ-dp5" secondAttribute="centerX" id="sPh-A6-yOR"/>
+                            <constraint firstItem="ExJ-OJ-dp5" firstAttribute="centerX" secondItem="6eD-12-hgm" secondAttribute="centerX" id="t0f-Um-z4V"/>
+                            <constraint firstItem="6j8-7V-n4I" firstAttribute="top" secondItem="ExJ-OJ-dp5" secondAttribute="bottom" constant="8" id="xLN-K1-R2t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="6j8-7V-n4I" id="xee-g2-z4e"/>
                         <outlet property="habitPanels" destination="ExJ-OJ-dp5" id="04w-2V-aRT"/>
                     </connections>
                 </viewController>

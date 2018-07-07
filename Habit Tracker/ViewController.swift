@@ -11,11 +11,11 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var habitPanels: UICollectionView!
+    @IBOutlet weak var addButton: UIButton!
     
-    //
     var editClicked = false
     
-    // Data for Cells
+    // Test Data for Cells
     var habitNamesArray: [String] = ["Walk the Dog","Make my Bed","Take out Garbage","Workout","Read","Pray","Call Clients"]
     var timesCompleteArray: [Int] = [1,1,0,1,2,4,1]
     var colorsArray: [UIColor] = [Common.Global.red,Common.Global.blue,Common.Global.purple,Common.Global.green,Common.Global.orange,Common.Global.yellow,Common.Global.purple]
@@ -25,6 +25,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         habitPanels.dataSource = self
         habitPanels.delegate = self
+        
+        
+        addButton.setTitleColor(Common.Global.lightGrey, for: UIControlState.normal)
+        addButton.layer.borderColor = Common.Global.lightGrey.cgColor
+        addButton.layer.borderWidth = 3
+        addButton.layer.cornerRadius = 34
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,9 +38,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
-    func makeCircle(cell: HabitCell, indexOfCell: Int) -> UIView{
-        
-        let viewSet = UIView()
+    func makeCircle(cell: HabitCell, indexOfCell: Int){
         let backgroundCircle = CAShapeLayer()
         let outsideRing = CAShapeLayer()
         // outside ring only appears in the animation as the progress bar
@@ -54,31 +58,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // background circle is similar to the ring but it has a fill color and displays a "track in grey"
         backgroundCircle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
         
-        backgroundCircle.strokeColor = UIColor(red: 103/255.0, green: 103/255.0, blue: 103/255.0, alpha: 1).cgColor //light grey
-        //backgroundCircle.fillColor = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1).cgColor //dark grey
-        backgroundCircle.fillColor = UIColor.clear.cgColor
+        backgroundCircle.strokeColor = Common.Global.lightGrey.cgColor
+        backgroundCircle.fillColor = Common.Global.darkGrey.cgColor
         backgroundCircle.lineWidth = 8
         backgroundCircle.strokeEnd = 0
         backgroundCircle.zPosition = -60
         backgroundCircle.strokeEnd = 1
-        
-        
-        viewSet.layer.addSublayer(backgroundCircle)
-        viewSet.layer.addSublayer(outsideRing)
-        
+        cell.viewForProgressWheel.layer.addSublayer(backgroundCircle)
+        cell.viewForProgressWheel.layer.addSublayer(outsideRing)
+        ringAnimate(ring: outsideRing, indexOfCell: indexOfCell)
+    }
+    
+    func ringAnimate(ring: CAShapeLayer, indexOfCell: Int){
         let progressBarAnimate = CABasicAnimation(keyPath: "strokeEnd")
         let progressPercent = Float32(timesCompleteArray[indexOfCell]) / Float32(timesPerDayArray[indexOfCell])
         progressBarAnimate.toValue = CGFloat(progressPercent)
         progressBarAnimate.duration = 0.7
-        outsideRing.strokeColor = colorsArray[indexOfCell].cgColor
+        ring.strokeColor = colorsArray[indexOfCell].cgColor
         progressBarAnimate.isRemovedOnCompletion = false
         progressBarAnimate.fillMode = kCAFillModeForwards
         
-        outsideRing.add(progressBarAnimate,forKey: "anim")
-        
-        return viewSet
+        ring.add(progressBarAnimate,forKey: nil)
     }
-    
 
     // collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -87,19 +88,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
-        cell.viewForProgressWheel.addSubview(makeCircle(cell: cell, indexOfCell: indexPath.item))
         cell.labelHabitName.text = habitNamesArray[indexPath.item]
+        cell.viewForProgressWheel.layer.addSublayer(CALayer())
+        makeCircle(cell: cell, indexOfCell: indexPath.item)
+        
         return cell
     }
     
-    @IBAction func updateTapped(_ sender: Any) {
-        habitNamesArray = [""]
-        habitPanels.reloadData()
-        habitNamesArray = ["Walk the Dog","Make my Bed","Take out Garbage","Workout","Read","Pray","Call Clients"]
-        timesCompleteArray = [2,1,1,1,2,4,3]
-        colorsArray = [Common.Global.yellow,Common.Global.red,Common.Global.green,Common.Global.blue,Common.Global.orange,Common.Global.yellow,Common.Global.purple]
-        habitPanels.reloadData()
-    }
     
     @IBAction func updateClicked(_ sender: Any) {
         habitPanels.reloadData()
