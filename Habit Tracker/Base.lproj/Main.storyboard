@@ -95,6 +95,9 @@
                                 <rect key="frame" x="125" y="709" width="125" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <state key="normal" title="UPDATE"/>
+                                <connections>
+                                    <action selector="updateTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DAM-Ys-w4A"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

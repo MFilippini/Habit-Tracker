@@ -32,7 +32,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
-    func makeCircle(cell: HabitCell, indexOfCell: Int){
+    func makeCircle(cell: HabitCell, indexOfCell: Int) -> UIView{
+        
+        let viewSet = UIView()
         let backgroundCircle = CAShapeLayer()
         let outsideRing = CAShapeLayer()
         // outside ring only appears in the animation as the progress bar
@@ -48,30 +50,42 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         backgroundCircle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
         
         backgroundCircle.strokeColor = UIColor(red: 103/255.0, green: 103/255.0, blue: 103/255.0, alpha: 1).cgColor //light grey
-        backgroundCircle.fillColor = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1).cgColor //dark grey
+        //backgroundCircle.fillColor = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1).cgColor //dark grey
+        backgroundCircle.fillColor = UIColor.clear.cgColor
         backgroundCircle.lineWidth = 8
         backgroundCircle.strokeEnd = 0
         backgroundCircle.zPosition = -2
         backgroundCircle.strokeEnd = 1
-        cell.viewForProgressWheel.layer.addSublayer(backgroundCircle)
-        cell.viewForProgressWheel.layer.addSublayer(outsideRing)
         
-        ringAnimate(ring: outsideRing, indexOfCell: indexOfCell)
-    }
-    
-    func ringAnimate(ring: CAShapeLayer, indexOfCell: Int){
+        
+        viewSet.layer.addSublayer(backgroundCircle)
+        viewSet.layer.addSublayer(outsideRing)
+        
         let progressBarAnimate = CABasicAnimation(keyPath: "strokeEnd")
         let progressPercent = Float32(timesCompleteArray[indexOfCell]) / Float32(timesPerDayArray[indexOfCell])
         progressBarAnimate.toValue = CGFloat(progressPercent)
         progressBarAnimate.duration = 0.7
-        ring.strokeColor = colorsArray[indexOfCell].cgColor
+        outsideRing.strokeColor = colorsArray[indexOfCell].cgColor
         progressBarAnimate.isRemovedOnCompletion = false
         progressBarAnimate.fillMode = kCAFillModeForwards
         
+        outsideRing.add(progressBarAnimate,forKey: nil)
         
-        
-        ring.add(progressBarAnimate,forKey: nil)
+        return viewSet
     }
+    
+//    func ringAnimate(ring: CAShapeLayer, indexOfCell: Int, viewSet: UIView) -> UIView{
+//        let progressBarAnimate = CABasicAnimation(keyPath: "strokeEnd")
+//        let progressPercent = Float32(timesCompleteArray[indexOfCell]) / Float32(timesPerDayArray[indexOfCell])
+//        progressBarAnimate.toValue = CGFloat(progressPercent)
+//        progressBarAnimate.duration = 0.7
+//        ring.strokeColor = colorsArray[indexOfCell].cgColor
+//        progressBarAnimate.isRemovedOnCompletion = false
+//        progressBarAnimate.fillMode = kCAFillModeForwards
+//
+//        ring.add(progressBarAnimate,forKey: nil)
+//        return viewSet
+//    }
 
     // collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -80,12 +94,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
+        cell.viewForProgressWheel.addSubview(makeCircle(cell: cell, indexOfCell: indexPath.item))
         cell.labelHabitName.text = habitNamesArray[indexPath.item]
-        //cell.labelHabitName.textColor = some array position
-        makeCircle(cell: cell, indexOfCell: indexPath.item)
         return cell
     }
     
+    @IBAction func updateTapped(_ sender: Any) {
+        timesCompleteArray = [2,1,1,1,2,4,3]
+        habitPanels.reloadData()
+    }
     
     
 }
