@@ -110,11 +110,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
-    @IBAction func updateClicked(_ sender: Any) {
-        habitPanels.reloadData()
-    }
-    
-    
 }
 
 
