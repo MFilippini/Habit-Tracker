@@ -36,12 +36,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let backgroundCircle = CAShapeLayer()
         let outsideRing = CAShapeLayer()
         // outside ring only appears in the animation as the progress bar
+      
+        for layer in cell.viewForProgressWheel.layer.sublayers!{
+            layer.removeFromSuperlayer()
+        }
+        
         outsideRing.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
         
         outsideRing.fillColor = UIColor.clear.cgColor
         outsideRing.lineWidth = 8
         outsideRing.strokeEnd = 0
-        outsideRing.zPosition = -1
+        outsideRing.zPosition = -50
         outsideRing.lineCap = kCALineCapRound
         
         // background circle is similar to the ring but it has a fill color and displays a "track in grey"
@@ -51,11 +56,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         backgroundCircle.fillColor = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1).cgColor //dark grey
         backgroundCircle.lineWidth = 8
         backgroundCircle.strokeEnd = 0
-        backgroundCircle.zPosition = -2
+        backgroundCircle.zPosition = -60
         backgroundCircle.strokeEnd = 1
         cell.viewForProgressWheel.layer.addSublayer(backgroundCircle)
         cell.viewForProgressWheel.layer.addSublayer(outsideRing)
-        
         ringAnimate(ring: outsideRing, indexOfCell: indexOfCell)
     }
     
@@ -81,12 +85,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
         cell.labelHabitName.text = habitNamesArray[indexPath.item]
-        //cell.labelHabitName.textColor = some array position
+        cell.viewForProgressWheel.layer.addSublayer(CALayer())
         makeCircle(cell: cell, indexOfCell: indexPath.item)
+        
+
         return cell
     }
     
     
+    @IBAction func updateClicked(_ sender: Any) {
+        habitPanels.reloadData()
+    }
     
 }
 
