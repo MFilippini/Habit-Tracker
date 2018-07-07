@@ -15,12 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        let bar = UINavigationBar.appearance()
-        bar.barTintColor = Common.Global.darkGrey
-        bar.tintColor = Common.Global.lightGrey
-        bar.isTranslucent = false
-        
         return true
     }
 

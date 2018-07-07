@@ -103,9 +103,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let indexPath = self.habitPanels.indexPathForItem(at: location)
         
         if let index = indexPath {
-            print("Got clicked on index: \(index)!")
-            timesCompleteArray[index.item] += 1
-            habitPanels.reloadItems(at: [index])
+            // prepare haptic
+            let timesPerDay = timesPerDayArray[index.item]
+            if (timesCompleteArray[index.item]<timesPerDay){
+                timesCompleteArray[index.item] += 1
+                habitPanels.reloadItems(at: [index])
+                // do happy haptic
+            } else {
+                // do NOPE haptic
+            }
         }
     }
     

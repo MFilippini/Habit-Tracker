@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4954905120F171F40067CD4E /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954905020F171F40067CD4E /* ColorCell.swift */; };
 		49B993D920EEDC8E00E7A0EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B993D820EEDC8E00E7A0EE /* AppDelegate.swift */; };
 		49B993DB20EEDC8E00E7A0EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B993DA20EEDC8E00E7A0EE /* ViewController.swift */; };
 		49B993DE20EEDC8E00E7A0EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B993DC20EEDC8E00E7A0EE /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 		49B993F920EEDC8F00E7A0EE /* Habit_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B993F820EEDC8F00E7A0EE /* Habit_TrackerUITests.swift */; };
 		49B9940720EEDE5700E7A0EE /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9940620EEDE5700E7A0EE /* HabitCell.swift */; };
 		49B9940D20EFEE5F00E7A0EE /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9940C20EFEE5F00E7A0EE /* Common.swift */; };
+		49B9940F20F16E6A00E7A0EE /* AddNewHabitScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9940E20F16E6A00E7A0EE /* AddNewHabitScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4954905020F171F40067CD4E /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		49B993D520EEDC8E00E7A0EE /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B993D820EEDC8E00E7A0EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49B993DA20EEDC8E00E7A0EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		49B993FA20EEDC8F00E7A0EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49B9940620EEDE5700E7A0EE /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
 		49B9940C20EFEE5F00E7A0EE /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		49B9940E20F16E6A00E7A0EE /* AddNewHabitScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				49B993DA20EEDC8E00E7A0EE /* ViewController.swift */,
 				49B993DC20EEDC8E00E7A0EE /* Main.storyboard */,
 				49B9940620EEDE5700E7A0EE /* HabitCell.swift */,
+				49B9940E20F16E6A00E7A0EE /* AddNewHabitScreen.swift */,
+				4954905020F171F40067CD4E /* ColorCell.swift */,
 				49B993DF20EEDC8F00E7A0EE /* Assets.xcassets */,
 				49B993E120EEDC8F00E7A0EE /* LaunchScreen.storyboard */,
 				49B993E420EEDC8F00E7A0EE /* Info.plist */,
@@ -262,10 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B9940F20F16E6A00E7A0EE /* AddNewHabitScreen.swift in Sources */,
 				49B9940D20EFEE5F00E7A0EE /* Common.swift in Sources */,
 				49B993DB20EEDC8E00E7A0EE /* ViewController.swift in Sources */,
 				49B993D920EEDC8E00E7A0EE /* AppDelegate.swift in Sources */,
 				49B9940720EEDE5700E7A0EE /* HabitCell.swift in Sources */,
+				4954905120F171F40067CD4E /* ColorCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
