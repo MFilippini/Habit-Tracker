@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     @IBOutlet weak var habitPanels: UICollectionView!
     @IBOutlet weak var addButton: UIButton!
     
@@ -32,7 +32,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         addButton.layer.borderWidth = 3
         addButton.layer.cornerRadius = 34
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,7 +42,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let backgroundCircle = CAShapeLayer()
         let outsideRing = CAShapeLayer()
         // outside ring only appears in the animation as the progress bar
-      
+        
         for layer in cell.viewForProgressWheel.layer.sublayers!{
             layer.removeFromSuperlayer()
         }
@@ -80,7 +80,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         ring.add(progressBarAnimate,forKey: nil)
     }
-
+    
     // collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return habitNamesArray.count
@@ -88,6 +88,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
+        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         cell.labelHabitName.text = habitNamesArray[indexPath.item]
         cell.viewForProgressWheel.layer.addSublayer(CALayer())
         makeCircle(cell: cell, indexOfCell: indexPath.item)
@@ -96,9 +97,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
+    @objc func tap(_ sender: UITapGestureRecognizer) {
+        
+        let location = sender.location(in: self.habitPanels)
+        let indexPath = self.habitPanels.indexPathForItem(at: location)
+        
+        if let index = indexPath {
+            print("Got clicked on index: \(index)!")
+            timesCompleteArray[index.item] += 1
+            habitPanels.reloadItems(at: [index])
+        }
+    }
+    
+    
     @IBAction func updateClicked(_ sender: Any) {
         habitPanels.reloadData()
     }
     
+    
 }
+
 
