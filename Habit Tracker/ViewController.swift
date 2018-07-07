@@ -38,12 +38,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let backgroundCircle = CAShapeLayer()
         let outsideRing = CAShapeLayer()
         // outside ring only appears in the animation as the progress bar
+      
+        for layer in cell.viewForProgressWheel.layer.sublayers!{
+            layer.removeFromSuperlayer()
+        }
+        
         outsideRing.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
         
         outsideRing.fillColor = UIColor.clear.cgColor
         outsideRing.lineWidth = 8
         outsideRing.strokeEnd = 0
-        outsideRing.zPosition = -1
+        outsideRing.zPosition = -50
         outsideRing.lineCap = kCALineCapRound
         
         // background circle is similar to the ring but it has a fill color and displays a "track in grey"
@@ -54,7 +59,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         backgroundCircle.fillColor = UIColor.clear.cgColor
         backgroundCircle.lineWidth = 8
         backgroundCircle.strokeEnd = 0
-        backgroundCircle.zPosition = -2
+        backgroundCircle.zPosition = -60
         backgroundCircle.strokeEnd = 1
         
         
@@ -96,6 +101,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         habitPanels.reloadData()
     }
     
+    @IBAction func updateClicked(_ sender: Any) {
+        habitPanels.reloadData()
+    }
     
 }
 
