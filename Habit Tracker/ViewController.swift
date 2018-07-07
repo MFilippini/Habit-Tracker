@@ -33,25 +33,44 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func makeCircle(cell: HabitCell, indexOfCell: Int){
-        let circle = CAShapeLayer()
-        circle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
-        circle.fillColor = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1).cgColor
-        circle.lineWidth = 8
-        circle.strokeEnd = 0
-        circle.zPosition = -5
-        cell.viewForProgressWheel.layer.addSublayer(circle)
-        circleAnimate(circle: circle, indexOfCell: indexOfCell)
+        let backgroundCircle = CAShapeLayer()
+        let outsideRing = CAShapeLayer()
+        // outside ring only appears in the animation as the progress bar
+        outsideRing.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
+        
+        outsideRing.fillColor = UIColor.clear.cgColor
+        outsideRing.lineWidth = 8
+        outsideRing.strokeEnd = 0
+        outsideRing.zPosition = -1
+        outsideRing.lineCap = kCALineCapRound
+        
+        // background circle is similar to the ring but it has a fill color and displays a "track in grey"
+        backgroundCircle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
+        
+        backgroundCircle.strokeColor = UIColor(red: 103/255.0, green: 103/255.0, blue: 103/255.0, alpha: 1).cgColor //light grey
+        backgroundCircle.fillColor = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1).cgColor //dark grey
+        backgroundCircle.lineWidth = 8
+        backgroundCircle.strokeEnd = 0
+        backgroundCircle.zPosition = -2
+        backgroundCircle.strokeEnd = 1
+        cell.viewForProgressWheel.layer.addSublayer(backgroundCircle)
+        cell.viewForProgressWheel.layer.addSublayer(outsideRing)
+        
+        ringAnimate(ring: outsideRing, indexOfCell: indexOfCell)
     }
     
-    func circleAnimate(circle: CAShapeLayer, indexOfCell: Int){
+    func ringAnimate(ring: CAShapeLayer, indexOfCell: Int){
         let progressBarAnimate = CABasicAnimation(keyPath: "strokeEnd")
         let progressPercent = Float32(timesCompleteArray[indexOfCell]) / Float32(timesPerDayArray[indexOfCell])
         progressBarAnimate.toValue = CGFloat(progressPercent)
         progressBarAnimate.duration = 0.7
-        circle.strokeColor = colorsArray[indexOfCell].cgColor
+        ring.strokeColor = colorsArray[indexOfCell].cgColor
         progressBarAnimate.isRemovedOnCompletion = false
         progressBarAnimate.fillMode = kCAFillModeForwards
-        circle.add(progressBarAnimate,forKey: nil)
+        
+        
+        
+        ring.add(progressBarAnimate,forKey: nil)
     }
 
     // collection view
