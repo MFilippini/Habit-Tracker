@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var habitPanels: UICollectionView!
+
     @IBOutlet weak var addButton: UIButton!
     
     var editClicked = false
@@ -26,10 +27,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         habitPanels.dataSource = self
         habitPanels.delegate = self
         
-        
+        addButton.layer.borderWidth = 3
         addButton.layer.borderColor = Common.Global.lightGrey.cgColor
         addButton.backgroundColor = Common.Global.darkGrey
-        addButton.layer.borderWidth = 3
         addButton.layer.cornerRadius = 34
     }
     
@@ -118,8 +118,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }
     }
+
+    @IBAction func addNewHabitTapped(_ sender: Any) {
+        performSegue(withIdentifier: "addNewHabit", sender: nil)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "addNewHabit"?:
+            let dvc = segue.destination as! AddNewHabitScreen
+            dvc.habitNamesArray = habitNamesArray
+            dvc.timesCompleteArray = timesCompleteArray
+            dvc.timesPerDayArray = timesPerDayArray
+            dvc.colorsArray = colorsArray
+        default: break
+            
+        }
+    }
+    
+    @IBAction func unwindToInitialViewController(segue: UIStoryboardSegue){
+    }
     
 }
-
 

@@ -83,7 +83,7 @@
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qaf-SR-37h" kind="show" id="Ctg-dd-iII"/>
+                                    <action selector="addNewHabitTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U7F-X5-2Cb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -103,18 +103,19 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="zQN-Ry-ai5"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="6j8-7V-n4I" id="xee-g2-z4e"/>
+                        <outlet property="addButton" destination="6j8-7V-n4I" id="BMQ-Ci-cjP"/>
                         <outlet property="habitPanels" destination="ExJ-OJ-dp5" id="04w-2V-aRT"/>
+                        <segue destination="qaf-SR-37h" kind="show" identifier="addNewHabit" id="AS8-vy-pJ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-474" y="120"/>
         </scene>
-        <!--Make A New Habit-->
+        <!--Add a New Habit-->
         <scene sceneID="yCA-eK-qoO">
             <objects>
-                <viewController title="Make A New Habit" id="qaf-SR-37h" customClass="AddNewHabitScreen" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add a New Habit" id="qaf-SR-37h" customClass="AddNewHabitScreen" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Afx-Sr-2nT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVj-QU-bnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276" y="118.96551724137932"/>
+            <point key="canvasLocation" x="556" y="119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yim-Ac-6QQ">

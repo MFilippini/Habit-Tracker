@@ -15,7 +15,13 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var numberTimesPerDayLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     
-    let colorsArray = [Common.Global.purple,Common.Global.blue,Common.Global.green,Common.Global.yellow,Common.Global.orange,Common.Global.red]
+    var habitNamesArray: [String] = []
+    var timesCompleteArray: [Int] = []
+    var colorsArray: [UIColor] = []
+    var timesPerDayArray: [Int] = []
+    
+    
+    let colorDisplayArray = [Common.Global.purple,Common.Global.blue,Common.Global.green,Common.Global.yellow,Common.Global.orange,Common.Global.red]
     
     var selectedColor = Common.Global.blue
     var habitName = ""
@@ -43,12 +49,12 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colorsArray.count
+        return colorDisplayArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = colorSelectorCollView.dequeueReusableCell(withReuseIdentifier: "CellWithColor", for: indexPath) as! ColorCell
-        cell.viewForColor.backgroundColor = colorsArray[indexPath.item]
+        cell.viewForColor.backgroundColor = colorDisplayArray[indexPath.item]
         
         return cell
     }
@@ -57,7 +63,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 5
         cell?.layer.borderColor = UIColor.white.cgColor
-        selectedColor = colorsArray[indexPath.item]
+        selectedColor = colorDisplayArray[indexPath.item]
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
