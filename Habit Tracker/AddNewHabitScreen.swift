@@ -11,6 +11,7 @@ import UIKit
 class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var colorSelectorCollView: UICollectionView!
+    @IBOutlet weak var newHabitNameTextField: UITextField!
     
     let colorsArray = [Common.Global.purple,Common.Global.blue,Common.Global.green,Common.Global.yellow,Common.Global.orange,Common.Global.red]
     
@@ -22,6 +23,10 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         super.viewDidLoad()
         colorSelectorCollView.dataSource = self
         colorSelectorCollView.delegate = self
+        newHabitNameTextField.layer.borderColor = Common.Global.lightGrey.cgColor
+        newHabitNameTextField.layer.borderWidth = 2
+        newHabitNameTextField.layer.cornerRadius = 10
+        newHabitNameTextField.backgroundColor = Common.Global.darkGrey
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,6 +58,13 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         cell?.layer.borderColor = Common.Global.lightGrey.cgColor
     }
     
+    
+    
+    @IBAction func habitNameEntered(_ sender: UITextField) {
+        if let nameText = newHabitNameTextField.text{
+            habitName = nameText
+        }
+    }
     /*
      // MARK: - Navigation
      
