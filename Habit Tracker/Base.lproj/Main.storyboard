@@ -154,8 +154,8 @@
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8n-GM-nIc">
-                                <rect key="frame" x="115" y="292" width="146" height="85"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8n-GM-nIc">
+                                <rect key="frame" x="115" y="274" width="146" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="Ztu-5i-aor"/>
                                     <constraint firstAttribute="width" constant="146" id="xQm-c0-nV9"/>
@@ -203,16 +203,32 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnd-wO-N6F">
-                                <rect key="frame" x="274" y="294" width="80" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acO-CL-fRY">
+                                <rect key="frame" x="7" y="266" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="hKx-p0-AIs"/>
+                                    <constraint firstAttribute="height" constant="100" id="nTG-9H-e1B"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="minus">
+                                    <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="subtractTimePerDay:" destination="qaf-SR-37h" eventType="touchUpInside" id="P1l-yS-k1H"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnd-wO-N6F">
+                                <rect key="frame" x="274" y="276" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="I6T-My-TSw"/>
                                     <constraint firstAttribute="width" constant="80" id="WS7-xn-TYJ"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="plus"/>
+                                <connections>
+                                    <action selector="addTimePerDay:" destination="qaf-SR-37h" eventType="touchUpInside" id="4Vl-Hl-PM9"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="How Many Times Per Day?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzp-Cl-wia">
-                                <rect key="frame" x="22" y="241" width="332" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How Many Times Per Day?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzp-Cl-wia">
+                                <rect key="frame" x="22" y="211" width="332" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="67T-1y-R85"/>
                                     <constraint firstAttribute="width" constant="332" id="cY8-wG-yJD"/>
@@ -221,16 +237,6 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acO-CL-fRY">
-                                <rect key="frame" x="7" y="284" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="hKx-p0-AIs"/>
-                                    <constraint firstAttribute="height" constant="100" id="nTG-9H-e1B"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="minus">
-                                    <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -239,18 +245,22 @@
                             <constraint firstItem="2g9-fp-ORy" firstAttribute="top" secondItem="jMh-Qc-RSC" secondAttribute="bottom" constant="24" id="4r3-7j-Axw"/>
                             <constraint firstItem="kge-bg-P3K" firstAttribute="top" secondItem="2g9-fp-ORy" secondAttribute="bottom" constant="89" id="8k4-sp-GHh"/>
                             <constraint firstItem="Rui-aF-vzO" firstAttribute="leading" secondItem="eGd-NE-U33" secondAttribute="leading" constant="75" id="FDU-wq-b4q"/>
-                            <constraint firstItem="acO-CL-fRY" firstAttribute="top" secondItem="Zzp-Cl-wia" secondAttribute="bottom" constant="8" id="GCq-89-RMa"/>
+                            <constraint firstItem="acO-CL-fRY" firstAttribute="top" secondItem="Zzp-Cl-wia" secondAttribute="bottom" constant="20" id="GCq-89-RMa"/>
+                            <constraint firstItem="Zzp-Cl-wia" firstAttribute="top" secondItem="5y9-hR-quM" secondAttribute="bottom" constant="45" id="JOY-73-vcE"/>
                             <constraint firstItem="5y9-hR-quM" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="LAX-jN-mWp"/>
                             <constraint firstItem="Zzp-Cl-wia" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="XSk-OJ-lGc"/>
                             <constraint firstItem="jMh-Qc-RSC" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="YtF-dn-BRb"/>
                             <constraint firstItem="2g9-fp-ORy" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="crs-gM-5oK"/>
                             <constraint firstItem="B8n-GM-nIc" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="dOF-wa-dgg"/>
                             <constraint firstItem="kge-bg-P3K" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="fOt-DC-mAJ"/>
-                            <constraint firstItem="B8n-GM-nIc" firstAttribute="top" secondItem="Zzp-Cl-wia" secondAttribute="bottom" constant="16" id="hvR-iz-myQ"/>
+                            <constraint firstItem="eGd-NE-U33" firstAttribute="trailing" secondItem="hnd-wO-N6F" secondAttribute="trailing" constant="21" id="far-lr-YCg"/>
+                            <constraint firstItem="B8n-GM-nIc" firstAttribute="top" secondItem="Zzp-Cl-wia" secondAttribute="bottom" constant="28" id="hvR-iz-myQ"/>
+                            <constraint firstItem="5y9-hR-quM" firstAttribute="top" secondItem="Rui-aF-vzO" secondAttribute="bottom" constant="8" id="klF-uE-WTq"/>
                             <constraint firstItem="5y9-hR-quM" firstAttribute="top" secondItem="Rui-aF-vzO" secondAttribute="bottom" constant="8" id="pdR-41-bJ6"/>
                             <constraint firstItem="B8n-GM-nIc" firstAttribute="centerY" secondItem="acO-CL-fRY" secondAttribute="centerY" id="qUD-fM-Pq8"/>
                             <constraint firstItem="eGd-NE-U33" firstAttribute="trailing" secondItem="Rui-aF-vzO" secondAttribute="trailing" constant="81" id="tS5-wn-XLq"/>
-                            <constraint firstItem="hnd-wO-N6F" firstAttribute="top" secondItem="Zzp-Cl-wia" secondAttribute="bottom" constant="18" id="uwB-A7-K3M"/>
+                            <constraint firstItem="hnd-wO-N6F" firstAttribute="top" secondItem="Zzp-Cl-wia" secondAttribute="bottom" constant="30" id="uwB-A7-K3M"/>
+                            <constraint firstItem="acO-CL-fRY" firstAttribute="leading" secondItem="eGd-NE-U33" secondAttribute="leading" constant="7" id="w3y-Ss-m5m"/>
                             <constraint firstItem="Rui-aF-vzO" firstAttribute="top" secondItem="eGd-NE-U33" secondAttribute="top" constant="27" id="x00-m3-WxV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eGd-NE-U33"/>
@@ -258,6 +268,7 @@
                     <connections>
                         <outlet property="colorSelectorCollView" destination="2g9-fp-ORy" id="nNb-GT-NgC"/>
                         <outlet property="newHabitNameTextField" destination="5y9-hR-quM" id="mCL-HJ-rTi"/>
+                        <outlet property="numberTimesPerDayLabel" destination="B8n-GM-nIc" id="xKT-hN-lgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVj-QU-bnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
