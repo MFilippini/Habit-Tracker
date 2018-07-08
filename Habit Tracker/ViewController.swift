@@ -128,7 +128,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     // do NOPE haptic
                 }
             } else {
-                performSegue(withIdentifier: "editCell", sender: index.item)
+                performSegue(withIdentifier: "toEditPanel", sender: index.item)
             }
         }
     }
@@ -152,8 +152,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             dvc.timesCompleteArray = timesCompleteArray
             dvc.timesPerDayArray = timesPerDayArray
             dvc.colorsArray = colorsArray
-//        case "addNewHabit"?:
-//            let dvc = segue.destination as! editScreen
+       case "toEditPanel"?:
+            let dvc = segue.destination as! CellEditingView
+            dvc.habitNamesArray = habitNamesArray
+            dvc.timesCompleteArray = timesCompleteArray
+            dvc.timesPerDayArray = timesPerDayArray
+            dvc.colorsArray = colorsArray
+            dvc.indexOfEdit = sender as! Int
         default: break
             
         }

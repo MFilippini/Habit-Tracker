@@ -12,20 +12,23 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     
     @IBOutlet weak var renameHabitTextField: UITextField!
     @IBOutlet weak var renameDoneButton: UIButton!
-    
     @IBOutlet weak var timesPerDayLabel: UILabel!
     @IBOutlet weak var timesCompletedTodayLabel: UILabel!
-    
     @IBOutlet weak var colorSelectEdit: UICollectionView!
-    
     @IBOutlet weak var saveChangesButton: UIButton!
+    
+    var habitNamesArray: [String] = []
+    var timesCompleteArray: [Int] = []
+    var colorsArray: [UIColor] = []
+    var timesPerDayArray: [Int] = []
+    var indexOfEdit = 0
     
     let colorDisplayArray = [Common.Global.purple,Common.Global.blue,Common.Global.green,Common.Global.yellow,Common.Global.orange,Common.Global.red]
     
     var selectedColor = Common.Global.blue
     var habitName = ""
     var habitPerDay = 1
-    
+    var habitCurrent = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,21 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         renameDoneButton.layer.borderColor = Common.Global.lightGrey.cgColor
         renameDoneButton.backgroundColor = Common.Global.darkGrey
         renameDoneButton.layer.cornerRadius = 17
+        
+        updateWithCorrectValues()
+    }
+    
+    func updateWithCorrectValues(){
+  
+        selectedColor = colorsArray[indexOfEdit]
+        habitName = habitNamesArray[indexOfEdit]
+        habitPerDay = timesPerDayArray[indexOfEdit]
+        habitCurrent = timesCompleteArray[indexOfEdit]
+        
+        renameHabitTextField.text = habitName
+        timesPerDayLabel.text = String(habitPerDay)
+        timesCompletedTodayLabel.text = String(habitCurrent)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,6 +78,9 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = colorSelectEdit.dequeueReusableCell(withReuseIdentifier: "CellWithColor", for: indexPath) as! ColorCell
         cell.viewForColor.backgroundColor = colorDisplayArray[indexPath.item]
+        if colorDisplayArray[indexPath.item] == selectedColor{
+            cell.isSelected = true
+        }
         
         return cell
     }
@@ -75,6 +96,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 0.5
         cell?.layer.borderColor = Common.Global.lightGrey.cgColor
+        
     }
     
     
