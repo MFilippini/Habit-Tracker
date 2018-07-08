@@ -36,7 +36,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidAppear(_ animated: Bool) {
         habitPanels.reloadData()
-        editingLabel.isHidden = true
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -128,7 +127,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     // do NOPE haptic
                 }
             } else {
-                performSegue(withIdentifier: "toEditPanel", sender: index.item)
+                performSegue(withIdentifier: "toEditPanel", sender: index)
             }
         }
     }
@@ -158,7 +157,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             dvc.timesCompleteArray = timesCompleteArray
             dvc.timesPerDayArray = timesPerDayArray
             dvc.colorsArray = colorsArray
-            dvc.indexOfEdit = sender as! Int
+            dvc.indexOfEdit = sender as! NSIndexPath
         default: break
             
         }

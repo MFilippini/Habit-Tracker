@@ -21,7 +21,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     var timesCompleteArray: [Int] = []
     var colorsArray: [UIColor] = []
     var timesPerDayArray: [Int] = []
-    var indexOfEdit = 0
+    var indexOfEdit = NSIndexPath()
     
     let colorDisplayArray = [Common.Global.purple,Common.Global.blue,Common.Global.green,Common.Global.yellow,Common.Global.orange,Common.Global.red]
     
@@ -53,17 +53,23 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         updateWithCorrectValues()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        colorSelectEdit.cellForItem(at: indexOfEdit as IndexPath)?.layer.borderWidth = 5
+        colorSelectEdit.cellForItem(at: indexOfEdit as IndexPath)?.layer.borderColor = UIColor.white.cgColor
+    }
+    
     func updateWithCorrectValues(){
   
-        selectedColor = colorsArray[indexOfEdit]
-        habitName = habitNamesArray[indexOfEdit]
-        habitPerDay = timesPerDayArray[indexOfEdit]
-        habitCurrent = timesCompleteArray[indexOfEdit]
+        selectedColor = colorsArray[indexOfEdit.item]
+        habitName = habitNamesArray[indexOfEdit.item]
+        habitPerDay = timesPerDayArray[indexOfEdit.item]
+        habitCurrent = timesCompleteArray[indexOfEdit.item]
         
         renameHabitTextField.text = habitName
         timesPerDayLabel.text = String(habitPerDay)
         timesCompletedTodayLabel.text = String(habitCurrent)
         
+        renameDoneButton.setTitleColor(UIColor.white, for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,15 +84,13 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = colorSelectEdit.dequeueReusableCell(withReuseIdentifier: "CellWithColor", for: indexPath) as! ColorCell
         cell.viewForColor.backgroundColor = colorDisplayArray[indexPath.item]
-        if colorDisplayArray[indexPath.item] == selectedColor{
-            cell.isSelected = true
-        }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
+        colorSelectEdit.cellForItem(at: indexOfEdit as IndexPath)?.layer.borderWidth = 0.5
+        colorSelectEdit.cellForItem(at: indexOfEdit as IndexPath)?.layer.borderColor = Common.Global.lightGrey.cgColor
         cell?.layer.borderWidth = 5
         cell?.layer.borderColor = UIColor.white.cgColor
         selectedColor = colorDisplayArray[indexPath.item]
@@ -135,38 +139,35 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     
     @IBAction func subtractToday(_ sender: UIButton) {
         let number = Int(timesCompletedTodayLabel.text!)!
-        if number > 1 && number < 6/*possible total for day*/{
+        if number > 0{
             timesCompletedTodayLabel.text = String(number - 1)
-            habitPerDay -= 1
+            habitCurrent -= 1
         }
     }
     
     @IBAction func addToday(_ sender: UIButton) {
-        timesCompletedTodayLabel.text = String(Int(timesCompletedTodayLabel.text!)! + 1)
-        habitPerDay += 1
+        let number = Int(timesCompletedTodayLabel.text!)!
+        if number < habitPerDay{
+            timesCompletedTodayLabel.text = String(number + 1)
+            habitCurrent += 1
+        }
     }
     
     
     
-//    @IBAction func saveAndFinish(_ sender: UIButton) {
-//        if habitName != ""{
-//            habitNamesArray.append(habitName)
-//            timesPerDayArray.append(habitPerDay)
-//            timesCompleteArray.append(0)
-//            colorsArray.append(selectedColor)
-//            performSegue(withIdentifier: "unwindToInitialViewController", sender: self)
-//        }
-//    }
-    
-    
-    
-    
-    
+   @IBAction func saveAndFinish(_ sender: UIButton) {
+       if habitName != ""{
+            performSegue(withIdentifier: "unwindToInitialViewController", sender: self)
+        }
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let dvc = segue.destination as! ViewController
+        dvc.habitNamesArray[indexOfEdit.item] = habitName
+        dvc.timesPerDayArray[indexOfEdit.item] = habitPerDay
+        dvc.timesCompleteArray[indexOfEdit.item] = habitCurrent
+        dvc.colorsArray[indexOfEdit.item] = selectedColor
     }
     
 }

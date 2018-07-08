@@ -594,9 +594,11 @@
                         <outlet property="saveChangesButton" destination="LPX-Q4-ieT" id="lKb-Ks-utb"/>
                         <outlet property="timesCompletedTodayLabel" destination="oeN-19-y3n" id="hnd-rM-kjB"/>
                         <outlet property="timesPerDayLabel" destination="VOZ-M3-0a3" id="Js0-9e-aLi"/>
+                        <segue destination="zDF-ND-hnd" kind="unwind" unwindAction="unwindToInitialViewControllerWithSegue:" id="h4B-4F-q0e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16A-Z0-B2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zDF-ND-hnd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="404" y="-231"/>
         </scene>
