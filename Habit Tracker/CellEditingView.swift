@@ -29,9 +29,11 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     var habitName = ""
     var habitPerDay = 1
     var habitCurrent = 1
+    var selectedColorLocation = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateWithCorrectValues()
         colorSelectEdit.dataSource = self
         colorSelectEdit.delegate = self
         
@@ -49,13 +51,11 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         renameDoneButton.layer.borderColor = Common.Global.lightGrey.cgColor
         renameDoneButton.backgroundColor = Common.Global.darkGrey
         renameDoneButton.layer.cornerRadius = 17
-        
-        updateWithCorrectValues()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        colorSelectEdit.cellForItem(at: indexOfEdit as IndexPath)?.layer.borderWidth = 5
-        colorSelectEdit.cellForItem(at: indexOfEdit as IndexPath)?.layer.borderColor = UIColor.white.cgColor
+        colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderWidth = 5
+        colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderColor = UIColor.white.cgColor
     }
     
     func updateWithCorrectValues(){
@@ -68,7 +68,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         renameHabitTextField.text = habitName
         timesPerDayLabel.text = String(habitPerDay)
         timesCompletedTodayLabel.text = String(habitCurrent)
-        
+        selectedColorLocation = colorDisplayArray.index(of: selectedColor)!
         renameDoneButton.setTitleColor(UIColor.white, for: .normal)
     }
     
@@ -89,8 +89,8 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        colorSelectEdit.cellForItem(at: indexOfEdit as IndexPath)?.layer.borderWidth = 0.5
-        colorSelectEdit.cellForItem(at: indexOfEdit as IndexPath)?.layer.borderColor = Common.Global.lightGrey.cgColor
+        colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderWidth = 0.5
+        colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderColor = Common.Global.lightGrey.cgColor
         cell?.layer.borderWidth = 5
         cell?.layer.borderColor = UIColor.white.cgColor
         selectedColor = colorDisplayArray[indexPath.item]
@@ -157,7 +157,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     
    @IBAction func saveAndFinish(_ sender: UIButton) {
        if habitName != ""{
-            performSegue(withIdentifier: "unwindToInitialViewController", sender: self)
+        performSegue(withIdentifier: "unwindToInitialViewController2", sender: self)
         }
     }
     

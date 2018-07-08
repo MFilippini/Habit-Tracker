@@ -350,10 +350,10 @@
             </objects>
             <point key="canvasLocation" x="-1394.4000000000001" y="118.96551724137932"/>
         </scene>
-        <!--Add a New Habit-->
+        <!--Edit Habit-->
         <scene sceneID="lFW-mT-G4D">
             <objects>
-                <viewController title="Add a New Habit" id="X7H-w1-kch" customClass="CellEditingView" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit Habit" id="X7H-w1-kch" customClass="CellEditingView" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1mP-VY-5v5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -594,7 +594,7 @@
                         <outlet property="saveChangesButton" destination="LPX-Q4-ieT" id="lKb-Ks-utb"/>
                         <outlet property="timesCompletedTodayLabel" destination="oeN-19-y3n" id="hnd-rM-kjB"/>
                         <outlet property="timesPerDayLabel" destination="VOZ-M3-0a3" id="Js0-9e-aLi"/>
-                        <segue destination="zDF-ND-hnd" kind="unwind" unwindAction="unwindToInitialViewControllerWithSegue:" id="h4B-4F-q0e"/>
+                        <segue destination="zDF-ND-hnd" kind="unwind" identifier="unwindToInitialViewController2" unwindAction="unwindToInitialViewControllerWithSegue:" id="h4B-4F-q0e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16A-Z0-B2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
