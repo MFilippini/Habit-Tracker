@@ -101,7 +101,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if !editClicked{
             cell.labelHabitName.text = habitNamesArray[indexPath.item]
         } else {
-            cell.labelHabitName.text = "CLICK TO EDIT"
+            cell.labelHabitName.text = ("CLICK TO EDIT"+habitNamesArray[indexPath.item])
         }
         cell.viewForProgressWheel.layer.addSublayer(CALayer())
         makeCircle(cell: cell, indexOfCell: indexPath.item)
