@@ -153,6 +153,9 @@
                                 <state key="normal" title="Save New Habit">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveClicked:" destination="qaf-SR-37h" eventType="touchUpInside" id="5Mz-ni-Zoq"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8n-GM-nIc">
                                 <rect key="frame" x="115" y="274" width="146" height="85"/>
@@ -269,6 +272,7 @@
                         <outlet property="colorSelectorCollView" destination="2g9-fp-ORy" id="nNb-GT-NgC"/>
                         <outlet property="newHabitNameTextField" destination="5y9-hR-quM" id="mCL-HJ-rTi"/>
                         <outlet property="numberTimesPerDayLabel" destination="B8n-GM-nIc" id="xKT-hN-lgH"/>
+                        <outlet property="saveButton" destination="kge-bg-P3K" id="xS6-wl-fcd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVj-QU-bnW" userLabel="First Responder" sceneMemberID="firstResponder"/>

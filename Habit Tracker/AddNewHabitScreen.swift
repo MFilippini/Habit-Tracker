@@ -13,6 +13,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var colorSelectorCollView: UICollectionView!
     @IBOutlet weak var newHabitNameTextField: UITextField!
     @IBOutlet weak var numberTimesPerDayLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
     
     let colorsArray = [Common.Global.purple,Common.Global.blue,Common.Global.green,Common.Global.yellow,Common.Global.orange,Common.Global.red]
     
@@ -60,7 +61,6 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     }
     
     
-    
     @IBAction func habitNameEntered(_ sender: UITextField) {
         if let nameText = newHabitNameTextField.text{
             habitName = nameText
@@ -80,6 +80,15 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
             habitPerDay -= 1
         }
     }
+    
+    @IBAction func saveClicked(_ sender: UIButton) {
+        if habitName != ""{
+            // append to arrays and reload
+        }
+    }
+    
+    
+    
     /*
      // MARK: - Navigation
      
