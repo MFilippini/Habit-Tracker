@@ -568,6 +568,7 @@
                         <outlet property="colorSelectEdit" destination="xxd-IP-F0c" id="p78-Ar-e5M"/>
                         <outlet property="renameDoneButton" destination="hOm-el-SBF" id="3lX-1z-2mA"/>
                         <outlet property="renameHabitTextField" destination="nHF-mU-9xv" id="7Xo-xA-aCR"/>
+                        <outlet property="saveChangesButton" destination="LPX-Q4-ieT" id="lKb-Ks-utb"/>
                         <outlet property="timesCompletedTodayLabel" destination="oeN-19-y3n" id="hnd-rM-kjB"/>
                         <outlet property="timesPerDayLabel" destination="VOZ-M3-0a3" id="Js0-9e-aLi"/>
                     </connections>
