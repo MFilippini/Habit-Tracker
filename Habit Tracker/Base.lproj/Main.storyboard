@@ -133,6 +133,16 @@
                                     <action selector="habitNameEntered:" destination="qaf-SR-37h" eventType="editingDidEnd" id="bCv-aa-25F"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your New Habit" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rui-aF-vzO">
+                                <rect key="frame" x="63" y="27" width="249" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="249" id="EMH-W0-beF"/>
+                                    <constraint firstAttribute="height" constant="93" id="KzI-09-bZb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose A Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Qc-RSC">
                                 <rect key="frame" x="89.666666666666686" y="382" width="196" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
@@ -235,16 +245,20 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your New Habit" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rui-aF-vzO">
-                                <rect key="frame" x="63" y="27" width="249" height="93"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65S-uT-jTn">
+                                <rect key="frame" x="284" y="130" width="60" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="249" id="EMH-W0-beF"/>
-                                    <constraint firstAttribute="height" constant="93" id="KzI-09-bZb"/>
+                                    <constraint firstAttribute="height" constant="34" id="02K-Nd-4Z3"/>
+                                    <constraint firstAttribute="width" constant="60" id="T3h-yi-5fQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneEditingText:" destination="qaf-SR-37h" eventType="touchUpInside" id="rl4-qr-xBj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -256,8 +270,10 @@
                             <constraint firstItem="acO-CL-fRY" firstAttribute="top" secondItem="Zzp-Cl-wia" secondAttribute="bottom" constant="20" id="GCq-89-RMa"/>
                             <constraint firstItem="Zzp-Cl-wia" firstAttribute="top" secondItem="5y9-hR-quM" secondAttribute="bottom" constant="45" id="JOY-73-vcE"/>
                             <constraint firstItem="5y9-hR-quM" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="LAX-jN-mWp"/>
+                            <constraint firstItem="65S-uT-jTn" firstAttribute="centerY" secondItem="5y9-hR-quM" secondAttribute="centerY" id="ROh-KN-X0L"/>
                             <constraint firstItem="Zzp-Cl-wia" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="XSk-OJ-lGc"/>
                             <constraint firstItem="jMh-Qc-RSC" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="YtF-dn-BRb"/>
+                            <constraint firstItem="65S-uT-jTn" firstAttribute="leading" secondItem="5y9-hR-quM" secondAttribute="trailing" constant="3" id="aFk-vE-hwb"/>
                             <constraint firstItem="2g9-fp-ORy" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="crs-gM-5oK"/>
                             <constraint firstItem="B8n-GM-nIc" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="dOF-wa-dgg"/>
                             <constraint firstItem="kge-bg-P3K" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="fOt-DC-mAJ"/>
@@ -274,12 +290,15 @@
                     </view>
                     <connections>
                         <outlet property="colorSelectorCollView" destination="2g9-fp-ORy" id="nNb-GT-NgC"/>
+                        <outlet property="doneEditingButton" destination="65S-uT-jTn" id="NPU-T0-rjz"/>
                         <outlet property="newHabitNameTextField" destination="5y9-hR-quM" id="mCL-HJ-rTi"/>
                         <outlet property="numberTimesPerDayLabel" destination="B8n-GM-nIc" id="xKT-hN-lgH"/>
                         <outlet property="saveButton" destination="kge-bg-P3K" id="xS6-wl-fcd"/>
+                        <segue destination="FfW-Q5-qb9" kind="unwind" identifier="unwindToInitialViewController" unwindAction="unwindToInitialViewControllerWithSegue:" id="qUv-Ge-zD0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVj-QU-bnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="FfW-Q5-qb9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="556" y="119"/>
         </scene>

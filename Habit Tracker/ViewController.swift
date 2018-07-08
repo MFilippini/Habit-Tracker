@@ -17,10 +17,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var editClicked = false
     
     // Test Data for Cells
-    var habitNamesArray: [String] = ["Walk the Dog","Make my Bed","Take out Garbage","Workout","Read","Pray","Call Clients"]
-    var timesCompleteArray: [Int] = [1,1,0,1,2,4,1]
-    var colorsArray: [UIColor] = [Common.Global.red,Common.Global.blue,Common.Global.purple,Common.Global.green,Common.Global.orange,Common.Global.yellow,Common.Global.purple]
-    var timesPerDayArray: [Int] = [3,1,1,3,3,5,6]
+    var habitNamesArray: [String] = ["Walk the Dog"]
+    var timesCompleteArray: [Int] = [1]
+    var colorsArray: [UIColor] = [Common.Global.red]
+    var timesPerDayArray: [Int] = [3]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,6 +14,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var newHabitNameTextField: UITextField!
     @IBOutlet weak var numberTimesPerDayLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var doneEditingButton: UIButton!
     
     var habitNamesArray: [String] = []
     var timesCompleteArray: [Int] = []
@@ -40,6 +41,12 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         saveButton.layer.borderColor = Common.Global.lightGrey.cgColor
         saveButton.backgroundColor = Common.Global.darkGrey
         saveButton.layer.cornerRadius = 26
+        
+        
+        doneEditingButton.layer.borderWidth = 2
+        doneEditingButton.layer.borderColor = Common.Global.lightGrey.cgColor
+        doneEditingButton.backgroundColor = Common.Global.darkGrey
+        doneEditingButton.layer.cornerRadius = 17
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,6 +98,10 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
             habitPerDay -= 1
         }
     }
+    @IBAction func doneEditingText(_ sender: Any) {
+        view.endEditing(true)
+        
+    }
     
     @IBAction func saveClicked(_ sender: UIButton) {
         if habitName != ""{
@@ -98,11 +109,13 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
             timesPerDayArray.append(habitPerDay)
             timesCompleteArray.append(0)
             colorsArray.append(selectedColor)
-            dismiss(animated: true, completion: nil)
+            print("CLOSE lol")
+            performSegue(withIdentifier: "unwindToInitialViewController", sender: self)
         }
     }
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("CLOSER lol")
         let dvc = segue.destination as! ViewController
         dvc.habitNamesArray = habitNamesArray
         dvc.timesCompleteArray = timesCompleteArray
