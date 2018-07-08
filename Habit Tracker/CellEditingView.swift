@@ -9,7 +9,7 @@
 import UIKit
 
 class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     @IBOutlet weak var renameHabitTextField: UITextField!
     @IBOutlet weak var renameDoneButton: UIButton!
     
@@ -47,7 +47,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         renameDoneButton.backgroundColor = Common.Global.darkGrey
         renameDoneButton.layer.cornerRadius = 17
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,7 +76,67 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         cell?.layer.borderWidth = 0.5
         cell?.layer.borderColor = Common.Global.lightGrey.cgColor
     }
-   
+    
+    
+    @IBAction func pullNewText(_ sender: UITextField) {
+        if let nameText = renameHabitTextField.text{
+            habitName = nameText
+        }
+    }
+    
+    @IBAction func updateDoneButton(_ sender: UITextField) {
+        if renameHabitTextField.text != ""{
+            renameDoneButton.setTitleColor(UIColor.white, for: .normal)
+            
+        } else{
+            renameDoneButton.setTitleColor(Common.Global.lightGrey, for: .normal)
+        }
+    }
+    
+    @IBAction func finishCloseKeyboard(_ sender: UIButton) {
+        view.endEditing(true)
+    }
+    
+    
+    @IBAction func subtractPerDay(_ sender: UIButton) {
+        let number = Int(timesPerDayLabel.text!)!
+        if number > 1{
+            timesPerDayLabel.text = String(number - 1)
+            habitPerDay -= 1
+        }
+    }
+    @IBAction func addPerDay(_ sender: UIButton) {
+        timesPerDayLabel.text = String(Int(timesPerDayLabel.text!)! + 1)
+        habitPerDay += 1
+    }
+    
+    
+    @IBAction func subtractToday(_ sender: UIButton) {
+        let number = Int(timesCompletedTodayLabel.text!)!
+        if number > 1 && number < 6/*possible total for day*/{
+            timesCompletedTodayLabel.text = String(number - 1)
+            habitPerDay -= 1
+        }
+    }
+    
+    @IBAction func addToday(_ sender: UIButton) {
+        timesCompletedTodayLabel.text = String(Int(timesCompletedTodayLabel.text!)! + 1)
+        habitPerDay += 1
+    }
+    
+    
+    
+//    @IBAction func saveAndFinish(_ sender: UIButton) {
+//        if habitName != ""{
+//            habitNamesArray.append(habitName)
+//            timesPerDayArray.append(habitPerDay)
+//            timesCompleteArray.append(0)
+//            colorsArray.append(selectedColor)
+//            performSegue(withIdentifier: "unwindToInitialViewController", sender: self)
+//        }
+//    }
+    
+    
     
     
     
@@ -86,5 +146,5 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-
+    
 }

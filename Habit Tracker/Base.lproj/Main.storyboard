@@ -124,6 +124,7 @@
                         <outlet property="editingLabel" destination="tiV-Fz-rgs" id="wlf-cr-4Jj"/>
                         <outlet property="habitPanels" destination="ExJ-OJ-dp5" id="04w-2V-aRT"/>
                         <segue destination="qaf-SR-37h" kind="show" identifier="addNewHabit" id="AS8-vy-pJ7"/>
+                        <segue destination="X7H-w1-kch" kind="show" identifier="toEditPanel" id="4LV-56-6c4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -354,11 +355,11 @@
             <objects>
                 <viewController title="Add a New Habit" id="X7H-w1-kch" customClass="CellEditingView" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1mP-VY-5v5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="nHF-mU-9xv">
-                                <rect key="frame" x="62" y="152" width="187" height="33"/>
+                                <rect key="frame" x="62" y="108" width="187" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="9hd-Aa-c6Z"/>
                                     <constraint firstAttribute="height" constant="33" id="Zmj-D2-CBF"/>
@@ -366,9 +367,13 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert"/>
+                                <connections>
+                                    <action selector="pullNewText:" destination="X7H-w1-kch" eventType="editingDidEnd" id="McH-2z-W8h"/>
+                                    <action selector="updateDoneButton:" destination="X7H-w1-kch" eventType="editingChanged" id="NcH-31-CEt"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rename Habit?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjj-YV-29d">
-                                <rect key="frame" x="69" y="80" width="237" height="63"/>
+                                <rect key="frame" x="69" y="36" width="237" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="237" id="0K5-Os-fcl"/>
                                     <constraint firstAttribute="height" constant="63" id="tCm-pq-hNX"/>
@@ -378,7 +383,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick A New Color?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHq-h5-lKv">
-                                <rect key="frame" x="73.000000000000014" y="539" width="229.33333333333337" height="35"/>
+                                <rect key="frame" x="73.000000000000014" y="495" width="229.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="wwa-Zm-JSU"/>
                                     <constraint firstAttribute="width" constant="229.33000000000001" id="y4H-70-MBk"/>
@@ -388,7 +393,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPX-Q4-ieT">
-                                <rect key="frame" x="18.666666666666657" y="697" width="338" height="52"/>
+                                <rect key="frame" x="18.666666666666657" y="653" width="338" height="8"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="338" id="Ifl-9c-8Vh"/>
                                 </constraints>
@@ -396,9 +401,12 @@
                                 <state key="normal" title="Save Changes ">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveAndFinish:" destination="X7H-w1-kch" eventType="touchUpInside" id="K9O-oW-vtX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOZ-M3-0a3">
-                                <rect key="frame" x="114.66666666666669" y="268" width="146" height="85"/>
+                                <rect key="frame" x="114.66666666666669" y="224" width="146" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="146" id="UOb-0H-vSc"/>
                                     <constraint firstAttribute="height" constant="85" id="bRq-LU-Ru1"/>
@@ -408,7 +416,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xxd-IP-F0c">
-                                <rect key="frame" x="37.666666666666657" y="602" width="300" height="73"/>
+                                <rect key="frame" x="37.666666666666657" y="558" width="300" height="73"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="73" id="Z9Z-xI-gJW"/>
@@ -447,7 +455,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngm-Qf-0CE">
-                                <rect key="frame" x="7" y="260" width="100" height="100"/>
+                                <rect key="frame" x="7" y="216" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="QdI-wl-ExZ"/>
                                     <constraint firstAttribute="width" constant="100" id="q97-0s-gzo"/>
@@ -455,17 +463,23 @@
                                 <state key="normal" title="Button" image="minus">
                                     <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="subtractPerDay:" destination="X7H-w1-kch" eventType="touchUpInside" id="8og-Lh-DvZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rz-F6-Hgk">
-                                <rect key="frame" x="274" y="270" width="80" height="80"/>
+                                <rect key="frame" x="274" y="226" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="R1p-ql-8tB"/>
                                     <constraint firstAttribute="height" constant="80" id="apx-ej-rEv"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="plus"/>
+                                <connections>
+                                    <action selector="addPerDay:" destination="X7H-w1-kch" eventType="touchUpInside" id="n9H-6P-taZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Times Per Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrP-TZ-Wzl">
-                                <rect key="frame" x="46" y="217" width="283" height="35"/>
+                                <rect key="frame" x="46" y="173" width="283" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="6L8-Wc-a18"/>
                                     <constraint firstAttribute="width" constant="283" id="Lwj-bF-pJw"/>
@@ -475,7 +489,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeN-19-y3n">
-                                <rect key="frame" x="114.66666666666669" y="439" width="146" height="85"/>
+                                <rect key="frame" x="114.66666666666669" y="395" width="146" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="146" id="LdI-U1-Arl"/>
                                     <constraint firstAttribute="height" constant="85" id="N5e-uk-zcX"/>
@@ -485,7 +499,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4e-zQ-Rwu">
-                                <rect key="frame" x="7" y="431" width="100" height="100"/>
+                                <rect key="frame" x="7" y="387" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="9Y9-t1-feX"/>
                                     <constraint firstAttribute="height" constant="100" id="LiS-ki-2Np"/>
@@ -493,17 +507,23 @@
                                 <state key="normal" title="Button" image="minus">
                                     <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="subtractToday:" destination="X7H-w1-kch" eventType="touchUpInside" id="BMa-E6-q6F"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avx-IZ-goh">
-                                <rect key="frame" x="274" y="441" width="80" height="80"/>
+                                <rect key="frame" x="274" y="397" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="aTQ-0G-nhU"/>
                                     <constraint firstAttribute="width" constant="80" id="cxK-LT-g8K"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="plus"/>
+                                <connections>
+                                    <action selector="addToday:" destination="X7H-w1-kch" eventType="touchUpInside" id="LWC-z8-v3x"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Times Completed Today" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMx-7a-F7i">
-                                <rect key="frame" x="62" y="358" width="251" height="95"/>
+                                <rect key="frame" x="62" y="314" width="251" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="251" id="DJe-pY-51w"/>
                                     <constraint firstAttribute="height" constant="95" id="HdF-6R-3Cu"/>
@@ -513,7 +533,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOm-el-SBF">
-                                <rect key="frame" x="257" y="151" width="60" height="34"/>
+                                <rect key="frame" x="257" y="107" width="60" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="X7B-JB-GUR"/>
                                     <constraint firstAttribute="width" constant="60" id="nfr-TS-8do"/>
@@ -522,6 +542,9 @@
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishCloseKeyboard:" destination="X7H-w1-kch" eventType="touchUpInside" id="pG4-gq-91g"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
