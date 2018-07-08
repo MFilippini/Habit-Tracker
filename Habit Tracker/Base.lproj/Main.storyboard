@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-474" y="120"/>
+            <point key="canvasLocation" x="-444" y="119"/>
         </scene>
         <!--Add a New Habit-->
         <scene sceneID="yCA-eK-qoO">
@@ -352,12 +352,12 @@
         <!--Add a New Habit-->
         <scene sceneID="lFW-mT-G4D">
             <objects>
-                <viewController title="Add a New Habit" id="X7H-w1-kch" customClass="AddNewHabitScreen" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add a New Habit" id="X7H-w1-kch" customClass="CellEditingView" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1mP-VY-5v5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="nHF-mU-9xv">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="nHF-mU-9xv">
                                 <rect key="frame" x="62" y="152" width="187" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="9hd-Aa-c6Z"/>
@@ -512,7 +512,7 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOm-el-SBF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOm-el-SBF">
                                 <rect key="frame" x="257" y="151" width="60" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="X7B-JB-GUR"/>
@@ -528,6 +528,7 @@
                         <constraints>
                             <constraint firstItem="oeN-19-y3n" firstAttribute="centerX" secondItem="1mP-VY-5v5" secondAttribute="centerX" id="36D-Dg-6vP"/>
                             <constraint firstItem="VOZ-M3-0a3" firstAttribute="centerY" secondItem="ngm-Qf-0CE" secondAttribute="centerY" id="63N-bU-6a1"/>
+                            <constraint firstItem="nHF-mU-9xv" firstAttribute="leading" secondItem="QeP-gh-AgB" secondAttribute="leading" constant="62" id="85x-BY-LnE"/>
                             <constraint firstItem="7rz-F6-Hgk" firstAttribute="centerY" secondItem="ngm-Qf-0CE" secondAttribute="centerY" id="BZb-92-ajJ"/>
                             <constraint firstItem="BHq-h5-lKv" firstAttribute="top" secondItem="oeN-19-y3n" secondAttribute="bottom" constant="15" id="CrZ-2D-Ncy"/>
                             <constraint firstItem="LrP-TZ-Wzl" firstAttribute="top" secondItem="nHF-mU-9xv" secondAttribute="bottom" constant="32" id="DXo-OF-N6Z"/>
@@ -546,6 +547,7 @@
                             <constraint firstItem="LPX-Q4-ieT" firstAttribute="top" secondItem="xxd-IP-F0c" secondAttribute="bottom" constant="22" id="fvc-dO-o12"/>
                             <constraint firstItem="QeP-gh-AgB" firstAttribute="trailing" secondItem="7rz-F6-Hgk" secondAttribute="trailing" constant="21" id="ghx-R7-Aah"/>
                             <constraint firstItem="ngm-Qf-0CE" firstAttribute="top" secondItem="LrP-TZ-Wzl" secondAttribute="bottom" constant="8" id="gq7-3y-nO5"/>
+                            <constraint firstItem="hOm-el-SBF" firstAttribute="leading" secondItem="nHF-mU-9xv" secondAttribute="trailing" constant="8" id="h56-yF-9Lx"/>
                             <constraint firstItem="uMx-7a-F7i" firstAttribute="top" secondItem="VOZ-M3-0a3" secondAttribute="bottom" constant="5" id="hbK-hG-ogn"/>
                             <constraint firstItem="BHq-h5-lKv" firstAttribute="centerX" secondItem="1mP-VY-5v5" secondAttribute="centerX" id="jfx-hT-pXM"/>
                             <constraint firstItem="u4e-zQ-Rwu" firstAttribute="leading" secondItem="QeP-gh-AgB" secondAttribute="leading" constant="7" id="mE4-ay-xRj"/>
@@ -562,10 +564,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QeP-gh-AgB"/>
                     </view>
+                    <connections>
+                        <outlet property="colorSelectEdit" destination="xxd-IP-F0c" id="p78-Ar-e5M"/>
+                        <outlet property="renameDoneButton" destination="hOm-el-SBF" id="3lX-1z-2mA"/>
+                        <outlet property="renameHabitTextField" destination="nHF-mU-9xv" id="7Xo-xA-aCR"/>
+                        <outlet property="timesCompletedTodayLabel" destination="oeN-19-y3n" id="hnd-rM-kjB"/>
+                        <outlet property="timesPerDayLabel" destination="VOZ-M3-0a3" id="Js0-9e-aLi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16A-Z0-B2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1213.5999999999999" y="-149.26108374384236"/>
+            <point key="canvasLocation" x="404" y="-231"/>
         </scene>
     </scenes>
     <resources>

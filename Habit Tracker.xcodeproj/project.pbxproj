@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4954905120F171F40067CD4E /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954905020F171F40067CD4E /* ColorCell.swift */; };
+		4954905320F1EED80067CD4E /* CellEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954905220F1EED80067CD4E /* CellEditingView.swift */; };
 		49B993D920EEDC8E00E7A0EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B993D820EEDC8E00E7A0EE /* AppDelegate.swift */; };
 		49B993DB20EEDC8E00E7A0EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B993DA20EEDC8E00E7A0EE /* ViewController.swift */; };
 		49B993DE20EEDC8E00E7A0EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B993DC20EEDC8E00E7A0EE /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		4954905020F171F40067CD4E /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		4954905220F1EED80067CD4E /* CellEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEditingView.swift; sourceTree = "<group>"; };
 		49B993D520EEDC8E00E7A0EE /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B993D820EEDC8E00E7A0EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49B993DA20EEDC8E00E7A0EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				49B993D820EEDC8E00E7A0EE /* AppDelegate.swift */,
 				49B993DA20EEDC8E00E7A0EE /* ViewController.swift */,
 				49B993DC20EEDC8E00E7A0EE /* Main.storyboard */,
+				4954905220F1EED80067CD4E /* CellEditingView.swift */,
 				49B9940620EEDE5700E7A0EE /* HabitCell.swift */,
 				49B9940E20F16E6A00E7A0EE /* AddNewHabitScreen.swift */,
 				4954905020F171F40067CD4E /* ColorCell.swift */,
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49B9940F20F16E6A00E7A0EE /* AddNewHabitScreen.swift in Sources */,
+				4954905320F1EED80067CD4E /* CellEditingView.swift in Sources */,
 				49B9940D20EFEE5F00E7A0EE /* Common.swift in Sources */,
 				49B993DB20EEDC8E00E7A0EE /* ViewController.swift in Sources */,
 				49B993D920EEDC8E00E7A0EE /* AppDelegate.swift in Sources */,
