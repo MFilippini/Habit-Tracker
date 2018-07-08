@@ -119,7 +119,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5y9-hR-quM">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="5y9-hR-quM">
                                 <rect key="frame" x="94" y="128" width="187" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="2hu-7U-mDg"/>
@@ -132,15 +132,6 @@
                                     <action selector="habitNameEntered:" destination="qaf-SR-37h" eventType="editingDidEnd" id="bCv-aa-25F"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your New Habit" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rui-aF-vzO">
-                                <rect key="frame" x="75" y="27" width="219" height="93"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="93" id="KzI-09-bZb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose A Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Qc-RSC">
                                 <rect key="frame" x="89.666666666666686" y="382" width="196" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
@@ -148,7 +139,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kge-bg-P3K">
-                                <rect key="frame" x="75" y="603" width="225" height="52"/>
+                                <rect key="frame" x="55" y="603" width="265" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="265" id="PNG-Yu-e2e"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <state key="normal" title="Save New Habit">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -240,6 +234,16 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your New Habit" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rui-aF-vzO">
+                                <rect key="frame" x="63" y="27" width="249" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="249" id="EMH-W0-beF"/>
+                                    <constraint firstAttribute="height" constant="93" id="KzI-09-bZb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -247,7 +251,7 @@
                             <constraint firstItem="hnd-wO-N6F" firstAttribute="centerY" secondItem="acO-CL-fRY" secondAttribute="centerY" id="4W2-Nc-x6f"/>
                             <constraint firstItem="2g9-fp-ORy" firstAttribute="top" secondItem="jMh-Qc-RSC" secondAttribute="bottom" constant="24" id="4r3-7j-Axw"/>
                             <constraint firstItem="kge-bg-P3K" firstAttribute="top" secondItem="2g9-fp-ORy" secondAttribute="bottom" constant="89" id="8k4-sp-GHh"/>
-                            <constraint firstItem="Rui-aF-vzO" firstAttribute="leading" secondItem="eGd-NE-U33" secondAttribute="leading" constant="75" id="FDU-wq-b4q"/>
+                            <constraint firstItem="Rui-aF-vzO" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="Afi-Mg-v3A"/>
                             <constraint firstItem="acO-CL-fRY" firstAttribute="top" secondItem="Zzp-Cl-wia" secondAttribute="bottom" constant="20" id="GCq-89-RMa"/>
                             <constraint firstItem="Zzp-Cl-wia" firstAttribute="top" secondItem="5y9-hR-quM" secondAttribute="bottom" constant="45" id="JOY-73-vcE"/>
                             <constraint firstItem="5y9-hR-quM" firstAttribute="centerX" secondItem="Afx-Sr-2nT" secondAttribute="centerX" id="LAX-jN-mWp"/>
@@ -261,7 +265,6 @@
                             <constraint firstItem="5y9-hR-quM" firstAttribute="top" secondItem="Rui-aF-vzO" secondAttribute="bottom" constant="8" id="klF-uE-WTq"/>
                             <constraint firstItem="5y9-hR-quM" firstAttribute="top" secondItem="Rui-aF-vzO" secondAttribute="bottom" constant="8" id="pdR-41-bJ6"/>
                             <constraint firstItem="B8n-GM-nIc" firstAttribute="centerY" secondItem="acO-CL-fRY" secondAttribute="centerY" id="qUD-fM-Pq8"/>
-                            <constraint firstItem="eGd-NE-U33" firstAttribute="trailing" secondItem="Rui-aF-vzO" secondAttribute="trailing" constant="81" id="tS5-wn-XLq"/>
                             <constraint firstItem="hnd-wO-N6F" firstAttribute="top" secondItem="Zzp-Cl-wia" secondAttribute="bottom" constant="30" id="uwB-A7-K3M"/>
                             <constraint firstItem="acO-CL-fRY" firstAttribute="leading" secondItem="eGd-NE-U33" secondAttribute="leading" constant="7" id="w3y-Ss-m5m"/>
                             <constraint firstItem="Rui-aF-vzO" firstAttribute="top" secondItem="eGd-NE-U33" secondAttribute="top" constant="27" id="x00-m3-WxV"/>

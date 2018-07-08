@@ -25,10 +25,16 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         super.viewDidLoad()
         colorSelectorCollView.dataSource = self
         colorSelectorCollView.delegate = self
+        
         newHabitNameTextField.layer.borderColor = Common.Global.lightGrey.cgColor
         newHabitNameTextField.layer.borderWidth = 2
         newHabitNameTextField.layer.cornerRadius = 10
         newHabitNameTextField.backgroundColor = Common.Global.darkGrey
+
+        saveButton.layer.borderWidth = 2
+        saveButton.layer.borderColor = Common.Global.lightGrey.cgColor
+        saveButton.backgroundColor = Common.Global.darkGrey
+        saveButton.layer.cornerRadius = 26
     }
     
     override func didReceiveMemoryWarning() {

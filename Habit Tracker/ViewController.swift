@@ -27,8 +27,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         habitPanels.delegate = self
         
         
-        addButton.setTitleColor(Common.Global.lightGrey, for: UIControlState.normal)
         addButton.layer.borderColor = Common.Global.lightGrey.cgColor
+        addButton.backgroundColor = Common.Global.darkGrey
         addButton.layer.borderWidth = 3
         addButton.layer.cornerRadius = 34
     }
