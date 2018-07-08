@@ -127,9 +127,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 } else {
                     // do NOPE haptic
                 }
+            } else {
+                performSegue(withIdentifier: "editCell", sender: index.item)
             }
-        } else {
-            
         }
     }
     
@@ -152,6 +152,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             dvc.timesCompleteArray = timesCompleteArray
             dvc.timesPerDayArray = timesPerDayArray
             dvc.colorsArray = colorsArray
+//        case "addNewHabit"?:
+//            let dvc = segue.destination as! editScreen
         default: break
             
         }
