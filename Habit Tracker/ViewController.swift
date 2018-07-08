@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // Test Data for Cells
     var habitNamesArray: [String] = ["Walk the Dog"]
     var timesCompleteArray: [Int] = [1]
-    var colorsArray: [UIColor] = [Common.Global.red]
+    var colorsArray: [UIColor] = [Common.Global.purple]
     var timesPerDayArray: [Int] = [3]
     
     override func viewDidLoad() {

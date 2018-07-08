@@ -131,6 +131,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert"/>
                                 <connections>
                                     <action selector="habitNameEntered:" destination="qaf-SR-37h" eventType="editingDidEnd" id="bCv-aa-25F"/>
+                                    <action selector="textUpdated:" destination="qaf-SR-37h" eventType="editingChanged" id="N7F-aZ-Ws5"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your New Habit" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rui-aF-vzO">

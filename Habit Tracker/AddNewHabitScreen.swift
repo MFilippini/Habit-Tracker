@@ -78,6 +78,17 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         cell?.layer.borderColor = Common.Global.lightGrey.cgColor
     }
     
+
+    @IBAction func textUpdated(_ sender: Any) {
+        if newHabitNameTextField.text != ""{
+            doneEditingButton.setTitleColor(UIColor.white, for: .normal)
+            print("something in text")
+        } else{
+            print("nothing in text")
+            doneEditingButton.setTitleColor(Common.Global.lightGrey, for: .normal)
+        }
+    }
+
     
     @IBAction func habitNameEntered(_ sender: UITextField) {
         if let nameText = newHabitNameTextField.text{
