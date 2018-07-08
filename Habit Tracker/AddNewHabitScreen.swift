@@ -69,9 +69,16 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     
     
     @IBAction func addTimePerDay(_ sender: Any) {
+        numberTimesPerDayLabel.text = String(Int(numberTimesPerDayLabel.text!)! + 1)
+        habitPerDay += 1
     }
     
     @IBAction func subtractTimePerDay(_ sender: Any) {
+        let number = Int(numberTimesPerDayLabel.text!)!
+        if number > 1{
+            numberTimesPerDayLabel.text = String(number - 1)
+            habitPerDay -= 1
+        }
     }
     /*
      // MARK: - Navigation
