@@ -20,7 +20,6 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     var colorsArray: [UIColor] = []
     var timesPerDayArray: [Int] = []
     
-    
     let colorDisplayArray = [Common.Global.purple,Common.Global.blue,Common.Global.green,Common.Global.yellow,Common.Global.orange,Common.Global.red]
     
     var selectedColor = Common.Global.blue
@@ -95,20 +94,21 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     
     @IBAction func saveClicked(_ sender: UIButton) {
         if habitName != ""{
-            // append to arrays and reload
+            habitNamesArray.append(habitName)
+            timesPerDayArray.append(habitPerDay)
+            timesCompleteArray.append(0)
+            colorsArray.append(selectedColor)
+            dismiss(animated: true, completion: nil)
         }
     }
     
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        let dvc = segue.destination as! ViewController
+        dvc.habitNamesArray = habitNamesArray
+        dvc.timesCompleteArray = timesCompleteArray
+        dvc.timesPerDayArray = timesPerDayArray
+        dvc.colorsArray = colorsArray
      }
-     */
+    
     
 }

@@ -33,6 +33,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         addButton.layer.cornerRadius = 34
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        habitPanels.reloadData()
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
