@@ -79,21 +79,33 @@
                                     <constraint firstAttribute="width" constant="250" id="d0q-HL-8ga"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <state key="normal" title="Add new Habit">
+                                <state key="normal" title="Add New Habit">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="addNewHabitTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U7F-X5-2Cb"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Habit to Edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiV-Fz-rgs">
+                                <rect key="frame" x="45" y="635" width="285" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="285" id="MQ0-wh-ab5"/>
+                                    <constraint firstAttribute="height" constant="39" id="Qdz-wi-28R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="tiV-Fz-rgs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4jz-Kw-Qj4"/>
                             <constraint firstAttribute="bottomMargin" secondItem="6j8-7V-n4I" secondAttribute="bottom" constant="1" id="59n-Sx-Uag"/>
                             <constraint firstItem="6j8-7V-n4I" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BxJ-Gc-xIf"/>
                             <constraint firstItem="ExJ-OJ-dp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OVf-rx-3xe"/>
                             <constraint firstItem="6j8-7V-n4I" firstAttribute="top" secondItem="ExJ-OJ-dp5" secondAttribute="bottom" constant="8" symbolic="YES" id="Os7-JL-HdH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tiV-Fz-rgs" secondAttribute="bottom" constant="16" id="S0c-ig-ynp"/>
                             <constraint firstItem="6j8-7V-n4I" firstAttribute="centerX" secondItem="ExJ-OJ-dp5" secondAttribute="centerX" id="sPh-A6-yOR"/>
                             <constraint firstItem="6j8-7V-n4I" firstAttribute="top" secondItem="ExJ-OJ-dp5" secondAttribute="bottom" constant="8" id="xLN-K1-R2t"/>
                         </constraints>
@@ -101,9 +113,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Habit Tracker" id="8As-6z-KH9">
                         <barButtonItem key="backBarButtonItem" title="Back" id="zQN-Ry-ai5"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" style="done" id="vgK-41-rzu">
+                            <connections>
+                                <action selector="editingModeActivate:" destination="BYZ-38-t0r" id="ijn-kE-Nqa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="6j8-7V-n4I" id="BMQ-Ci-cjP"/>
+                        <outlet property="editingLabel" destination="tiV-Fz-rgs" id="wlf-cr-4Jj"/>
                         <outlet property="habitPanels" destination="ExJ-OJ-dp5" id="04w-2V-aRT"/>
                         <segue destination="qaf-SR-37h" kind="show" identifier="addNewHabit" id="AS8-vy-pJ7"/>
                     </connections>
@@ -301,7 +319,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVj-QU-bnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FfW-Q5-qb9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="556" y="119"/>
+            <point key="canvasLocation" x="404" y="460"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yim-Ac-6QQ">

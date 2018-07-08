@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var habitPanels: UICollectionView!
-
+    
+    @IBOutlet weak var editingLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     
     var editClicked = false
@@ -35,6 +36,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidAppear(_ animated: Bool) {
         habitPanels.reloadData()
+        editingLabel.isHidden = true
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -97,7 +99,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
-        cell.labelHabitName.text = habitNamesArray[indexPath.item]
+        if !editClicked{
+            cell.labelHabitName.text = habitNamesArray[indexPath.item]
+        } else {
+            cell.labelHabitName.text = "CLICK TO EDIT"
+        }
         cell.viewForProgressWheel.layer.addSublayer(CALayer())
         makeCircle(cell: cell, indexOfCell: indexPath.item)
         
@@ -111,20 +117,31 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let indexPath = self.habitPanels.indexPathForItem(at: location)
         
         if let index = indexPath {
-            // prepare haptic
-            let timesPerDay = timesPerDayArray[index.item]
-            if (timesCompleteArray[index.item]<timesPerDay){
-                timesCompleteArray[index.item] += 1
-                habitPanels.reloadItems(at: [index])
-                // do happy haptic
-            } else {
-                // do NOPE haptic
+            if(!editClicked){
+                // prepare haptic
+                let timesPerDay = timesPerDayArray[index.item]
+                if (timesCompleteArray[index.item]<timesPerDay){
+                    timesCompleteArray[index.item] += 1
+                    habitPanels.reloadItems(at: [index])
+                    // do happy haptic
+                } else {
+                    // do NOPE haptic
+                }
             }
+        } else {
+            
         }
     }
-
+    
     @IBAction func addNewHabitTapped(_ sender: Any) {
         performSegue(withIdentifier: "addNewHabit", sender: nil)
+    }
+    
+    @IBAction func editingModeActivate(_ sender: UIBarButtonItem) {
+        editClicked = !editClicked
+        addButton.isHidden = !addButton.isHidden
+        editingLabel.isHidden = !editingLabel.isHidden
+        habitPanels.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

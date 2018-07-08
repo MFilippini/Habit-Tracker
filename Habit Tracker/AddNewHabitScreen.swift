@@ -82,9 +82,9 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     @IBAction func textUpdated(_ sender: Any) {
         if newHabitNameTextField.text != ""{
             doneEditingButton.setTitleColor(UIColor.white, for: .normal)
-            print("something in text")
+
         } else{
-            print("nothing in text")
+
             doneEditingButton.setTitleColor(Common.Global.lightGrey, for: .normal)
         }
     }
@@ -120,13 +120,12 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
             timesPerDayArray.append(habitPerDay)
             timesCompleteArray.append(0)
             colorsArray.append(selectedColor)
-            print("CLOSE lol")
             performSegue(withIdentifier: "unwindToInitialViewController", sender: self)
         }
     }
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("CLOSER lol")
+
         let dvc = segue.destination as! ViewController
         dvc.habitNamesArray = habitNamesArray
         dvc.timesCompleteArray = timesCompleteArray
