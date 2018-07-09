@@ -21,7 +21,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // Test Data for Cells
     var habitNamesArray: [String] = ["Walk the Dog"]
     var timesCompleteArray: [Int] = [1]
-    var colorsArray: [UIColor] = [Common.Global.purple]
+    var colorsArray: [UIColor] = [Common.Global.red]
     var timesPerDayArray: [Int] = [3]
     
     override func viewDidLoad() {
@@ -36,12 +36,79 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if let savedNames = UserDefaults.standard.object(forKey: "habitNames") as? Array<String>{
+            habitNamesArray = savedNames
+        }
+        if let savedCompletions = UserDefaults.standard.object(forKey: "timesComplete") as? Array<Int>{
+            timesCompleteArray = savedCompletions
+        }
+        if let savedColors = UserDefaults.standard.object(forKey: "colors") as? Array<Int>{
+            colorsArray = numberToColor(numbers: savedColors)
+       }
+        if let savedPerDay = UserDefaults.standard.object(forKey: "timesADay") as? Array<Int>{
+            timesPerDayArray = savedPerDay
+        }
         habitPanels.reloadData()
+    }
+    
+    func saveData(){
+        UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
+        UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
+        UserDefaults.standard.set(colorToNumber(colors: colorsArray), forKey: "colors")
+        UserDefaults.standard.set(timesPerDayArray, forKey: "timesADay")
+    }
+    
+    func colorToNumber(colors: [UIColor]) -> [Int] {
+        var numArray: [Int] = []
+        for color in colors{
+            switch color{
+            case Common.Global.blue:
+                numArray.append(0)
+            case Common.Global.green:
+                numArray.append(1)
+            case Common.Global.yellow:
+                numArray.append(2)
+            case Common.Global.orange:
+                numArray.append(3)
+            case Common.Global.red:
+                numArray.append(4)
+            case Common.Global.purple:
+                numArray.append(5)
+            default:
+                numArray.append(6)
+            }
+        }
+
+        return numArray
+    }
+    
+    func numberToColor(numbers: [Int]) -> [UIColor]{
+        var colorArray: [UIColor] = []
+        for number in numbers{
+            switch number{
+            case 0:
+                colorArray.append(Common.Global.blue)
+            case 1:
+                colorArray.append(Common.Global.green)
+            case 2:
+                colorArray.append(Common.Global.yellow)
+            case 3:
+                colorArray.append(Common.Global.orange)
+            case 4:
+                colorArray.append(Common.Global.red)
+            case 5:
+                colorArray.append(Common.Global.purple)
+            default:
+                colorArray.append(UIColor.white)
+            }
+        }
+        return colorArray
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -127,6 +194,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 } else {
                     // do NOPE haptic
                 }
+                saveData()
             } else {
                 performSegue(withIdentifier: "toEditPanel", sender: index)
             }
@@ -170,6 +238,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     @IBAction func unwindToInitialViewController(segue: UIStoryboardSegue){
+        saveData()
     }
     
 }
