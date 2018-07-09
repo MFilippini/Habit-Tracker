@@ -39,15 +39,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let savedNames = UserDefaults.standard.object(forKey: "habitNames") as? Array<String>{
             habitNamesArray = savedNames
         }
+        
         if let savedCompletions = UserDefaults.standard.object(forKey: "timesComplete") as? Array<Int>{
             timesCompleteArray = savedCompletions
+            if let day = UserDefaults.standard.object(forKey: "lastDay") as? String{
+                let cal = Calendar.current
+                if(day != "\(cal.component(.day, from: Date())):\(cal.component(.month, from: Date())):\(cal.component(.year, from: Date()))"){
+                    timesCompleteArray.removeAll()
+                    for completion in savedCompletions{
+                        timesCompleteArray.append(0)
+                    }
+                }
+            }
         }
+        
         if let savedColors = UserDefaults.standard.object(forKey: "colors") as? Array<Int>{
             colorsArray = numberToColor(numbers: savedColors)
        }
         if let savedPerDay = UserDefaults.standard.object(forKey: "timesADay") as? Array<Int>{
             timesPerDayArray = savedPerDay
         }
+            // "\(cal.component(.day, from: Date())):\(cal.component(.month, from: Date())):\(cal.component(.year, from: Date()))"
+        
         habitPanels.reloadData()
     }
     
@@ -56,6 +69,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
         UserDefaults.standard.set(colorToNumber(colors: colorsArray), forKey: "colors")
         UserDefaults.standard.set(timesPerDayArray, forKey: "timesADay")
+        let cal = Calendar.current
+        let lastAccess = "\(cal.component(.day, from: Date())):\(cal.component(.month, from: Date())):\(cal.component(.year, from: Date()))"
+        UserDefaults.standard.set(lastAccess, forKey: "lastDay")
     }
     
     func colorToNumber(colors: [UIColor]) -> [Int] {
