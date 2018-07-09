@@ -39,28 +39,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let savedNames = UserDefaults.standard.object(forKey: "habitNames") as? Array<String>{
             habitNamesArray = savedNames
         }
-        
+        if let savedColors = UserDefaults.standard.object(forKey: "colors") as? Array<Int>{
+            colorsArray = numberToColor(numbers: savedColors)
+        }
+        if let savedPerDay = UserDefaults.standard.object(forKey: "timesADay") as? Array<Int>{
+            timesPerDayArray = savedPerDay
+        }
         if let savedCompletions = UserDefaults.standard.object(forKey: "timesComplete") as? Array<Int>{
             timesCompleteArray = savedCompletions
             if let day = UserDefaults.standard.object(forKey: "lastDay") as? String{
                 let cal = Calendar.current
                 if(day != "\(cal.component(.day, from: Date())):\(cal.component(.month, from: Date())):\(cal.component(.year, from: Date()))"){
                     timesCompleteArray.removeAll()
-                    for completion in savedCompletions{
+                    for _ in savedCompletions{
                         timesCompleteArray.append(0)
                     }
+                    saveData()
                 }
             }
         }
-        
-        if let savedColors = UserDefaults.standard.object(forKey: "colors") as? Array<Int>{
-            colorsArray = numberToColor(numbers: savedColors)
-       }
-        if let savedPerDay = UserDefaults.standard.object(forKey: "timesADay") as? Array<Int>{
-            timesPerDayArray = savedPerDay
-        }
-            // "\(cal.component(.day, from: Date())):\(cal.component(.month, from: Date())):\(cal.component(.year, from: Date()))"
-        
         habitPanels.reloadData()
     }
     
@@ -94,7 +91,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 numArray.append(6)
             }
         }
-
+        
         return numArray
     }
     
@@ -241,7 +238,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             dvc.timesCompleteArray = timesCompleteArray
             dvc.timesPerDayArray = timesPerDayArray
             dvc.colorsArray = colorsArray
-       case "toEditPanel"?:
+        case "toEditPanel"?:
             let dvc = segue.destination as! CellEditingView
             dvc.habitNamesArray = habitNamesArray
             dvc.timesCompleteArray = timesCompleteArray
