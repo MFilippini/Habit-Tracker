@@ -40,7 +40,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         saveButton.layer.borderWidth = 2
         saveButton.layer.borderColor = Common.Global.lightGrey.cgColor
         saveButton.backgroundColor = Common.Global.darkGrey
-        saveButton.layer.cornerRadius = 26
+        saveButton.layer.cornerRadius = 23
         
         
         doneEditingButton.layer.borderWidth = 2

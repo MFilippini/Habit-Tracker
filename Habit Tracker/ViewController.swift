@@ -18,11 +18,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var editClicked = false
     
-    // Test Data for Cells
-    var habitNamesArray: [String] = ["Walk the Dog"]
-    var timesCompleteArray: [Int] = [1]
-    var colorsArray: [UIColor] = [Common.Global.red]
-    var timesPerDayArray: [Int] = [3]
+    // First Time Opening App
+    var habitNamesArray: [String] = ["Walk the Dog","Workout","Meditate","Drink Water"]
+    var timesCompleteArray: [Int] = [1,1,2,3]
+    var colorsArray: [UIColor] = [Common.Global.red,Common.Global.orange,Common.Global.purple,Common.Global.blue]
+    var timesPerDayArray: [Int] = [3,2,4,8]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +61,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         habitPanels.reloadData()
     }
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     func saveData(){
         UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
         UserDefaults.standard.set(colorToNumber(colors: colorsArray), forKey: "colors")
         UserDefaults.standard.set(timesPerDayArray, forKey: "timesADay")
+        
         let cal = Calendar.current
         let lastAccess = "\(cal.component(.day, from: Date())):\(cal.component(.month, from: Date())):\(cal.component(.year, from: Date()))"
+        
         UserDefaults.standard.set(lastAccess, forKey: "lastDay")
+    }
+    
+    func saveDataFromOtherView(){
+        UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
+        UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
+        UserDefaults.standard.set(colorToNumber(colors: colorsArray), forKey: "colors")
+        UserDefaults.standard.set(timesPerDayArray, forKey: "timesADay")
     }
     
     func colorToNumber(colors: [UIColor]) -> [Int] {
@@ -118,9 +132,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return colorArray
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -260,7 +272,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     @IBAction func unwindToInitialViewController(segue: UIStoryboardSegue){
-        saveData()
+        saveDataFromOtherView()
         editReset()
     }
     
