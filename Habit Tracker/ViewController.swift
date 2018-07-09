@@ -14,6 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var editingLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     var editClicked = false
     
@@ -101,7 +102,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if !editClicked{
             cell.labelHabitName.text = habitNamesArray[indexPath.item]
         } else {
-            cell.labelHabitName.text = ("CLICK TO EDIT"+habitNamesArray[indexPath.item])
+            cell.labelHabitName.text = ("Click to Edit "+habitNamesArray[indexPath.item])
         }
         cell.viewForProgressWheel.layer.addSublayer(CALayer())
         makeCircle(cell: cell, indexOfCell: indexPath.item)
@@ -140,6 +141,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         editClicked = !editClicked
         addButton.isHidden = !addButton.isHidden
         editingLabel.isHidden = !editingLabel.isHidden
+        if editClicked{
+            editButton.title = "Finish Editing"
+        }else{
+            editButton.title = "Edit"
+        }
         habitPanels.reloadData()
     }
     

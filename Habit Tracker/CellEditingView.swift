@@ -16,6 +16,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     @IBOutlet weak var timesCompletedTodayLabel: UILabel!
     @IBOutlet weak var colorSelectEdit: UICollectionView!
     @IBOutlet weak var saveChangesButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var habitNamesArray: [String] = []
     var timesCompleteArray: [Int] = []
@@ -46,6 +47,11 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         saveChangesButton.layer.borderColor = Common.Global.lightGrey.cgColor
         saveChangesButton.backgroundColor = Common.Global.darkGrey
         saveChangesButton.layer.cornerRadius = 26
+        
+        deleteButton.layer.borderWidth = 2
+        deleteButton.layer.borderColor = Common.Global.lightGrey.cgColor
+        deleteButton.backgroundColor = Common.Global.darkGrey
+        deleteButton.layer.cornerRadius = 26
         
         renameDoneButton.layer.borderWidth = 2
         renameDoneButton.layer.borderColor = Common.Global.lightGrey.cgColor
@@ -129,8 +135,15 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         if number > 1{
             timesPerDayLabel.text = String(number - 1)
             habitPerDay -= 1
+            
+            let numberToday = Int(timesCompletedTodayLabel.text!)!
+            if numberToday == number {
+                timesCompletedTodayLabel.text = String(number - 1)
+                habitCurrent -= 1
+            }
         }
     }
+    
     @IBAction func addPerDay(_ sender: UIButton) {
         timesPerDayLabel.text = String(Int(timesPerDayLabel.text!)! + 1)
         habitPerDay += 1
@@ -154,9 +167,22 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     
     
+    @IBAction func deleteClicked(_ sender: Any) {
+        habitNamesArray.remove(at: indexOfEdit.item)
+        timesPerDayArray.remove(at: indexOfEdit.item)
+        timesCompleteArray.remove(at: indexOfEdit.item)
+        colorsArray.remove(at: indexOfEdit.item)
+        
+        performSegue(withIdentifier: "unwindToInitialViewController2", sender: self)
+    }
     
    @IBAction func saveAndFinish(_ sender: UIButton) {
        if habitName != ""{
+        habitNamesArray[indexOfEdit.item] = habitName
+        timesPerDayArray[indexOfEdit.item] = habitPerDay
+        timesCompleteArray[indexOfEdit.item] = habitCurrent
+        colorsArray[indexOfEdit.item] = selectedColor
+        
         performSegue(withIdentifier: "unwindToInitialViewController2", sender: self)
         }
     }
@@ -164,10 +190,10 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
-        dvc.habitNamesArray[indexOfEdit.item] = habitName
-        dvc.timesPerDayArray[indexOfEdit.item] = habitPerDay
-        dvc.timesCompleteArray[indexOfEdit.item] = habitCurrent
-        dvc.colorsArray[indexOfEdit.item] = selectedColor
+        dvc.habitNamesArray = habitNamesArray
+        dvc.timesPerDayArray = timesPerDayArray
+        dvc.timesCompleteArray = timesCompleteArray
+        dvc.colorsArray  = colorsArray
     }
     
 }

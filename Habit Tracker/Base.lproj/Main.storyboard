@@ -121,6 +121,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="6j8-7V-n4I" id="BMQ-Ci-cjP"/>
+                        <outlet property="editButton" destination="vgK-41-rzu" id="xLt-8c-T4v"/>
                         <outlet property="editingLabel" destination="tiV-Fz-rgs" id="wlf-cr-4Jj"/>
                         <outlet property="habitPanels" destination="ExJ-OJ-dp5" id="04w-2V-aRT"/>
                         <segue destination="qaf-SR-37h" kind="show" identifier="addNewHabit" id="AS8-vy-pJ7"/>
@@ -392,6 +393,21 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPX-Q4-ieT">
+                                <rect key="frame" x="16" y="626" width="172" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="0ej-pd-cYO"/>
+                                    <constraint firstAttribute="height" constant="52" id="HZ9-tx-3AX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="52" id="YD3-4k-Cyk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Save Changes ">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAndFinish:" destination="X7H-w1-kch" eventType="touchUpInside" id="K9O-oW-vtX"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOZ-M3-0a3">
                                 <rect key="frame" x="114.66666666666669" y="224" width="146" height="85"/>
                                 <constraints>
@@ -533,18 +549,19 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPX-Q4-ieT">
-                                <rect key="frame" x="37" y="626" width="300" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPT-UG-7fC">
+                                <rect key="frame" x="196" y="626" width="163" height="52"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="9AA-mk-BE8"/>
-                                    <constraint firstAttribute="height" constant="52" id="HZ9-tx-3AX"/>
+                                    <constraint firstAttribute="width" constant="163" id="YW6-Bg-GaW"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="52" id="cxv-ba-1Vh"/>
+                                    <constraint firstAttribute="height" constant="52" id="fbU-1M-I4H"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <state key="normal" title="Save Changes ">
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Delete Habit">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveAndFinish:" destination="X7H-w1-kch" eventType="touchUpInside" id="K9O-oW-vtX"/>
+                                    <action selector="deleteClicked:" destination="X7H-w1-kch" eventType="touchUpInside" id="25d-UC-XZf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -557,16 +574,17 @@
                             <constraint firstItem="BHq-h5-lKv" firstAttribute="top" secondItem="oeN-19-y3n" secondAttribute="bottom" constant="15" id="CrZ-2D-Ncy"/>
                             <constraint firstItem="LrP-TZ-Wzl" firstAttribute="top" secondItem="nHF-mU-9xv" secondAttribute="bottom" constant="32" id="DXo-OF-N6Z"/>
                             <constraint firstItem="hOm-el-SBF" firstAttribute="top" secondItem="Gjj-YV-29d" secondAttribute="bottom" constant="8" id="GFl-Bg-Stp"/>
-                            <constraint firstItem="LPX-Q4-ieT" firstAttribute="centerX" secondItem="1mP-VY-5v5" secondAttribute="centerX" id="H6X-v2-WEJ"/>
                             <constraint firstItem="hOm-el-SBF" firstAttribute="centerY" secondItem="nHF-mU-9xv" secondAttribute="centerY" id="Jc8-zV-OLT"/>
                             <constraint firstItem="Avx-IZ-goh" firstAttribute="centerY" secondItem="u4e-zQ-Rwu" secondAttribute="centerY" id="KsK-S6-UxV"/>
                             <constraint firstItem="BHq-h5-lKv" firstAttribute="top" secondItem="u4e-zQ-Rwu" secondAttribute="bottom" constant="8" id="Rlt-Ip-Ega"/>
                             <constraint firstItem="Gjj-YV-29d" firstAttribute="top" secondItem="QeP-gh-AgB" secondAttribute="top" constant="36" id="UFc-bk-zv2"/>
                             <constraint firstItem="QeP-gh-AgB" firstAttribute="trailing" secondItem="Avx-IZ-goh" secondAttribute="trailing" constant="21" id="W90-py-Fnh"/>
                             <constraint firstItem="xxd-IP-F0c" firstAttribute="top" secondItem="BHq-h5-lKv" secondAttribute="bottom" constant="8" id="YhT-br-fHT"/>
+                            <constraint firstItem="LPX-Q4-ieT" firstAttribute="leading" secondItem="QeP-gh-AgB" secondAttribute="leading" constant="16" id="ZEO-V8-dfZ"/>
                             <constraint firstItem="VOZ-M3-0a3" firstAttribute="centerX" secondItem="1mP-VY-5v5" secondAttribute="centerX" id="ZXc-if-Nah"/>
                             <constraint firstItem="Avx-IZ-goh" firstAttribute="centerX" secondItem="7rz-F6-Hgk" secondAttribute="centerX" id="b57-tU-Ge5"/>
                             <constraint firstItem="Gjj-YV-29d" firstAttribute="centerX" secondItem="1mP-VY-5v5" secondAttribute="centerX" id="cZi-07-8x3"/>
+                            <constraint firstItem="XPT-UG-7fC" firstAttribute="leading" secondItem="LPX-Q4-ieT" secondAttribute="trailing" constant="8" id="dn6-R1-GLD"/>
                             <constraint firstItem="ngm-Qf-0CE" firstAttribute="leading" secondItem="QeP-gh-AgB" secondAttribute="leading" constant="7" id="eE4-Kv-AGZ"/>
                             <constraint firstItem="QeP-gh-AgB" firstAttribute="trailing" secondItem="7rz-F6-Hgk" secondAttribute="trailing" constant="21" id="ghx-R7-Aah"/>
                             <constraint firstItem="ngm-Qf-0CE" firstAttribute="top" secondItem="LrP-TZ-Wzl" secondAttribute="bottom" constant="8" id="gq7-3y-nO5"/>
@@ -574,6 +592,7 @@
                             <constraint firstItem="uMx-7a-F7i" firstAttribute="top" secondItem="VOZ-M3-0a3" secondAttribute="bottom" constant="5" id="hbK-hG-ogn"/>
                             <constraint firstItem="BHq-h5-lKv" firstAttribute="centerX" secondItem="1mP-VY-5v5" secondAttribute="centerX" id="jfx-hT-pXM"/>
                             <constraint firstItem="u4e-zQ-Rwu" firstAttribute="leading" secondItem="QeP-gh-AgB" secondAttribute="leading" constant="7" id="mE4-ay-xRj"/>
+                            <constraint firstItem="QeP-gh-AgB" firstAttribute="bottom" secondItem="LPX-Q4-ieT" secondAttribute="bottom" constant="12" id="mHx-cq-8Z9"/>
                             <constraint firstItem="uMx-7a-F7i" firstAttribute="centerX" secondItem="1mP-VY-5v5" secondAttribute="centerX" id="odT-pJ-d4o"/>
                             <constraint firstItem="BHq-h5-lKv" firstAttribute="top" secondItem="uMx-7a-F7i" secondAttribute="bottom" constant="86" id="puf-Uv-BAh"/>
                             <constraint firstItem="LrP-TZ-Wzl" firstAttribute="centerX" secondItem="1mP-VY-5v5" secondAttribute="centerX" id="s2v-LA-4NQ"/>
@@ -583,12 +602,14 @@
                             <constraint firstItem="u4e-zQ-Rwu" firstAttribute="centerX" secondItem="ngm-Qf-0CE" secondAttribute="centerX" id="x2v-ZB-VcV"/>
                             <constraint firstItem="oeN-19-y3n" firstAttribute="centerY" secondItem="u4e-zQ-Rwu" secondAttribute="centerY" id="x64-is-aeT"/>
                             <constraint firstItem="uMx-7a-F7i" firstAttribute="top" secondItem="7rz-F6-Hgk" secondAttribute="bottom" constant="8" id="xSd-g0-tik"/>
+                            <constraint firstItem="XPT-UG-7fC" firstAttribute="centerY" secondItem="LPX-Q4-ieT" secondAttribute="centerY" id="yKE-sB-VSv"/>
                             <constraint firstItem="QeP-gh-AgB" firstAttribute="bottom" secondItem="LPX-Q4-ieT" secondAttribute="bottom" constant="12" id="yRP-no-FZ0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QeP-gh-AgB"/>
                     </view>
                     <connections>
                         <outlet property="colorSelectEdit" destination="xxd-IP-F0c" id="p78-Ar-e5M"/>
+                        <outlet property="deleteButton" destination="XPT-UG-7fC" id="YiT-uy-BZ3"/>
                         <outlet property="renameDoneButton" destination="hOm-el-SBF" id="3lX-1z-2mA"/>
                         <outlet property="renameHabitTextField" destination="nHF-mU-9xv" id="7Xo-xA-aCR"/>
                         <outlet property="saveChangesButton" destination="LPX-Q4-ieT" id="lKb-Ks-utb"/>
@@ -600,7 +621,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16A-Z0-B2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zDF-ND-hnd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="404" y="-231"/>
+            <point key="canvasLocation" x="404" y="-231.2807881773399"/>
         </scene>
     </scenes>
     <resources>
