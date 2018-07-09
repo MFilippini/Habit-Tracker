@@ -151,7 +151,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         backgroundCircle.strokeColor = Common.Global.lightGrey.cgColor
         backgroundCircle.fillColor = Common.Global.darkGrey.cgColor
         backgroundCircle.lineWidth = 8
-        backgroundCircle.strokeEnd = 0
         backgroundCircle.zPosition = -60
         backgroundCircle.strokeEnd = 1
         cell.viewForProgressWheel.layer.addSublayer(backgroundCircle)

@@ -262,7 +262,7 @@
                                     <constraint firstAttribute="height" constant="34" id="02K-Nd-4Z3"/>
                                     <constraint firstAttribute="width" constant="60" id="T3h-yi-5fQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -497,7 +497,7 @@
                                     <constraint firstAttribute="height" constant="34" id="X7B-JB-GUR"/>
                                     <constraint firstAttribute="width" constant="60" id="nfr-TS-8do"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
