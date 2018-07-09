@@ -32,11 +32,15 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         colorSelectorCollView.dataSource = self
         colorSelectorCollView.delegate = self
         
+        stylizeUIElements()
+    }
+    
+    func stylizeUIElements(){
         newHabitNameTextField.layer.borderColor = Common.Global.lightGrey.cgColor
         newHabitNameTextField.layer.borderWidth = 2
         newHabitNameTextField.layer.cornerRadius = 10
         newHabitNameTextField.backgroundColor = Common.Global.darkGrey
-
+        
         saveButton.layer.borderWidth = 2
         saveButton.layer.borderColor = Common.Global.lightGrey.cgColor
         saveButton.backgroundColor = Common.Global.darkGrey
@@ -54,6 +58,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         // Dispose of any resources that can be recreated.
     }
     
+    // color selector collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorDisplayArray.count
     }
@@ -65,6 +70,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         return cell
     }
     
+    // when color selcted
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 5
@@ -72,13 +78,14 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         selectedColor = colorDisplayArray[indexPath.item]
     }
     
+    // when color deslected
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 0.5
         cell?.layer.borderColor = Common.Global.lightGrey.cgColor
     }
     
-
+    // pretty done button updates
     @IBAction func textUpdated(_ sender: Any) {
         if newHabitNameTextField.text != ""{
             doneEditingButton.setTitleColor(UIColor.white, for: .normal)
@@ -89,14 +96,14 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         }
     }
 
-    
+    // pulls name
     @IBAction func habitNameEntered(_ sender: UITextField) {
         if let nameText = newHabitNameTextField.text{
             habitName = nameText
         }
     }
     
-    
+    // plus and minus button
     @IBAction func addTimePerDay(_ sender: Any) {
         numberTimesPerDayLabel.text = String(Int(numberTimesPerDayLabel.text!)! + 1)
         habitPerDay += 1
@@ -109,11 +116,13 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
             habitPerDay -= 1
         }
     }
+    
+    // done button close keyboard
     @IBAction func doneEditingText(_ sender: Any) {
         view.endEditing(true)
-        
     }
     
+    // adds habit and segues
     @IBAction func saveClicked(_ sender: UIButton) {
         if habitName != ""{
             habitNamesArray.append(habitName)
@@ -124,8 +133,8 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
         }
     }
     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+    // passes data back
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
         dvc.habitNamesArray = habitNamesArray
         dvc.timesCompleteArray = timesCompleteArray

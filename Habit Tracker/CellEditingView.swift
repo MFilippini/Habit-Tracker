@@ -38,6 +38,10 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         colorSelectEdit.dataSource = self
         colorSelectEdit.delegate = self
         
+        stylizeUIElements()
+    }
+    
+    func stylizeUIElements(){
         renameHabitTextField.layer.borderColor = Common.Global.lightGrey.cgColor
         renameHabitTextField.layer.borderWidth = 2
         renameHabitTextField.layer.cornerRadius = 10
@@ -59,11 +63,13 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         renameDoneButton.layer.cornerRadius = 17
     }
     
+    // manual select of color becuase UIColectionViews are annoying
     override func viewDidAppear(_ animated: Bool) {
         colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderWidth = 5
         colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderColor = UIColor.white.cgColor
     }
     
+    // fills edit scrren with correct data
     func updateWithCorrectValues(){
   
         selectedColor = colorsArray[indexOfEdit.item]
@@ -83,6 +89,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         // Dispose of any resources that can be recreated.
     }
     
+    // setup collection view for color select
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorDisplayArray.count
     }
@@ -93,6 +100,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         return cell
     }
     
+    // select of colletion view with extra code becuse collection views are mean
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderWidth = 0.5
@@ -102,6 +110,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         selectedColor = colorDisplayArray[indexPath.item]
     }
     
+    // deseleect collection view
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 0.5
@@ -109,13 +118,14 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         
     }
     
-    
+    // done button pulls text
     @IBAction func pullNewText(_ sender: UITextField) {
         if let nameText = renameHabitTextField.text{
             habitName = nameText
         }
     }
     
+    // makes button look nice and update
     @IBAction func updateDoneButton(_ sender: UITextField) {
         if renameHabitTextField.text != ""{
             renameDoneButton.setTitleColor(UIColor.white, for: .normal)
@@ -125,11 +135,12 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         }
     }
     
+    // tap scrren to close keyboard was conflicting with color select so this :(
     @IBAction func finishCloseKeyboard(_ sender: UIButton) {
         view.endEditing(true)
     }
     
-    
+    // makes buttons work and avoids people messing stuff up
     @IBAction func subtractPerDay(_ sender: UIButton) {
         let number = Int(timesPerDayLabel.text!)!
         if number > 1{
@@ -167,6 +178,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     
     
+    // segue when delete clicked
     @IBAction func deleteClicked(_ sender: Any) {
         habitNamesArray.remove(at: indexOfEdit.item)
         timesPerDayArray.remove(at: indexOfEdit.item)
@@ -176,6 +188,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         performSegue(withIdentifier: "unwindToInitialViewController2", sender: self)
     }
     
+    // segue when save clicked
    @IBAction func saveAndFinish(_ sender: UIButton) {
        if habitName != ""{
         habitNamesArray[indexOfEdit.item] = habitName
@@ -187,7 +200,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         }
     }
     
-    
+    // data passed back to beginning
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
         dvc.habitNamesArray = habitNamesArray

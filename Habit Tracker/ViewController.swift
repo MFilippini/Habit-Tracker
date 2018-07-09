@@ -11,30 +11,32 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var habitPanels: UICollectionView!
-    
     @IBOutlet weak var editingLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     var editClicked = false
     
-    // First Time Opening App
+    // First Time Opening App Preset Habits
     var habitNamesArray: [String] = ["Walk the Dog","Workout","Meditate","Drink Water"]
     var timesCompleteArray: [Int] = [1,1,2,3]
     var colorsArray: [UIColor] = [Common.Global.red,Common.Global.orange,Common.Global.purple,Common.Global.blue]
     var timesPerDayArray: [Int] = [3,2,4,8]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         habitPanels.dataSource = self
         habitPanels.delegate = self
         
+        // Makes button fit theme
         addButton.layer.borderWidth = 3
         addButton.layer.borderColor = Common.Global.lightGrey.cgColor
         addButton.backgroundColor = Common.Global.darkGrey
         addButton.layer.cornerRadius = 34
     }
     
+    //gets save data
     override func viewDidAppear(_ animated: Bool) {
         if let savedNames = UserDefaults.standard.object(forKey: "habitNames") as? Array<String>{
             habitNamesArray = savedNames
@@ -61,11 +63,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         habitPanels.reloadData()
     }
     
-    
+    // nothing because it refuses to work
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
     
+    //saves data
     func saveData(){
         UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
@@ -78,6 +81,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         UserDefaults.standard.set(lastAccess, forKey: "lastDay")
     }
     
+    // save data except for time to avoid issue where being in edit panel could avoid reset
     func saveDataFromOtherView(){
         UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
@@ -85,6 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         UserDefaults.standard.set(timesPerDayArray, forKey: "timesADay")
     }
     
+    // changes UIColor array to Ints for saving
     func colorToNumber(colors: [UIColor]) -> [Int] {
         var numArray: [Int] = []
         for color in colors{
@@ -109,6 +114,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return numArray
     }
     
+    // chages saved Int array back to UIColor array
     func numberToColor(numbers: [Int]) -> [UIColor]{
         var colorArray: [UIColor] = []
         for number in numbers{
@@ -140,15 +146,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
+    // creates 2 circles for the background/track and one for progress
     func makeCircle(cell: HabitCell, indexOfCell: Int){
         let backgroundCircle = CAShapeLayer()
         let outsideRing = CAShapeLayer()
-        // outside ring only appears in the animation as the progress bar
+       
         
+        // fixes error that would make circles overlap
         for layer in cell.viewForProgressWheel.layer.sublayers!{
             layer.removeFromSuperlayer()
         }
         
+         // outside ring only appears in the animation as the progress bar
         outsideRing.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
         
         outsideRing.fillColor = UIColor.clear.cgColor
@@ -163,8 +172,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         backgroundCircle.strokeColor = Common.Global.lightGrey.cgColor
         backgroundCircle.fillColor = Common.Global.darkGrey.cgColor
         backgroundCircle.lineWidth = 8
-        backgroundCircle.zPosition = -60
+        backgroundCircle.zPosition = -60 // behind the ring
         backgroundCircle.strokeEnd = 1
+        
+        
         cell.viewForProgressWheel.layer.addSublayer(backgroundCircle)
         cell.viewForProgressWheel.layer.addSublayer(outsideRing)
         ringAnimate(ring: outsideRing, indexOfCell: indexOfCell)
@@ -173,6 +184,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func ringAnimate(ring: CAShapeLayer, indexOfCell: Int){
         let progressBarAnimate = CABasicAnimation(keyPath: "strokeEnd")
         let progressPercent = Float32(timesCompleteArray[indexOfCell]) / Float32(timesPerDayArray[indexOfCell])
+        
         progressBarAnimate.toValue = CGFloat(progressPercent)
         progressBarAnimate.duration = 0.7
         ring.strokeColor = colorsArray[indexOfCell].cgColor
@@ -182,7 +194,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         ring.add(progressBarAnimate,forKey: nil)
     }
     
-    // collection view
+    // collection view setup
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return habitNamesArray.count
     }
@@ -190,27 +202,35 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
+        
+        // changes text when edit mode is on
         if !editClicked{
             cell.labelHabitName.text = habitNamesArray[indexPath.item]
         } else {
             cell.labelHabitName.text = ("Click to Edit "+habitNamesArray[indexPath.item])
         }
+        
+        //avoids crashing
         cell.viewForProgressWheel.layer.addSublayer(CALayer())
+        
         makeCircle(cell: cell, indexOfCell: indexPath.item)
         
         return cell
     }
     
-    
+    // lets collection view know when tapped
     @objc func tap(_ sender: UITapGestureRecognizer) {
         
         let location = sender.location(in: self.habitPanels)
         let indexPath = self.habitPanels.indexPathForItem(at: location)
         let haptic = UINotificationFeedbackGenerator()
         if let index = indexPath {
+            //different actions when edit mode
             if(!editClicked){
                 haptic.prepare() // prepare haptic
                 let timesPerDay = timesPerDayArray[index.item]
+                
+                // asks if can increment times complete
                 if (timesCompleteArray[index.item]<timesPerDay){
                     timesCompleteArray[index.item] += 1
                     habitPanels.reloadItems(at: [index])
@@ -218,17 +238,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 } else {
                     haptic.notificationOccurred(.warning) // haptic
                 }
+                
+                // resaves data
                 saveData()
             } else {
+                // if edit mode uses manual segue
                 performSegue(withIdentifier: "toEditPanel", sender: index)
             }
         }
     }
     
+    // manual segue to send different data
     @IBAction func addNewHabitTapped(_ sender: Any) {
         performSegue(withIdentifier: "addNewHabit", sender: nil)
     }
     
+    // when edit clicked
     @IBAction func editingModeActivate(_ sender: UIBarButtonItem) {
         editClicked = !editClicked
         addButton.isHidden = !addButton.isHidden
@@ -241,6 +266,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         habitPanels.reloadData()
     }
     
+    // exits edit mode when view reloaded from segue
     func editReset(){
         if editClicked{
             editClicked = false
@@ -251,6 +277,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    // prepare for segue with different cases to send different info
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "addNewHabit"?:
@@ -271,6 +298,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    // saves data (not date) and makes sure not in edit mode after segue
     @IBAction func unwindToInitialViewController(segue: UIStoryboardSegue){
         saveDataFromOtherView()
         editReset()
