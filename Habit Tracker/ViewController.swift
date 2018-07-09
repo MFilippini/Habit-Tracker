@@ -226,6 +226,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let haptic = UINotificationFeedbackGenerator()
         if let index = indexPath {
             //different actions when edit mode
+            
             if(!editClicked){
                 haptic.prepare() // prepare haptic
                 let timesPerDay = timesPerDayArray[index.item]
@@ -245,6 +246,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 // if edit mode uses manual segue
                 performSegue(withIdentifier: "toEditPanel", sender: index)
             }
+            
         }
     }
     
