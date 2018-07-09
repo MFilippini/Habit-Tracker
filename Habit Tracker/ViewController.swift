@@ -195,17 +195,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let location = sender.location(in: self.habitPanels)
         let indexPath = self.habitPanels.indexPathForItem(at: location)
-        
+        let haptic = UINotificationFeedbackGenerator()
         if let index = indexPath {
             if(!editClicked){
-                // prepare haptic
+                haptic.prepare() // prepare haptic
                 let timesPerDay = timesPerDayArray[index.item]
                 if (timesCompleteArray[index.item]<timesPerDay){
                     timesCompleteArray[index.item] += 1
                     habitPanels.reloadItems(at: [index])
-                    // do happy haptic
+                    haptic.notificationOccurred(.success) // haptic
                 } else {
-                    // do NOPE haptic
+                    haptic.notificationOccurred(.warning) // haptic
                 }
                 saveData()
             } else {
@@ -223,11 +223,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         addButton.isHidden = !addButton.isHidden
         editingLabel.isHidden = !editingLabel.isHidden
         if editClicked{
-            editButton.title = "Finish Editing"
+            editButton.title = "Done"
         }else{
             editButton.title = "Edit"
         }
         habitPanels.reloadData()
+    }
+    
+    func editReset(){
+        if editClicked{
+            editClicked = false
+            addButton.isHidden = false
+            editingLabel.isHidden = true
+            editButton.title = "Edit"
+            habitPanels.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -252,6 +262,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBAction func unwindToInitialViewController(segue: UIStoryboardSegue){
         saveData()
+        editReset()
     }
     
 }
