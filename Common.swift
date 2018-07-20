@@ -12,7 +12,7 @@ import UIKit
 private let red = UIColor(rgb: 0xFA1C2F)
 private let blue = UIColor(rgb: 0x2B88EA)
 private let purple = UIColor(rgb: 0xDB12DD)
-private let green = UIColor(rgb: 0x71DA47)
+private let green = UIColor(rgb: 0x71eD47)
 private let orange = UIColor(rgb: 0xF9A100)
 private let yellow = UIColor(rgb: 0xFFF519)
 
