@@ -16,13 +16,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     var editClicked = false
-    
     // First Time Opening App Preset Habits
     var habitNamesArray: [String] = ["Walk the Dog","Workout","Meditate","Drink Water"]
     var timesCompleteArray: [Int] = [1,1,2,3]
-    var colorsArray: [UIColor] = [Common.Global.red,Common.Global.orange,Common.Global.purple,Common.Global.blue]
+    var colorsArray = ["red","orange","purple","blue"]
     var timesPerDayArray: [Int] = [3,2,4,8]
-    
+    var palatteIdentifier = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +30,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         // Makes button fit theme
         addButton.layer.borderWidth = 3
-        addButton.layer.borderColor = Common.Global.lightGrey.cgColor
-        addButton.backgroundColor = Common.Global.darkGrey
+        addButton.layer.borderColor = lightGrey.cgColor
+        addButton.backgroundColor = darkGrey
         addButton.layer.cornerRadius = 34
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
     
     //gets save data
@@ -41,12 +44,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let savedNames = UserDefaults.standard.object(forKey: "habitNames") as? Array<String>{
             habitNamesArray = savedNames
         }
-        if let savedColors = UserDefaults.standard.object(forKey: "colors") as? Array<Int>{
-            colorsArray = numberToColor(numbers: savedColors)
+        if let savedColors = UserDefaults.standard.object(forKey: "colors") as? Array<String>{
+            colorsArray = savedColors
         }
         if let savedPerDay = UserDefaults.standard.object(forKey: "timesADay") as? Array<Int>{
             timesPerDayArray = savedPerDay
         }
+        if let palatte = UserDefaults.standard.object(forKey: "palatte") as? Int{
+            palatteIdentifier = palatte
+        }
+        
         if let savedCompletions = UserDefaults.standard.object(forKey: "timesComplete") as? Array<Int>{
             timesCompleteArray = savedCompletions
             if let day = UserDefaults.standard.object(forKey: "lastDay") as? String{
@@ -63,18 +70,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         habitPanels.reloadData()
     }
     
-    // nothing because it refuses to work
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
     
     //saves data
     func saveData(){
         UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
-        UserDefaults.standard.set(colorToNumber(colors: colorsArray), forKey: "colors")
+        UserDefaults.standard.set(colorsArray, forKey: "colors")
         UserDefaults.standard.set(timesPerDayArray, forKey: "timesADay")
-        
+        UserDefaults.standard.set(palatteIdentifier, forKey: "palatte")
         let cal = Calendar.current
         let lastAccess = "\(cal.component(.day, from: Date())):\(cal.component(.month, from: Date())):\(cal.component(.year, from: Date()))"
         
@@ -85,60 +88,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func saveDataFromOtherView(){
         UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
-        UserDefaults.standard.set(colorToNumber(colors: colorsArray), forKey: "colors")
+        UserDefaults.standard.set(colorsArray, forKey: "colors")
         UserDefaults.standard.set(timesPerDayArray, forKey: "timesADay")
+        UserDefaults.standard.set(palatteIdentifier, forKey: "palatte")
     }
-    
-    // changes UIColor array to Ints for saving
-    func colorToNumber(colors: [UIColor]) -> [Int] {
-        var numArray: [Int] = []
-        for color in colors{
-            switch color{
-            case Common.Global.blue:
-                numArray.append(0)
-            case Common.Global.green:
-                numArray.append(1)
-            case Common.Global.yellow:
-                numArray.append(2)
-            case Common.Global.orange:
-                numArray.append(3)
-            case Common.Global.red:
-                numArray.append(4)
-            case Common.Global.purple:
-                numArray.append(5)
-            default:
-                numArray.append(6)
-            }
-        }
-        
-        return numArray
-    }
-    
-    // chages saved Int array back to UIColor array
-    func numberToColor(numbers: [Int]) -> [UIColor]{
-        var colorArray: [UIColor] = []
-        for number in numbers{
-            switch number{
-            case 0:
-                colorArray.append(Common.Global.blue)
-            case 1:
-                colorArray.append(Common.Global.green)
-            case 2:
-                colorArray.append(Common.Global.yellow)
-            case 3:
-                colorArray.append(Common.Global.orange)
-            case 4:
-                colorArray.append(Common.Global.red)
-            case 5:
-                colorArray.append(Common.Global.purple)
-            default:
-                colorArray.append(UIColor.white)
-            }
-        }
-        return colorArray
-    }
-    
-    
     
     
     override func didReceiveMemoryWarning() {
@@ -169,8 +122,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // background circle is similar to the ring but it has a fill color and displays a "track in grey"
         backgroundCircle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
         
-        backgroundCircle.strokeColor = Common.Global.lightGrey.cgColor
-        backgroundCircle.fillColor = Common.Global.darkGrey.cgColor
+        backgroundCircle.strokeColor = lightGrey.cgColor
+        backgroundCircle.fillColor = darkGrey.cgColor
         backgroundCircle.lineWidth = 8
         backgroundCircle.zPosition = -60 // behind the ring
         backgroundCircle.strokeEnd = 1
@@ -187,7 +140,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         progressBarAnimate.toValue = CGFloat(progressPercent)
         progressBarAnimate.duration = 0.7
-        ring.strokeColor = colorsArray[indexOfCell].cgColor
+        ring.strokeColor = colors[colorsArray[indexOfCell]]![palatteIdentifier].cgColor
         progressBarAnimate.isRemovedOnCompletion = false
         progressBarAnimate.fillMode = kCAFillModeForwards
         
@@ -275,7 +228,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             addButton.isHidden = false
             editingLabel.isHidden = true
             editButton.title = "Edit"
-            habitPanels.reloadData()
+//            habitPanels.reloadData()
         }
     }
     
@@ -288,15 +241,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             dvc.timesCompleteArray = timesCompleteArray
             dvc.timesPerDayArray = timesPerDayArray
             dvc.colorsArray = colorsArray
+            dvc.palatteIdentifier = palatteIdentifier
         case "toEditPanel"?:
             let dvc = segue.destination as! CellEditingView
             dvc.habitNamesArray = habitNamesArray
             dvc.timesCompleteArray = timesCompleteArray
             dvc.timesPerDayArray = timesPerDayArray
             dvc.colorsArray = colorsArray
+            dvc.palatteIdentifier = palatteIdentifier
             dvc.indexOfEdit = sender as! NSIndexPath
         default: break
-            
         }
     }
     

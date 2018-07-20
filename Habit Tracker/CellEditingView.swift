@@ -20,13 +20,14 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     
     var habitNamesArray: [String] = []
     var timesCompleteArray: [Int] = []
-    var colorsArray: [UIColor] = []
+    var colorsArray: [String] = []
     var timesPerDayArray: [Int] = []
     var indexOfEdit = NSIndexPath()
-    
-    let colorDisplayArray = [Common.Global.purple,Common.Global.blue,Common.Global.green,Common.Global.yellow,Common.Global.orange,Common.Global.red]
-    
-    var selectedColor = Common.Global.blue
+    var palatteIdentifier = 0
+
+    let colorDisplayArray = ["purple","blue","green","yellow","orange","red"]
+
+    var selectedColor = "blue"
     var habitName = ""
     var habitPerDay = 1
     var habitCurrent = 1
@@ -42,24 +43,24 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     
     func stylizeUIElements(){
-        renameHabitTextField.layer.borderColor = Common.Global.lightGrey.cgColor
+        renameHabitTextField.layer.borderColor = lightGrey.cgColor
         renameHabitTextField.layer.borderWidth = 2
         renameHabitTextField.layer.cornerRadius = 10
-        renameHabitTextField.backgroundColor = Common.Global.darkGrey
+        renameHabitTextField.backgroundColor = darkGrey
         
         saveChangesButton.layer.borderWidth = 2
-        saveChangesButton.layer.borderColor = Common.Global.lightGrey.cgColor
-        saveChangesButton.backgroundColor = Common.Global.darkGrey
+        saveChangesButton.layer.borderColor = lightGrey.cgColor
+        saveChangesButton.backgroundColor = darkGrey
         saveChangesButton.layer.cornerRadius = 26
         
         deleteButton.layer.borderWidth = 2
-        deleteButton.layer.borderColor = Common.Global.lightGrey.cgColor
-        deleteButton.backgroundColor = Common.Global.darkGrey
+        deleteButton.layer.borderColor = lightGrey.cgColor
+        deleteButton.backgroundColor = darkGrey
         deleteButton.layer.cornerRadius = 26
         
         renameDoneButton.layer.borderWidth = 2
-        renameDoneButton.layer.borderColor = Common.Global.lightGrey.cgColor
-        renameDoneButton.backgroundColor = Common.Global.darkGrey
+        renameDoneButton.layer.borderColor = lightGrey.cgColor
+        renameDoneButton.backgroundColor = darkGrey
         renameDoneButton.layer.cornerRadius = 17
     }
     
@@ -96,7 +97,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = colorSelectEdit.dequeueReusableCell(withReuseIdentifier: "CellWithColor", for: indexPath) as! ColorCell
-        cell.viewForColor.backgroundColor = colorDisplayArray[indexPath.item]
+        cell.viewForColor.backgroundColor = colors[colorDisplayArray[indexPath.item]]![palatteIdentifier]
         return cell
     }
     
@@ -104,7 +105,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderWidth = 0.5
-        colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderColor = Common.Global.lightGrey.cgColor
+        colorSelectEdit.cellForItem(at: NSIndexPath(item: selectedColorLocation, section: 0) as IndexPath)?.layer.borderColor = lightGrey.cgColor
         cell?.layer.borderWidth = 5
         cell?.layer.borderColor = UIColor.white.cgColor
         selectedColor = colorDisplayArray[indexPath.item]
@@ -114,7 +115,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 0.5
-        cell?.layer.borderColor = Common.Global.lightGrey.cgColor
+        cell?.layer.borderColor = lightGrey.cgColor
         
     }
     
@@ -131,7 +132,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
             renameDoneButton.setTitleColor(UIColor.white, for: .normal)
             
         } else{
-            renameDoneButton.setTitleColor(Common.Global.lightGrey, for: .normal)
+            renameDoneButton.setTitleColor(lightGrey, for: .normal)
         }
     }
     

@@ -18,12 +18,12 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     
     var habitNamesArray: [String] = []
     var timesCompleteArray: [Int] = []
-    var colorsArray: [UIColor] = []
+    var colorsArray: [String] = []
     var timesPerDayArray: [Int] = []
+    var palatteIdentifier = 0
+    let colorDisplayArray = ["purple","blue","green","yellow","orange","red"]
     
-    let colorDisplayArray = [Common.Global.purple,Common.Global.blue,Common.Global.green,Common.Global.yellow,Common.Global.orange,Common.Global.red]
-    
-    var selectedColor = Common.Global.blue
+    var selectedColor = "blue"
     var habitName = ""
     var habitPerDay = 1
     
@@ -36,20 +36,20 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     }
     
     func stylizeUIElements(){
-        newHabitNameTextField.layer.borderColor = Common.Global.lightGrey.cgColor
+        newHabitNameTextField.layer.borderColor = lightGrey.cgColor
         newHabitNameTextField.layer.borderWidth = 2
         newHabitNameTextField.layer.cornerRadius = 10
-        newHabitNameTextField.backgroundColor = Common.Global.darkGrey
+        newHabitNameTextField.backgroundColor = darkGrey
         
         saveButton.layer.borderWidth = 2
-        saveButton.layer.borderColor = Common.Global.lightGrey.cgColor
-        saveButton.backgroundColor = Common.Global.darkGrey
+        saveButton.layer.borderColor = lightGrey.cgColor
+        saveButton.backgroundColor = darkGrey
         saveButton.layer.cornerRadius = 23
         
         
         doneEditingButton.layer.borderWidth = 2
-        doneEditingButton.layer.borderColor = Common.Global.lightGrey.cgColor
-        doneEditingButton.backgroundColor = Common.Global.darkGrey
+        doneEditingButton.layer.borderColor = lightGrey.cgColor
+        doneEditingButton.backgroundColor = darkGrey
         doneEditingButton.layer.cornerRadius = 17
     }
     
@@ -65,7 +65,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = colorSelectorCollView.dequeueReusableCell(withReuseIdentifier: "CellWithColor", for: indexPath) as! ColorCell
-        cell.viewForColor.backgroundColor = colorDisplayArray[indexPath.item]
+        cell.viewForColor.backgroundColor = colors[colorDisplayArray[indexPath.item]]![palatteIdentifier]
         
         return cell
     }
@@ -82,7 +82,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 0.5
-        cell?.layer.borderColor = Common.Global.lightGrey.cgColor
+        cell?.layer.borderColor = lightGrey.cgColor
     }
     
     // pretty done button updates
@@ -92,7 +92,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
 
         } else{
 
-            doneEditingButton.setTitleColor(Common.Global.lightGrey, for: .normal)
+            doneEditingButton.setTitleColor(lightGrey, for: .normal)
         }
     }
 
