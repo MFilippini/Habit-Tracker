@@ -16,12 +16,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     var editClicked = false
+    
     // First Time Opening App Preset Habits
     var habitNamesArray: [String] = ["Walk the Dog","Workout","Meditate","Drink Water"]
     var timesCompleteArray: [Int] = [1,1,2,3]
     var colorsArray = ["red","orange","purple","blue"]
     var timesPerDayArray: [Int] = [3,2,4,8]
-    var palatteIdentifier = 2
+    var palatteIdentifier = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let palatte = UserDefaults.standard.object(forKey: "palatte") as? Int{
             palatteIdentifier = palatte
         }
-        
+
         if let savedCompletions = UserDefaults.standard.object(forKey: "timesComplete") as? Array<Int>{
             timesCompleteArray = savedCompletions
             if let day = UserDefaults.standard.object(forKey: "lastDay") as? String{

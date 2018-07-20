@@ -17,20 +17,20 @@ private let orange = UIColor(rgb: 0xF9A100)
 private let yellow = UIColor(rgb: 0xFFF519)
 
 // pastel colors
-private let redPastel = UIColor(rgb: 0xFF5047)
-private let bluePastel = UIColor(rgb: 0x6998DD4)
-private let purplePastel = UIColor(rgb: 0xCB8ED3)
-private let greenPastel = UIColor(rgb: 0x6BD88C)
-private let orangePastel = UIColor(rgb: 0xF7A043)
+private let redPastel = UIColor(rgb: 0xF46c67)
+private let bluePastel = UIColor(rgb: 0x5ecede)
+private let purplePastel = UIColor(rgb: 0xbda6ff)
+private let greenPastel = UIColor(rgb: 0x88d9b0)
+private let orangePastel = UIColor(rgb: 0xffcb73)
 private let yellowPastel = UIColor(rgb: 0xDFF56F)
 
-// spring colors
-private let redSpring = UIColor(rgb: 0xF74A26)
-private let blueSpring = UIColor(rgb: 0x80DFFC)
-private let purpleSpring = UIColor(rgb: 0xA357FF)
-private let greenSpring = UIColor(rgb: 0x7FF46B)
-private let orangeSpring = UIColor(rgb: 0xFD8835)
-private let yellowSpring = UIColor(rgb: 0xF8E328)
+// dark colors
+private let redDark = UIColor(rgb: 0xb95144)
+private let blueDark = UIColor(rgb: 0x455899)
+private let purpleDark = UIColor(rgb: 0x703a8c)
+private let greenDark = UIColor(rgb: 0x59855e)
+private let orangeDark = UIColor(rgb: 0xbe795d)
+private let yellowDark = UIColor(rgb: 0xae9030)
 /*
  
  dictionary values of string colors with color palete values array
@@ -38,7 +38,7 @@ private let yellowSpring = UIColor(rgb: 0xF8E328)
  
  0 : normal
  1 : pastel
- 2 :
+ 2 : dark
  3 :
  */
 
@@ -48,7 +48,14 @@ private let yellowSpring = UIColor(rgb: 0xF8E328)
 let lightGrey = UIColor(red: 103/255.0, green: 103/255.0, blue: 103/255.0, alpha: 1)
 let darkGrey = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1)
 
-let colors = ["red":[red,redPastel,redSpring],"blue":[blue,bluePastel,blueSpring],"green":[green,greenPastel,greenSpring],"purple":[purple,purplePastel,purpleSpring],"yellow":[yellow,yellowPastel,yellowSpring],"orange":[orange,orangePastel,orangeSpring]]
+let colors = [
+    "red":[red,redPastel,redDark],
+    "blue":[blue,bluePastel,blueDark],
+    "green":[green,greenPastel,greenDark],
+    "purple":[purple,purplePastel,purpleDark],
+    "yellow":[yellow,yellowPastel,yellowDark],
+    "orange":[orange,orangePastel,orangeDark]
+]
 
 
 
