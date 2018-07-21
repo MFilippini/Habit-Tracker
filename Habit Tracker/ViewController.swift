@@ -14,6 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var editingLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var menuView: UIView!
     
     var editClicked = false
     
@@ -94,6 +95,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         UserDefaults.standard.set(palatteIdentifier, forKey: "palatte")
     }
     
+    
+    var out = false
+    @IBAction func menuBarButton(_ sender: Any) {
+        if !out{
+            UIView.animate(withDuration: 0.3) {
+                self.menuView.transform = CGAffineTransform(translationX: 200, y: 0)
+            }
+        }
+        else{
+            UIView.animate(withDuration: 0.3) {
+                self.menuView.transform = CGAffineTransform(translationX: 0, y: 0)
+            }
+        }
+        out = !out
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -96,16 +96,28 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1Q-X1-Wdw">
+                                <rect key="frame" x="-200" y="0.0" width="200" height="724"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="m4R-5r-TK1"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="fw6-wS-vd9" kind="embed" id="uGj-6k-dzh"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="R1Q-X1-Wdw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0M0-cf-EA9"/>
                             <constraint firstItem="tiV-Fz-rgs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4jz-Kw-Qj4"/>
                             <constraint firstAttribute="bottomMargin" secondItem="6j8-7V-n4I" secondAttribute="bottom" constant="1" id="59n-Sx-Uag"/>
                             <constraint firstItem="6j8-7V-n4I" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BxJ-Gc-xIf"/>
                             <constraint firstItem="ExJ-OJ-dp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OVf-rx-3xe"/>
                             <constraint firstItem="6j8-7V-n4I" firstAttribute="top" secondItem="ExJ-OJ-dp5" secondAttribute="bottom" constant="8" symbolic="YES" id="Os7-JL-HdH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tiV-Fz-rgs" secondAttribute="bottom" constant="16" id="S0c-ig-ynp"/>
+                            <constraint firstItem="6j8-7V-n4I" firstAttribute="top" secondItem="R1Q-X1-Wdw" secondAttribute="bottom" constant="-103" id="jpd-Ce-qew"/>
+                            <constraint firstItem="R1Q-X1-Wdw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-200" id="mZe-xL-ACM"/>
                             <constraint firstItem="6j8-7V-n4I" firstAttribute="centerX" secondItem="ExJ-OJ-dp5" secondAttribute="centerX" id="sPh-A6-yOR"/>
                             <constraint firstItem="6j8-7V-n4I" firstAttribute="top" secondItem="ExJ-OJ-dp5" secondAttribute="bottom" constant="8" id="xLN-K1-R2t"/>
                         </constraints>
@@ -113,6 +125,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Habit Tracker" id="8As-6z-KH9">
                         <barButtonItem key="backBarButtonItem" title="Back" id="zQN-Ry-ai5"/>
+                        <barButtonItem key="leftBarButtonItem" title="|=|" id="sKJ-GJ-xze">
+                            <connections>
+                                <action selector="menuBarButton:" destination="BYZ-38-t0r" id="hMu-x6-beN"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" style="done" id="vgK-41-rzu">
                             <connections>
                                 <action selector="editingModeActivate:" destination="BYZ-38-t0r" id="ijn-kE-Nqa"/>
@@ -124,13 +141,14 @@
                         <outlet property="editButton" destination="vgK-41-rzu" id="xLt-8c-T4v"/>
                         <outlet property="editingLabel" destination="tiV-Fz-rgs" id="wlf-cr-4Jj"/>
                         <outlet property="habitPanels" destination="ExJ-OJ-dp5" id="04w-2V-aRT"/>
+                        <outlet property="menuView" destination="R1Q-X1-Wdw" id="Z47-ny-SQO"/>
                         <segue destination="qaf-SR-37h" kind="show" identifier="addNewHabit" id="AS8-vy-pJ7"/>
                         <segue destination="X7H-w1-kch" kind="show" identifier="toEditPanel" id="4LV-56-6c4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-444" y="119"/>
+            <point key="canvasLocation" x="-444" y="118.96551724137932"/>
         </scene>
         <!--Add a New Habit-->
         <scene sceneID="yCA-eK-qoO">
@@ -619,6 +637,32 @@
                 <exit id="zDF-ND-hnd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="404" y="-231.2807881773399"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4jm-E4-p8e">
+            <objects>
+                <viewController id="fw6-wS-vd9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tkz-qN-9l3">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loB-cx-jlS">
+                                <rect key="frame" x="76.666666666666671" y="341.66666666666669" width="47" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40392156862745099" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="loB-cx-jlS" firstAttribute="centerX" secondItem="tkz-qN-9l3" secondAttribute="centerX" id="Phc-R3-Bb6"/>
+                            <constraint firstItem="loB-cx-jlS" firstAttribute="centerY" secondItem="tkz-qN-9l3" secondAttribute="centerY" id="ydO-Wo-amT"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SHx-1T-Hqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-586" y="782"/>
         </scene>
     </scenes>
     <resources>
