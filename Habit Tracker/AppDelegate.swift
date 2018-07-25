@@ -16,6 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UINavigationBar.appearance().tintColor = lightGrey
+        UINavigationBar.appearance().backgroundColor = .red
+        UINavigationBar.appearance().isOpaque = true
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
+        let leftViewController = storyboard.instantiateViewController(withIdentifier: "Left") as! MenuViewController
+        
+        //let nvc = storyboard.instantiateViewController(withIdentifier: "Nav") as! UINavigationController
+        
+        
+        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+        
+        leftViewController.mainVC = nvc
+        
+        let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+        
+        
+        self.window?.rootViewController = slideMenuController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
