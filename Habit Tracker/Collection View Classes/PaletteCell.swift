@@ -16,13 +16,15 @@ class PaletteCell: UICollectionViewCell {
     @IBOutlet weak var colorView4: UIView!
     @IBOutlet weak var colorView5: UIView!
     @IBOutlet weak var colorView6: UIView!
-
+    var palette = 0
     override var isSelected: Bool{
         didSet{
             if self.isSelected
             {
                 self.layer.borderWidth = 5
                 self.layer.borderColor = UIColor.white.cgColor
+                print(palette)
+                UserDefaults.standard.set(palette, forKey: "palatte")
             }
             else
             {

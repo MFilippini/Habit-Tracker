@@ -35,9 +35,19 @@ class MenuViewController: UIViewController {
         setupButton(button: settingsButton, color: "yellow")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupButton(button: habitsButton, color: "red")
+        setupButton(button: statsButton, color: "orange")
+        setupButton(button: settingsButton, color: "yellow")
+    }
+    
     func setupButton(button: UIButton,color: String){
         button.layer.borderWidth = 5
-        button.layer.borderColor = colors[color]![ViewController().palatteIdentifier].cgColor
+        var palatte = 0
+        if let palatte2 = UserDefaults.standard.object(forKey: "palatte") as? Int{
+            palatte = palatte2
+        }
+        button.layer.borderColor = colors[color]![palatte].cgColor
         button.backgroundColor = darkGrey
         button.layer.cornerRadius = 30
     }

@@ -44,6 +44,7 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.colorView4.backgroundColor = colors["yellow"]![indexPath.row]
         cell.colorView5.backgroundColor = colors["orange"]![indexPath.row]
         cell.colorView6.backgroundColor = colors["red"]![indexPath.row]
+        cell.palette = indexPath.row
         return cell
     }
 

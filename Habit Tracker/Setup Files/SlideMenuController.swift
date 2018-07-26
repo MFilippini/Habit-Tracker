@@ -689,7 +689,6 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             closeLeft()
             closeRight()
         }
-        ViewController().saveDataFromOtherView()
     }
     
     open func changeLeftViewWidth(_ width: CGFloat) {
