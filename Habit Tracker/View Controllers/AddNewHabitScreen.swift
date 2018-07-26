@@ -61,7 +61,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     // color selector collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorDisplayArray.count
-    }
+    } 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = colorSelectorCollView.dequeueReusableCell(withReuseIdentifier: "CellWithColor", for: indexPath) as! ColorCell

@@ -37,7 +37,7 @@ class MenuViewController: UIViewController {
     
     func setupButton(button: UIButton,color: String){
         button.layer.borderWidth = 5
-        button.layer.borderColor = colors[color]![0].cgColor
+        button.layer.borderColor = colors[color]![ViewController().palatteIdentifier].cgColor
         button.backgroundColor = darkGrey
         button.layer.cornerRadius = 30
     }

@@ -44,9 +44,10 @@ private let yellowDark = UIColor(rgb: 0xae9030)
 
 // dev only colors
 
-
 let lightGrey = UIColor(red: 103/255.0, green: 103/255.0, blue: 103/255.0, alpha: 1)
 let darkGrey = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1)
+
+let palettesTypes = ["Normal Colors","Pastel Colors","Dark Colors"]
 
 let colors = [
     "red":[red,redPastel,redDark],
