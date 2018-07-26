@@ -92,10 +92,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49B993CC20EEDC8E00E7A0EE = {
+		495360B92109903F00022F3C /* Setup Files */ = {
 			isa = PBXGroup;
 			children = (
 				49B9940C20EFEE5F00E7A0EE /* Common.swift */,
+				49FB86E421083BDB00346D84 /* UIViewControllerExtension.swift */,
+				49E6D9852107E4E6000C94D9 /* SlideMenuController.swift */,
+			);
+			indentWidth = 4;
+			path = "Setup Files";
+			sourceTree = "<group>";
+		};
+		495360BA2109909300022F3C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				49B993DA20EEDC8E00E7A0EE /* ViewController.swift */,
+				4954905220F1EED80067CD4E /* CellEditingView.swift */,
+				49B9940E20F16E6A00E7A0EE /* AddNewHabitScreen.swift */,
+				49FB86E0210835F900346D84 /* MenuViewController.swift */,
+				49FB86E22108392D00346D84 /* SettingsViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		495360BB210990D200022F3C /* Collection View Classes */ = {
+			isa = PBXGroup;
+			children = (
+				49B9940620EEDE5700E7A0EE /* HabitCell.swift */,
+				4954905020F171F40067CD4E /* ColorCell.swift */,
+			);
+			path = "Collection View Classes";
+			sourceTree = "<group>";
+		};
+		49B993CC20EEDC8E00E7A0EE = {
+			isa = PBXGroup;
+			children = (
 				49B993D720EEDC8E00E7A0EE /* Habit Tracker */,
 				49B993EC20EEDC8F00E7A0EE /* Habit TrackerTests */,
 				49B993F720EEDC8F00E7A0EE /* Habit TrackerUITests */,
@@ -117,17 +148,11 @@
 			isa = PBXGroup;
 			children = (
 				49B993D820EEDC8E00E7A0EE /* AppDelegate.swift */,
-				49B993DA20EEDC8E00E7A0EE /* ViewController.swift */,
-				49B993DC20EEDC8E00E7A0EE /* Main.storyboard */,
-				4954905220F1EED80067CD4E /* CellEditingView.swift */,
-				49FB86E421083BDB00346D84 /* UIViewControllerExtension.swift */,
-				49FB86E0210835F900346D84 /* MenuViewController.swift */,
-				49E6D9852107E4E6000C94D9 /* SlideMenuController.swift */,
-				49FB86E22108392D00346D84 /* SettingsViewController.swift */,
-				49B9940620EEDE5700E7A0EE /* HabitCell.swift */,
-				49B9940E20F16E6A00E7A0EE /* AddNewHabitScreen.swift */,
-				4954905020F171F40067CD4E /* ColorCell.swift */,
+				495360B92109903F00022F3C /* Setup Files */,
+				495360BA2109909300022F3C /* View Controllers */,
+				495360BB210990D200022F3C /* Collection View Classes */,
 				49B993DF20EEDC8F00E7A0EE /* Assets.xcassets */,
+				49B993DC20EEDC8E00E7A0EE /* Main.storyboard */,
 				49B993E120EEDC8F00E7A0EE /* LaunchScreen.storyboard */,
 				49B993E420EEDC8F00E7A0EE /* Info.plist */,
 			);

@@ -30,14 +30,14 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuSegues()
-        setupButton(button: habitsButton)
-        setupButton(button: statsButton)
-        setupButton(button: settingsButton)
+        setupButton(button: habitsButton, color: "red")
+        setupButton(button: statsButton, color: "orange")
+        setupButton(button: settingsButton, color: "yellow")
     }
     
-    func setupButton(button: UIButton){
-        button.layer.borderWidth = 3
-        button.layer.borderColor = lightGrey.cgColor
+    func setupButton(button: UIButton,color: String){
+        button.layer.borderWidth = 5
+        button.layer.borderColor = colors[color]![0].cgColor
         button.backgroundColor = darkGrey
         button.layer.cornerRadius = 30
     }

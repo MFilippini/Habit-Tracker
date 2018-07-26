@@ -34,9 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nvc.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
         nvc.navigationBar.tintColor = .white
         
-        
-        print(nvc.navigationBar.layer.sublayers)
-        
         leftViewController.mainVC = nvc
         
         let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
