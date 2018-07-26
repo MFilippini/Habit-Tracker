@@ -684,6 +684,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         removeViewController(self.mainViewController)
         self.mainViewController = mainViewController
         setUpViewController(mainContainerView, targetViewController: mainViewController)
+        
         if close {
             closeLeft()
             closeRight()
@@ -919,7 +920,6 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate func setUpViewController(_ targetView: UIView, targetViewController: UIViewController?) {
         if let viewController = targetViewController {
             viewController.view.frame = targetView.bounds
-            
             if (!childViewControllers.contains(viewController)) {
                 addChildViewController(viewController)
                 targetView.addSubview(viewController.view)

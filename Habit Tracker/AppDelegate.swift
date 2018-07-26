@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = lightGrey
         UINavigationBar.appearance().backgroundColor = .red
-        UINavigationBar.appearance().isOpaque = true
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let mainViewController = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
@@ -29,6 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+    
+        nvc.navigationBar.backgroundColor = .red
+        nvc.navigationBar.tintColor = .red
+        
+        
+        print(nvc.navigationBar.layer.sublayers)
         
         leftViewController.mainVC = nvc
         

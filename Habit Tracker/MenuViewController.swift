@@ -26,11 +26,21 @@ class MenuViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let settingsVC = storyboard.instantiateViewController(withIdentifier: "Settings") as! SettingsViewController
-        self.settingsVC = UINavigationController(rootViewController: settingsVC)
         
+        let nav = UINavigationController(rootViewController: settingsVC)
+        nav.navigationBar.backgroundColor = .blue
+        print(nav.navigationBar.layer.sublayers)
+        self.settingsVC = nav
+        
+
+
         let mainVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
-        self.mainVC = UINavigationController(rootViewController: mainVC)
         
+        let nav2 = UINavigationController(rootViewController: mainVC)
+        print(nav2.navigationBar.layer.sublayers)
+
+        self.mainVC = nav2
+
     }
 
     override func didReceiveMemoryWarning() {
