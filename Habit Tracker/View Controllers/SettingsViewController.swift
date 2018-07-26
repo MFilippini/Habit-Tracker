@@ -16,16 +16,26 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
     var palatteIdentifier = 0
     let colorDisplayArray = ["purple","blue","green","yellow","orange","red"]
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarItem()
         navigationController?.navigationBar.topItem?.title = "Settings"
         paletteCollectionView.delegate = self
         paletteCollectionView.dataSource = self
-        
-        // Do any additional setup after loading the view.
+        selectCorrectPalette()
     }
-
+    
+    fileprivate func selectCorrectPalette() {
+        var palatte = 0
+        if let palatte2 = UserDefaults.standard.object(forKey: "palatte") as? Int{
+            palatte = palatte2
+        }
+        
+        paletteCollectionView.selectItem(at: IndexPath(row: palatte, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -36,6 +46,10 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        
+        
         let cell = paletteCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PaletteCell
         cell.nameLabel.text = palettesTypes[indexPath.row]
         cell.colorView1.backgroundColor = colors["purple"]![indexPath.row]

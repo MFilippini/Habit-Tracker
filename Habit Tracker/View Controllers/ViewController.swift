@@ -80,7 +80,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //saves data
     func saveData(){
-        print("saved")
         UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
         UserDefaults.standard.set(colorsArray, forKey: "colors")
@@ -94,7 +93,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // save data except for time to avoid issue where being in edit panel could avoid reset
     func saveDataFromOtherView(){
-        print("saved")
         UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
         UserDefaults.standard.set(colorsArray, forKey: "colors")
