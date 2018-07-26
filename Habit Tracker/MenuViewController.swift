@@ -13,6 +13,13 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    
+    @IBOutlet weak var habitsButton: UIButton!
+    @IBOutlet weak var statsButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    
+    
+    
     var settingsVC: UIViewController!
     var mainVC: UIViewController!
 
@@ -22,11 +29,24 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMenuSegues()
+        setupButton(button: habitsButton)
+        setupButton(button: statsButton)
+        setupButton(button: settingsButton)
+    }
+    
+    func setupButton(button: UIButton){
+        button.layer.borderWidth = 3
+        button.layer.borderColor = lightGrey.cgColor
+        button.backgroundColor = darkGrey
+        button.layer.cornerRadius = 30
+    }
+    
+    
 
+    fileprivate func setupMenuSegues() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let settingsVC = storyboard.instantiateViewController(withIdentifier: "Settings") as! SettingsViewController
-        
         let nav = UINavigationController(rootViewController: settingsVC)
         nav.navigationBar.barStyle = .black
         nav.navigationBar.alpha = 1
@@ -34,27 +54,17 @@ class MenuViewController: UIViewController {
         nav.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
         nav.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
         nav.navigationBar.tintColor = .white
-        print(nav.navigationBar.layer.sublayers)
         self.settingsVC = nav
-        
-
-
         let mainVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
-        
         let nav2 = UINavigationController(rootViewController: mainVC)
-        
         nav2.navigationBar.barStyle = .black
         nav2.navigationBar.alpha = 1
         nav2.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
         nav2.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
         nav2.navigationBar.tintColor = .white
-        
-        print(nav2.navigationBar.layer.sublayers)
-
         self.mainVC = nav2
-
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

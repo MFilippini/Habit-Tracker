@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var habitPanels: UICollectionView!
-    @IBOutlet weak var editingLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     
@@ -36,6 +35,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         addButton.layer.borderColor = lightGrey.cgColor
         addButton.backgroundColor = darkGrey
         addButton.layer.cornerRadius = 34
+        
+        editButton.layer.borderWidth = 3
+        editButton.layer.borderColor = lightGrey.cgColor
+        editButton.backgroundColor = darkGrey
+        editButton.layer.cornerRadius = 10
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -76,6 +80,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //saves data
     func saveData(){
+        print("saved")
         UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
         UserDefaults.standard.set(colorsArray, forKey: "colors")
@@ -89,6 +94,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // save data except for time to avoid issue where being in edit panel could avoid reset
     func saveDataFromOtherView(){
+        print("saved")
         UserDefaults.standard.set(habitNamesArray, forKey: "habitNames")
         UserDefaults.standard.set(timesCompleteArray, forKey: "timesComplete")
         UserDefaults.standard.set(colorsArray, forKey: "colors")
@@ -163,7 +169,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if !editClicked{
             cell.labelHabitName.text = habitNamesArray[indexPath.item]
         } else {
-            cell.labelHabitName.text = ("Click to Edit "+habitNamesArray[indexPath.item])
+            cell.labelHabitName.text = ("Edit: "+habitNamesArray[indexPath.item])
         }
         
         //avoids crashing
@@ -214,8 +220,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // when edit clicked
     @IBAction func editClicked(_ sender: Any) {
         editClicked = !editClicked
-        addButton.isHidden = !addButton.isHidden
-        editingLabel.isHidden = !editingLabel.isHidden
         if editClicked{
             editButton.setTitle("Done", for: .normal)
         }else{
@@ -230,7 +234,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func editReset(){
         if editClicked{
             editClicked = false
-            editingLabel.isHidden = true
             editButton.setTitle("Edit", for: .normal)
             //habitPanels.reloadData()
         }
