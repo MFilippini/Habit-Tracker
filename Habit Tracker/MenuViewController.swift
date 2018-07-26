@@ -28,7 +28,12 @@ class MenuViewController: UIViewController {
         let settingsVC = storyboard.instantiateViewController(withIdentifier: "Settings") as! SettingsViewController
         
         let nav = UINavigationController(rootViewController: settingsVC)
-        nav.navigationBar.backgroundColor = .blue
+        nav.navigationBar.barStyle = .black
+        nav.navigationBar.alpha = 1
+        let colorVal: CGFloat = 27
+        nav.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nav.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nav.navigationBar.tintColor = .white
         print(nav.navigationBar.layer.sublayers)
         self.settingsVC = nav
         
@@ -37,6 +42,13 @@ class MenuViewController: UIViewController {
         let mainVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
         
         let nav2 = UINavigationController(rootViewController: mainVC)
+        
+        nav2.navigationBar.barStyle = .black
+        nav2.navigationBar.alpha = 1
+        nav2.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nav2.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nav2.navigationBar.tintColor = .white
+        
         print(nav2.navigationBar.layer.sublayers)
 
         self.mainVC = nav2

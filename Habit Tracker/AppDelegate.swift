@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        UINavigationBar.appearance().tintColor = lightGrey
-        UINavigationBar.appearance().backgroundColor = .red
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let mainViewController = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
@@ -28,9 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
-    
-        nvc.navigationBar.backgroundColor = .red
-        nvc.navigationBar.tintColor = .red
+        
+        nvc.navigationBar.barStyle = .black
+        nvc.navigationBar.alpha = 1
+        let colorVal: CGFloat = 27
+        nvc.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nvc.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nvc.navigationBar.tintColor = .white
         
         
         print(nvc.navigationBar.layer.sublayers)
@@ -41,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         self.window?.rootViewController = slideMenuController
+        self.window?.backgroundColor = darkGrey
         self.window?.makeKeyAndVisible()
         
         return true

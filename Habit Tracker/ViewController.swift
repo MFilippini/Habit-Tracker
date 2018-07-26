@@ -13,7 +13,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var habitPanels: UICollectionView!
     @IBOutlet weak var editingLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var editButton: UIButton!
     
     var editClicked = false
     
@@ -26,6 +26,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNavigationBarItem()
+        
         habitPanels.dataSource = self
         habitPanels.delegate = self
         
@@ -210,26 +212,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     // when edit clicked
-    @IBAction func editingModeActivate(_ sender: UIBarButtonItem) {
+    @IBAction func editClicked(_ sender: Any) {
         editClicked = !editClicked
         addButton.isHidden = !addButton.isHidden
         editingLabel.isHidden = !editingLabel.isHidden
         if editClicked{
-            editButton.title = "Done"
+            editButton.setTitle("Done", for: .normal)
         }else{
-            editButton.title = "Edit"
+            editButton.setTitle("Edit", for: .normal)
         }
         habitPanels.reloadData()
     }
+    
+    
     
     // exits edit mode when view reloaded from segue
     func editReset(){
         if editClicked{
             editClicked = false
-            addButton.isHidden = false
             editingLabel.isHidden = true
-            editButton.title = "Edit"
-//            habitPanels.reloadData()
+            editButton.setTitle("Edit", for: .normal)
+            //habitPanels.reloadData()
         }
     }
     
@@ -255,9 +258,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    @IBAction func leftBarButtonTapped(_ sender: Any) {
-        slideMenuController()?.openLeft()
-    }
+//    @IBAction func leftBarButtonTapped(_ sender: Any) {
+//        slideMenuController()?.openLeft()
+//    }
     
     
     
