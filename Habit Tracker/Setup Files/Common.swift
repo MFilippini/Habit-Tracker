@@ -24,13 +24,21 @@ private let greenPastel = UIColor(rgb: 0x88d9b0)
 private let orangePastel = UIColor(rgb: 0xffcb73)
 private let yellowPastel = UIColor(rgb: 0xDFF56F)
 
-// dark colors
-private let redDark = UIColor(rgb: 0xb95144)
-private let blueDark = UIColor(rgb: 0x455899)
-private let purpleDark = UIColor(rgb: 0x703a8c)
-private let greenDark = UIColor(rgb: 0x59855e)
-private let orangeDark = UIColor(rgb: 0xbe795d)
-private let yellowDark = UIColor(rgb: 0xae9030)
+// sea colors
+private let purpleSea = UIColor(rgb: 0xaaf09e)
+private let blueSea = UIColor(rgb: 0x8edba8)
+private let greenSea = UIColor(rgb: 0x68c4af)
+private let yellowSea = UIColor(rgb: 0x5e9c9a)
+private let orangeSea = UIColor(rgb: 0x3b8686)
+private let redSea = UIColor(rgb: 0x0b486b)
+
+// vibrant colors
+private let purpleVibrant = UIColor(rgb: 0x6D4483)
+private let blueVibrant = UIColor(rgb: 0x4ecdc4)
+private let greenVibrant = UIColor(rgb: 0x75efa5)
+private let yellowVibrant = UIColor(rgb: 0xd2f481)
+private let orangeVibrant = UIColor(rgb: 0xff686b)
+private let redVibrant = UIColor(rgb: 0xe23d53)
 /*
  
  dictionary values of string colors with color palete values array
@@ -38,8 +46,8 @@ private let yellowDark = UIColor(rgb: 0xae9030)
  
  0 : normal
  1 : pastel
- 2 : dark
- 3 :
+ 2 : sea
+ 3 : vibrant
  */
 
 // dev only colors
@@ -47,15 +55,15 @@ private let yellowDark = UIColor(rgb: 0xae9030)
 let lightGrey = UIColor(red: 103/255.0, green: 103/255.0, blue: 103/255.0, alpha: 1)
 let darkGrey = UIColor(red: 41/255.0, green: 41/255.0, blue: 41/255.0, alpha: 1)
 
-let palettesTypes = ["Normal Colors","Pastel Colors","Dark Colors"]
+let palettesTypes = ["Normal Colors","Pastel Colors","Sea Colors","Vibrant Colors"]
 
 let colors = [
-    "red":[red,redPastel,redDark],
-    "blue":[blue,bluePastel,blueDark],
-    "green":[green,greenPastel,greenDark],
-    "purple":[purple,purplePastel,purpleDark],
-    "yellow":[yellow,yellowPastel,yellowDark],
-    "orange":[orange,orangePastel,orangeDark]
+    "red":[red,       redPastel,     redSea     ,redVibrant],
+    "blue":[blue,     bluePastel,    blueSea    ,blueVibrant],
+    "green":[green,   greenPastel,   greenSea   ,greenVibrant],
+    "purple":[purple, purplePastel,  purpleSea  ,purpleVibrant],
+    "yellow":[yellow, yellowPastel,  yellowSea  ,yellowVibrant],
+    "orange":[orange, orangePastel,  orangeSea  ,orangeVibrant]
 ]
 
 

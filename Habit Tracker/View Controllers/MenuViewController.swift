@@ -17,7 +17,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var habitsButton: UIButton!
     @IBOutlet weak var statsButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
-    
+    @IBOutlet weak var logoBackdrop: UIView!
     
     
     var settingsVC: UIViewController!
@@ -33,6 +33,7 @@ class MenuViewController: UIViewController {
         setupButton(button: habitsButton, color: "red")
         setupButton(button: statsButton, color: "orange")
         setupButton(button: settingsButton, color: "yellow")
+        logoBackdrop.layer.cornerRadius = 20
     }
     
     override func viewWillAppear(_ animated: Bool) {

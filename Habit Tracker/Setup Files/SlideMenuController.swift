@@ -19,10 +19,10 @@ import UIKit
 }
 
 public struct SlideMenuOptions {
-    public static var leftViewWidth: CGFloat = 230.0
+    public static var leftViewWidth: CGFloat = 300.0
     public static var leftBezelWidth: CGFloat? = 16.0
     public static var contentViewScale: CGFloat = 1
-    public static var contentViewOpacity: CGFloat = 0.2
+    public static var contentViewOpacity: CGFloat = 0.8
     public static var contentViewDrag: Bool = false
     public static var shadowOpacity: CGFloat = 0.0
     public static var shadowRadius: CGFloat = 0.0

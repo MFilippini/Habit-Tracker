@@ -259,11 +259,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-//    @IBAction func leftBarButtonTapped(_ sender: Any) {
-//        slideMenuController()?.openLeft()
-//    }
-    
-    
     
     
     

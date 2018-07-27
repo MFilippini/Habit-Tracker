@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarItem()
-        navigationController?.navigationBar.topItem?.title = "Settings"
+        navigationController?.navigationBar.topItem?.title = "Themes"
         paletteCollectionView.delegate = self
         paletteCollectionView.dataSource = self
         selectCorrectPalette()
