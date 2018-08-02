@@ -152,8 +152,8 @@
                                     <action selector="textUpdated:" destination="qaf-SR-37h" eventType="editingChanged" id="N7F-aZ-Ws5"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose A Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Qc-RSC">
-                                <rect key="frame" x="100.00000000000001" y="381" width="176.33333333333337" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick A Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Qc-RSC">
+                                <rect key="frame" x="119.33333333333331" y="381" width="138" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="2xa-gk-81x"/>
                                 </constraints>
@@ -238,7 +238,7 @@
                                     <action selector="subtractTimePerDay:" destination="qaf-SR-37h" eventType="touchUpInside" id="P1l-yS-k1H"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How Many Times Per Day?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzp-Cl-wia">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Times Per Day?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzp-Cl-wia">
                                 <rect key="frame" x="22" y="195" width="332" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="67T-1y-R85"/>
