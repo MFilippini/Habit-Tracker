@@ -22,7 +22,8 @@ class MenuViewController: UIViewController {
     
     var settingsVC: UIViewController!
     var mainVC: UIViewController!
-
+    var statsVC: UIViewController!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -30,16 +31,17 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuSegues()
-        setupButton(button: habitsButton, color: "red")
-        setupButton(button: statsButton, color: "orange")
-        setupButton(button: settingsButton, color: "yellow")
-        logoBackdrop.layer.cornerRadius = 20
+//        setupButton(button: habitsButton, color: "red")
+//        setupButton(button: statsButton, color: "orange")
+//        setupButton(button: settingsButton, color: "yellow")
+//        logoBackdrop.layer.cornerRadius = 20
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupButton(button: habitsButton, color: "red")
         setupButton(button: statsButton, color: "orange")
         setupButton(button: settingsButton, color: "yellow")
+        logoBackdrop.layer.cornerRadius = 20
     }
     
     func setupButton(button: UIButton,color: String){
@@ -53,27 +55,40 @@ class MenuViewController: UIViewController {
         button.layer.cornerRadius = 30
     }
     
-    
-
     fileprivate func setupMenuSegues() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let colorVal: CGFloat = 27
+        
         let settingsVC = storyboard.instantiateViewController(withIdentifier: "Settings") as! SettingsViewController
-        let nav = UINavigationController(rootViewController: settingsVC)
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
+        let statsVC = storyboard.instantiateViewController(withIdentifier: "Stats") as! StatsViewController
+        
+        var nav = UINavigationController(rootViewController: settingsVC)
+        
         nav.navigationBar.barStyle = .black
         nav.navigationBar.alpha = 1
-        let colorVal: CGFloat = 27
         nav.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
         nav.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
         nav.navigationBar.tintColor = .white
         self.settingsVC = nav
-        let mainVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
-        let nav2 = UINavigationController(rootViewController: mainVC)
-        nav2.navigationBar.barStyle = .black
-        nav2.navigationBar.alpha = 1
-        nav2.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
-        nav2.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
-        nav2.navigationBar.tintColor = .white
-        self.mainVC = nav2
+        
+        nav = UINavigationController(rootViewController: mainVC)
+        
+        nav.navigationBar.barStyle = .black
+        nav.navigationBar.alpha = 1
+        nav.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nav.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nav.navigationBar.tintColor = .white
+        self.mainVC = nav
+        
+        nav = UINavigationController(rootViewController: statsVC)
+        
+        nav.navigationBar.barStyle = .black
+        nav.navigationBar.alpha = 1
+        nav.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nav.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
+        nav.navigationBar.tintColor = .white
+        self.statsVC = nav
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,7 +103,10 @@ class MenuViewController: UIViewController {
     
     @IBAction func settingsMenuButton(_ sender: Any) {
         self.slideMenuController()?.changeMainViewController(self.settingsVC, close: true)
-        
+    }
+    
+    @IBAction func statsMenuButton(_ sender: Any) {
+        self.slideMenuController()?.changeMainViewController(self.statsVC, close: true)
     }
     
     /*

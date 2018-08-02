@@ -23,7 +23,7 @@ public struct SlideMenuOptions {
     public static var leftBezelWidth: CGFloat? = 16.0
     public static var contentViewScale: CGFloat = 1
     public static var contentViewOpacity: CGFloat = 0.8
-    public static var contentViewDrag: Bool = false
+    public static var contentViewDrag: Bool = true
     public static var shadowOpacity: CGFloat = 0.0
     public static var shadowRadius: CGFloat = 0.0
     public static var shadowOffset: CGSize = CGSize(width: 0,height: 0)

@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ExJ-OJ-dp5">
-                                <rect key="frame" x="16" y="81" width="343" height="621"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ExJ-OJ-dp5">
+                                <rect key="frame" x="16" y="81" width="343" height="312"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="621" id="f2D-7y-y0K"/>
@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="497" y="109"/>
+            <point key="canvasLocation" x="496.80000000000001" y="108.62068965517241"/>
         </scene>
         <!--Add a New Habit-->
         <scene sceneID="yCA-eK-qoO">
@@ -178,6 +178,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8n-GM-nIc">
                                 <rect key="frame" x="115" y="258" width="146" height="85"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="MG5-OS-IXN"/>
                                     <constraint firstAttribute="height" constant="85" id="Ztu-5i-aor"/>
                                     <constraint firstAttribute="width" constant="146" id="xQm-c0-nV9"/>
                                 </constraints>
@@ -413,6 +414,9 @@
                                 <state key="normal" title="Statistics">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="statsMenuButton:" destination="KaI-uj-X8j" eventType="touchUpInside" id="EvL-rW-Z8r"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.24914439085277776" green="0.24914439085277776" blue="0.24914439085277776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -444,7 +448,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngY-a5-w01" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-506.39999999999998" y="-399.01477832512319"/>
+            <point key="canvasLocation" x="-1193" y="1210"/>
+        </scene>
+        <!--Stats View Controller-->
+        <scene sceneID="PMy-Qc-L9h">
+            <objects>
+                <viewController storyboardIdentifier="Stats" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J0p-rV-tSx" customClass="StatsViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wLW-7g-tMo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="fuF-Mz-fnv"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CHX-li-hdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="497" y="1210"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="YgA-RY-OcI">
@@ -586,7 +605,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CF1-jk-bBw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="496.80000000000001" y="-1092.1182266009853"/>
+            <point key="canvasLocation" x="497" y="2050"/>
         </scene>
         <!--Edit Habit-->
         <scene sceneID="lFW-mT-G4D">
