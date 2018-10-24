@@ -17,19 +17,35 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var editClicked = false
     
     // First Time Opening App Preset Habits
+    
     var habitNamesArray: [String] = ["Walk the Dog","Workout","Meditate","Drink Water"]
     var timesCompleteArray: [Int] = [1,1,2,3]
     var colorsArray = ["red","orange","purple","blue"]
     var timesPerDayArray: [Int] = [3,2,4,8]
+//    var habits =
+//        [
+//            "daily":[ ["Walk the Dog",1,"red",3],
+//                    ["Workout",1,"orange",2],
+//                    ["Meditate",2,"purple",4],
+//                    ["Drink Water",3,"blue",5],
+//                    ["Go For A Walk",1,"yellow",2]],
+//           "weekly":[ [] ],
+//           "monthly":[ ["Take Meds",0,"red",1] ]
+//        ]
+    
     var palatteIdentifier = 0
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarItem()
-        
         habitPanels.dataSource = self
         habitPanels.delegate = self
-        
+        setupButtons()
+    }
+    
+    func setupButtons() {
         // Makes button fit theme
         addButton.layer.borderWidth = 3
         addButton.layer.borderColor = lightGrey.cgColor
@@ -118,7 +134,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
          // outside ring only appears in the animation as the progress bar
-        outsideRing.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
+        outsideRing.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 65, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
         
         outsideRing.fillColor = UIColor.clear.cgColor
         outsideRing.lineWidth = 8
@@ -127,7 +143,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         outsideRing.lineCap = kCALineCapRound
         
         // background circle is similar to the ring but it has a fill color and displays a "track in grey"
-        backgroundCircle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 70, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
+        backgroundCircle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 65, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
         
         backgroundCircle.strokeColor = lightGrey.cgColor
         backgroundCircle.fillColor = darkGrey.cgColor
