@@ -98,7 +98,6 @@ class MenuViewController: UIViewController {
     
     @IBAction func mainMenuButton(_ sender: Any) {
         self.slideMenuController()?.changeMainViewController(self.mainVC, close: true)
-        
     }
     
     @IBAction func settingsMenuButton(_ sender: Any) {

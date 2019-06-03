@@ -81,7 +81,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         renameHabitTextField.text = habitName
         timesPerDayLabel.text = String(habitPerDay)
         timesCompletedTodayLabel.text = String(habitCurrent)
-        selectedColorLocation = colorDisplayArray.index(of: selectedColor)!
+        selectedColorLocation = colorDisplayArray.firstIndex(of: selectedColor)!
         renameDoneButton.setTitleColor(UIColor.white, for: .normal)
     }
     
@@ -131,7 +131,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         if renameHabitTextField.text != ""{
             renameDoneButton.setTitleColor(UIColor.white, for: .normal)
             
-        } else{
+        }else{
             renameDoneButton.setTitleColor(lightGrey, for: .normal)
         }
     }
