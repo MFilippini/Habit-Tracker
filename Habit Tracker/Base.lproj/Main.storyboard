@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,55 +18,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ExJ-OJ-dp5">
-                                <rect key="frame" x="16" y="81" width="343" height="312"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Vd-om-2c5">
+                                <rect key="frame" x="0.0" y="44" width="375" height="654"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="621" id="f2D-7y-y0K"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sON-yr-43W">
-                                    <size key="itemSize" width="160" height="160"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rpX-c6-5Nh">
+                                    <size key="itemSize" width="375" height="440"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zkn-EU-neB" customClass="HabitCell" customModule="Habit_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DisplayCell" id="wsR-dv-E31" customClass="AllHabitsDisplayCell" customModule="Habit_Tracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMy-4j-siK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
-                                                    <gestureRecognizers/>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Goal " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9de-fH-Src">
-                                                    <rect key="frame" x="22.666666666666671" y="45" width="115.00000000000001" height="70"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="70" id="iee-0c-IbP"/>
-                                                        <constraint firstAttribute="width" constant="115" id="nKz-xS-fcZ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="24"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ExJ-OJ-dp5">
+                                                    <rect key="frame" x="0.0" y="102" width="375" height="338"/>
+                                                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sON-yr-43W">
+                                                        <size key="itemSize" width="160" height="160"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zkn-EU-neB" customClass="HabitCell" customModule="Habit_Tracker" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMy-4j-siK">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                                                        <gestureRecognizers/>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Goal " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9de-fH-Src">
+                                                                        <rect key="frame" x="22.666666666666671" y="45" width="115.00000000000001" height="70"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="70" id="iee-0c-IbP"/>
+                                                                            <constraint firstAttribute="width" constant="115" id="nKz-xS-fcZ"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="24"/>
+                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <gestureRecognizers/>
+                                                            <constraints>
+                                                                <constraint firstItem="9de-fH-Src" firstAttribute="centerX" secondItem="Zkn-EU-neB" secondAttribute="centerX" id="JDX-gP-ZHg"/>
+                                                                <constraint firstItem="9de-fH-Src" firstAttribute="centerY" secondItem="Zkn-EU-neB" secondAttribute="centerY" id="QoF-ug-Hza"/>
+                                                                <constraint firstItem="cMy-4j-siK" firstAttribute="top" secondItem="Zkn-EU-neB" secondAttribute="top" id="fct-Ha-d7o"/>
+                                                                <constraint firstItem="cMy-4j-siK" firstAttribute="leading" secondItem="Zkn-EU-neB" secondAttribute="leading" id="fyu-Hi-Vcd"/>
+                                                                <constraint firstAttribute="trailing" secondItem="cMy-4j-siK" secondAttribute="trailing" id="mhg-Zj-0qr"/>
+                                                                <constraint firstAttribute="bottom" secondItem="cMy-4j-siK" secondAttribute="bottom" id="nEx-aG-xL7"/>
+                                                            </constraints>
+                                                            <size key="customSize" width="160" height="160"/>
+                                                            <connections>
+                                                                <outlet property="labelHabitName" destination="9de-fH-Src" id="hEs-rb-RD7"/>
+                                                                <outlet property="viewForProgressWheel" destination="cMy-4j-siK" id="ta2-35-OCu"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qi0-XT-9Xs">
+                                                    <rect key="frame" x="39" y="52" width="297" height="50"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="37"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstItem="9de-fH-Src" firstAttribute="centerX" secondItem="Zkn-EU-neB" secondAttribute="centerX" id="JDX-gP-ZHg"/>
-                                            <constraint firstItem="9de-fH-Src" firstAttribute="centerY" secondItem="Zkn-EU-neB" secondAttribute="centerY" id="QoF-ug-Hza"/>
-                                            <constraint firstItem="cMy-4j-siK" firstAttribute="top" secondItem="Zkn-EU-neB" secondAttribute="top" id="fct-Ha-d7o"/>
-                                            <constraint firstItem="cMy-4j-siK" firstAttribute="leading" secondItem="Zkn-EU-neB" secondAttribute="leading" id="fyu-Hi-Vcd"/>
-                                            <constraint firstAttribute="trailing" secondItem="cMy-4j-siK" secondAttribute="trailing" id="mhg-Zj-0qr"/>
-                                            <constraint firstAttribute="bottom" secondItem="cMy-4j-siK" secondAttribute="bottom" id="nEx-aG-xL7"/>
+                                            <constraint firstItem="ExJ-OJ-dp5" firstAttribute="leading" secondItem="wsR-dv-E31" secondAttribute="leading" id="2br-Rr-CvK"/>
+                                            <constraint firstAttribute="bottom" secondItem="ExJ-OJ-dp5" secondAttribute="bottom" id="Di7-gr-pHm"/>
+                                            <constraint firstAttribute="trailing" secondItem="ExJ-OJ-dp5" secondAttribute="trailing" id="SxM-Vx-4IN"/>
+                                            <constraint firstItem="qi0-XT-9Xs" firstAttribute="leading" secondItem="wsR-dv-E31" secondAttribute="leadingMargin" constant="31" id="bKB-qU-988"/>
+                                            <constraint firstItem="qi0-XT-9Xs" firstAttribute="top" secondItem="wsR-dv-E31" secondAttribute="topMargin" id="d4F-Ju-XK3"/>
+                                            <constraint firstItem="ExJ-OJ-dp5" firstAttribute="top" secondItem="qi0-XT-9Xs" secondAttribute="bottom" id="vG5-tN-Ltn"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="qi0-XT-9Xs" secondAttribute="trailing" constant="31" id="zaL-EF-oY1"/>
                                         </constraints>
-                                        <size key="customSize" width="160" height="160"/>
                                         <connections>
-                                            <outlet property="labelHabitName" destination="9de-fH-Src" id="hEs-rb-RD7"/>
-                                            <outlet property="viewForProgressWheel" destination="cMy-4j-siK" id="ta2-35-OCu"/>
+                                            <outlet property="habitPanels" destination="ExJ-OJ-dp5" id="Pqz-7I-kgL"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -103,14 +140,18 @@
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Ymm-x5-4R5" firstAttribute="top" secondItem="ExJ-OJ-dp5" secondAttribute="bottom" constant="8" id="98h-j1-TQr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Vd-om-2c5" secondAttribute="trailing" id="8aJ-MQ-gzx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ymm-x5-4R5" secondAttribute="bottom" constant="24" id="ADG-gn-HCk"/>
-                            <constraint firstItem="ExJ-OJ-dp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OVf-rx-3xe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Vd-om-2c5" secondAttribute="trailing" id="DFo-i2-krR"/>
+                            <constraint firstItem="0Vd-om-2c5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KKf-pG-Qo7"/>
+                            <constraint firstItem="6j8-7V-n4I" firstAttribute="top" secondItem="0Vd-om-2c5" secondAttribute="bottom" id="M1a-Kr-9gS"/>
+                            <constraint firstItem="6j8-7V-n4I" firstAttribute="top" secondItem="0Vd-om-2c5" secondAttribute="bottom" id="MBZ-sF-72b"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6j8-7V-n4I" secondAttribute="bottom" constant="12" id="Ofs-jr-ACa"/>
-                            <constraint firstItem="ExJ-OJ-dp5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UNM-h2-hGg"/>
-                            <constraint firstItem="ExJ-OJ-dp5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="37" id="efz-hM-aqw"/>
+                            <constraint firstItem="0Vd-om-2c5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="V4J-gb-Hje"/>
+                            <constraint firstItem="0Vd-om-2c5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WNt-JX-WjG"/>
                             <constraint firstItem="6j8-7V-n4I" firstAttribute="leading" secondItem="Ymm-x5-4R5" secondAttribute="trailing" constant="14" id="g4z-KX-qdk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6j8-7V-n4I" secondAttribute="trailing" constant="16" id="vLw-LT-vjn"/>
+                            <constraint firstItem="0Vd-om-2c5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yU4-57-tR1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -119,8 +160,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="6j8-7V-n4I" id="BMQ-Ci-cjP"/>
+                        <outlet property="allHabitDisplays" destination="0Vd-om-2c5" id="x5Z-pj-lXM"/>
                         <outlet property="editButton" destination="Ymm-x5-4R5" id="wlE-SS-Ixi"/>
-                        <outlet property="habitPanels" destination="ExJ-OJ-dp5" id="04w-2V-aRT"/>
                         <segue destination="qaf-SR-37h" kind="show" identifier="addNewHabit" id="AS8-vy-pJ7"/>
                         <segue destination="X7H-w1-kch" kind="show" identifier="toEditPanel" id="4LV-56-6c4"/>
                     </connections>

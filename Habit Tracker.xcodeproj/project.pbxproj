@@ -22,6 +22,8 @@
 		49B9940D20EFEE5F00E7A0EE /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9940C20EFEE5F00E7A0EE /* Common.swift */; };
 		49B9940F20F16E6A00E7A0EE /* AddNewHabitScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9940E20F16E6A00E7A0EE /* AddNewHabitScreen.swift */; };
 		49E6D9862107E4E6000C94D9 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6D9852107E4E6000C94D9 /* SlideMenuController.swift */; };
+		49EFEF0D22A5C89B00C01FF8 /* HabitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFEF0C22A5C89B00C01FF8 /* HabitData.swift */; };
+		49EFEF0F22A5E32A00C01FF8 /* AllHabitsDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFEF0E22A5E32A00C01FF8 /* AllHabitsDisplayCell.swift */; };
 		49FB86E1210835F900346D84 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB86E0210835F900346D84 /* MenuViewController.swift */; };
 		49FB86E32108392D00346D84 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB86E22108392D00346D84 /* SettingsViewController.swift */; };
 		49FB86E521083BDB00346D84 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB86E421083BDB00346D84 /* UIViewControllerExtension.swift */; };
@@ -66,6 +68,8 @@
 		49B9940C20EFEE5F00E7A0EE /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		49B9940E20F16E6A00E7A0EE /* AddNewHabitScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitScreen.swift; sourceTree = "<group>"; };
 		49E6D9852107E4E6000C94D9 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
+		49EFEF0C22A5C89B00C01FF8 /* HabitData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitData.swift; sourceTree = "<group>"; };
+		49EFEF0E22A5E32A00C01FF8 /* AllHabitsDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHabitsDisplayCell.swift; sourceTree = "<group>"; };
 		49FB86E0210835F900346D84 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		49FB86E22108392D00346D84 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		49FB86E421083BDB00346D84 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				49B9940C20EFEE5F00E7A0EE /* Common.swift */,
+				49EFEF0C22A5C89B00C01FF8 /* HabitData.swift */,
 				49FB86E421083BDB00346D84 /* UIViewControllerExtension.swift */,
 				49E6D9852107E4E6000C94D9 /* SlideMenuController.swift */,
 			);
@@ -124,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				49B9940620EEDE5700E7A0EE /* HabitCell.swift */,
+				49EFEF0E22A5E32A00C01FF8 /* AllHabitsDisplayCell.swift */,
 				4954905020F171F40067CD4E /* ColorCell.swift */,
 				495360BC210995FA00022F3C /* PaletteCell.swift */,
 			);
@@ -328,7 +334,9 @@
 				495D2CCF2112BB7600CF41B1 /* StatsViewController.swift in Sources */,
 				49E6D9862107E4E6000C94D9 /* SlideMenuController.swift in Sources */,
 				49FB86E521083BDB00346D84 /* UIViewControllerExtension.swift in Sources */,
+				49EFEF0F22A5E32A00C01FF8 /* AllHabitsDisplayCell.swift in Sources */,
 				4954905120F171F40067CD4E /* ColorCell.swift in Sources */,
+				49EFEF0D22A5C89B00C01FF8 /* HabitData.swift in Sources */,
 				495360BD210995FA00022F3C /* PaletteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

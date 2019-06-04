@@ -15,12 +15,7 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var numberTimesPerDayLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var doneEditingButton: UIButton!
-    
-    var habitNamesArray: [String] = []
-    var timesCompleteArray: [Int] = []
-    var colorsArray: [String] = []
-    var timesPerDayArray: [Int] = []
-    var palatteIdentifier = 0
+ 
     let colorDisplayArray = ["purple","blue","green","yellow","orange","red"]
     
     var selectedColor = "blue"
@@ -91,7 +86,6 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
             doneEditingButton.setTitleColor(UIColor.white, for: .normal)
 
         } else{
-
             doneEditingButton.setTitleColor(lightGrey, for: .normal)
         }
     }
@@ -125,22 +119,15 @@ class AddNewHabitScreen: UIViewController, UICollectionViewDelegate, UICollectio
     // adds habit and segues
     @IBAction func saveClicked(_ sender: UIButton) {
         if habitName != ""{
-            habitNamesArray.append(habitName)
-            timesPerDayArray.append(habitPerDay)
-            timesCompleteArray.append(0)
-            colorsArray.append(selectedColor)
+            habitNamesArray[0].append(habitName)
+            timesPerDayArray[0].append(habitPerDay)
+            timesCompleteArray[0].append(0)
+            colorsArray[0].append(selectedColor)
             performSegue(withIdentifier: "unwindToInitialViewController", sender: self)
         }
     }
     
-    // passes data back
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dvc = segue.destination as! ViewController
-        dvc.habitNamesArray = habitNamesArray
-        dvc.timesCompleteArray = timesCompleteArray
-        dvc.timesPerDayArray = timesPerDayArray
-        dvc.colorsArray = colorsArray
-     }
+
     
     
 }
