@@ -127,7 +127,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         outsideRing.lineWidth = 8
         outsideRing.strokeEnd = 0
         outsideRing.zPosition = -50
-        outsideRing.lineCap = kCALineCapRound
+        outsideRing.lineCap = CAShapeLayerLineCap.round
         
         // background circle is similar to the ring but it has a fill color and displays a "track in grey"
         backgroundCircle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 65, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
@@ -146,13 +146,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func ringAnimate(ring: CAShapeLayer, indexOfCell: Int){
         let progressBarAnimate = CABasicAnimation(keyPath: "strokeEnd")
-        let progressPercent = Float32(timesCompleteArray[indexOfCell]) / Float32(timesPerDayArray[indexOfCell])
+        let progressPercent = Float32(timesCompleteArray[0][indexOfCell]) / Float32(timesPerDayArray[0][indexOfCell])
         
         progressBarAnimate.toValue = CGFloat(progressPercent)
         progressBarAnimate.duration = 0.7
-        ring.strokeColor = colors[colorsArray[indexOfCell]]![palatteIdentifier].cgColor
+        ring.strokeColor = colors[colorsArray[0][indexOfCell]]![palatteIdentifier].cgColor
         progressBarAnimate.isRemovedOnCompletion = false
-        progressBarAnimate.fillMode = kCAFillModeForwards
+        progressBarAnimate.fillMode = CAMediaTimingFillMode.forwards
         
         ring.add(progressBarAnimate,forKey: nil)
     }
