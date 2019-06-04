@@ -104,6 +104,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="habitPanels" destination="ExJ-OJ-dp5" id="Pqz-7I-kgL"/>
+                                            <outlet property="title" destination="qi0-XT-9Xs" id="xwP-Rf-7Ud"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -193,7 +194,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick A Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Qc-RSC">
-                                <rect key="frame" x="118.66666666666669" y="485" width="138" height="28"/>
+                                <rect key="frame" x="118.66666666666669" y="380" width="138" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="2xa-gk-81x"/>
                                 </constraints>
@@ -202,7 +203,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kge-bg-P3K">
-                                <rect key="frame" x="55" y="699" width="265" height="46"/>
+                                <rect key="frame" x="55" y="594" width="265" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="B8d-qg-zHp"/>
                                     <constraint firstAttribute="width" constant="265" id="PNG-Yu-e2e"/>
@@ -216,7 +217,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8n-GM-nIc">
-                                <rect key="frame" x="114.66666666666669" y="258" width="146" height="189"/>
+                                <rect key="frame" x="114.66666666666669" y="258" width="146" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="MG5-OS-IXN"/>
                                     <constraint firstAttribute="height" constant="85" id="Ztu-5i-aor"/>
@@ -227,7 +228,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2g9-fp-ORy">
-                                <rect key="frame" x="37.666666666666657" y="537" width="300" height="73"/>
+                                <rect key="frame" x="37.666666666666657" y="432" width="300" height="73"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="73" id="LcB-vU-uTn"/>
@@ -266,7 +267,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acO-CL-fRY">
-                                <rect key="frame" x="22" y="312.66666666666669" width="80" height="80"/>
+                                <rect key="frame" x="22" y="260" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Xpe-Hj-wBH"/>
                                     <constraint firstAttribute="width" constant="80" id="v49-Ke-oeh"/>
@@ -313,7 +314,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnd-wO-N6F">
-                                <rect key="frame" x="274" y="312.66666666666669" width="80" height="80"/>
+                                <rect key="frame" x="274" y="260" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="I6T-My-TSw"/>
                                     <constraint firstAttribute="width" constant="80" id="WS7-xn-TYJ"/>

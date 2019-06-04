@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CollectionEditDelegate {
     
     @IBOutlet weak var allHabitDisplays: UICollectionView!
     @IBOutlet weak var addButton: UIButton!
@@ -109,54 +109,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
-    // creates 2 circles for the background/track and one for progress
-    func makeCircle(cell: HabitCell, indexOfCell: Int){
-        let backgroundCircle = CAShapeLayer()
-        let outsideRing = CAShapeLayer()
-       
-        
-        // fixes error that would make circles overlap
-        for layer in cell.viewForProgressWheel.layer.sublayers!{
-            layer.removeFromSuperlayer()
-        }
-        
-         // outside ring only appears in the animation as the progress bar
-        outsideRing.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 65, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
-        
-        outsideRing.fillColor = UIColor.clear.cgColor
-        outsideRing.lineWidth = 8
-        outsideRing.strokeEnd = 0
-        outsideRing.zPosition = -50
-        outsideRing.lineCap = CAShapeLayerLineCap.round
-        
-        // background circle is similar to the ring but it has a fill color and displays a "track in grey"
-        backgroundCircle.path = UIBezierPath(arcCenter: cell.viewForProgressWheel.center, radius: 65, startAngle: CGFloat(-Float.pi/2.0), endAngle: CGFloat(1.5*Float.pi), clockwise: true).cgPath
-        
-        backgroundCircle.strokeColor = lightGrey.cgColor
-        backgroundCircle.fillColor = darkGrey.cgColor
-        backgroundCircle.lineWidth = 8
-        backgroundCircle.zPosition = -60 // behind the ring
-        backgroundCircle.strokeEnd = 1
-        
-        
-        cell.viewForProgressWheel.layer.addSublayer(backgroundCircle)
-        cell.viewForProgressWheel.layer.addSublayer(outsideRing)
-        ringAnimate(ring: outsideRing, indexOfCell: indexOfCell)
-    }
     
-    func ringAnimate(ring: CAShapeLayer, indexOfCell: Int){
-        let progressBarAnimate = CABasicAnimation(keyPath: "strokeEnd")
-        let progressPercent = Float32(timesCompleteArray[0][indexOfCell]) / Float32(timesPerDayArray[0][indexOfCell])
-        
-        progressBarAnimate.toValue = CGFloat(progressPercent)
-        progressBarAnimate.duration = 0.7
-        ring.strokeColor = colors[colorsArray[0][indexOfCell]]![palatteIdentifier].cgColor
-        progressBarAnimate.isRemovedOnCompletion = false
-        progressBarAnimate.fillMode = CAMediaTimingFillMode.forwards
-        
-        ring.add(progressBarAnimate,forKey: nil)
-    }
-
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
@@ -166,8 +119,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = allHabitDisplays.dequeueReusableCell(withReuseIdentifier: "DisplayCell", for: indexPath) as! AllHabitsDisplayCell
         
         cell.awakeFromNib()
+        
+        if(indexPath.item == 0){
+            cell.title.text = "Daily Goals"
+        }else if(indexPath.item == 1){
+            cell.title.text = "Weekly Goals"
+        }else if(indexPath.item == 2){
+            cell.title.text = "Monthly Goals"
+        }
+        
         cell.habitPanels.reloadData()
-
+        cell.editDelegate = self
+        
         return cell
     }
     
@@ -206,7 +169,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    
+    func editMode(index: NSIndexPath) {
+        performSegue(withIdentifier: "toEditPanel", sender: index)
+    }
+
     
     
     // saves data (not date) and makes sure not in edit mode after segue

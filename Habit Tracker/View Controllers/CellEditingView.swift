@@ -176,10 +176,10 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     
     // segue when delete clicked
     @IBAction func deleteClicked(_ sender: Any) {
-        habitNamesArray.remove(at: indexOfEdit.item)
-        timesPerDayArray.remove(at: indexOfEdit.item)
-        timesCompleteArray.remove(at: indexOfEdit.item)
-        colorsArray.remove(at: indexOfEdit.item)
+        habitNamesArray[0].remove(at: indexOfEdit.item)
+        timesPerDayArray[0].remove(at: indexOfEdit.item)
+        timesCompleteArray[0].remove(at: indexOfEdit.item)
+        colorsArray[0].remove(at: indexOfEdit.item)
         
         performSegue(withIdentifier: "unwindToInitialViewController2", sender: self)
     }

@@ -11,10 +11,10 @@ import Foundation
 /*
     daily-weekly-monthly
 */
-var habitNamesArray: [[String]] = [["Walk the Dog","Workout","Meditate","Drink Water","OK"]]
-var timesCompleteArray: [[Int]] = [[1,1,2,3,4]]
-var colorsArray = [["red","orange","purple","blue","blue"]]
-var timesPerDayArray: [[Int]] = [[3,2,4,8,1]]
+var habitNamesArray: [[String]] = [["Walk the Dog","Workout","Meditate","Drink Water","OK"],[],[]]
+var timesCompleteArray: [[Int]] = [[1,1,2,3,4],[],[]]
+var colorsArray = [["red","orange","purple","blue","blue"],[],[]]
+var timesPerDayArray: [[Int]] = [[3,2,4,8,1],[],[]]
 
 
 

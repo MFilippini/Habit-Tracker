@@ -8,13 +8,22 @@
 
 import UIKit
 
+protocol CollectionEditDelegate: class {
+    func editMode(index:NSIndexPath)
+}
+
 class AllHabitsDisplayCell: UICollectionViewCell,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var habitPanels: UICollectionView!
+    
+    weak var editDelegate: CollectionEditDelegate?
+    var identifier: String?
     
     override func awakeFromNib() {
         habitPanels.dataSource = self
         habitPanels.delegate = self
+        identifier = title.text ?? "nilText"
     }
     
     // creates 2 circles for the background/track and one for progress
@@ -67,18 +76,35 @@ class AllHabitsDisplayCell: UICollectionViewCell,UICollectionViewDelegate, UICol
     
     // collection view setup
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return habitNamesArray[0].count
+        if(section == numberOfSections(in: habitPanels)-1){
+            return habitNamesArray[section].count
+        }
+        return 0
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+      
+        if(identifier == "Daily Goals"){
+            return 1
+        }else if(identifier == "Weekly Goals"){
+            return 2
+        }else if(identifier == "Monthly Goals"){
+            return 3
+        }
+    
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
+        print(indexPath)
         
         // changes text when edit mode is on
         if !editOn{
-            cell.labelHabitName.text = habitNamesArray[0][indexPath.item]
+            cell.labelHabitName.text = habitNamesArray[indexPath.section][indexPath.item]
         } else {
-            cell.labelHabitName.text = ("Edit: "+habitNamesArray[0][indexPath.item])
+            cell.labelHabitName.text = ("Edit: "+habitNamesArray[indexPath.section][indexPath.item])
         }
         
         //avoids crashing
@@ -118,8 +144,7 @@ class AllHabitsDisplayCell: UICollectionViewCell,UICollectionViewDelegate, UICol
                 UserDefaults.standard.set(timesPerDayArray, forKey: "timesADay")
                 UserDefaults.standard.set(palatteIdentifier, forKey: "palatte")
             } else {
-                // if edit mode uses manual segue
-                //ViewController().performSegue(withIdentifier: "toEditPanel", sender: index)
+                self.editDelegate?.editMode(index: index as NSIndexPath)
             }
             
         }
