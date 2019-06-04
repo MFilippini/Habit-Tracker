@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nvc.navigationBar.barStyle = .black
         nvc.navigationBar.alpha = 1
         let colorVal: CGFloat = 27
+        
         nvc.navigationBar.backgroundColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
         nvc.navigationBar.barTintColor = UIColor(red: colorVal/255.0, green: colorVal/255.0, blue: colorVal/255.0, alpha: 1)
         nvc.navigationBar.tintColor = .white

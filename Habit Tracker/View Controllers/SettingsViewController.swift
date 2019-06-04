@@ -47,9 +47,6 @@ class SettingsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
-        
-        
         let cell = paletteCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PaletteCell
         cell.nameLabel.text = palettesTypes[indexPath.row]
         cell.colorView1.backgroundColor = colors["purple"]![indexPath.row]

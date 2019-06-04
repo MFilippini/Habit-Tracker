@@ -17,13 +17,8 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     @IBOutlet weak var colorSelectEdit: UICollectionView!
     @IBOutlet weak var saveChangesButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
-    
-    var habitNamesArray: [String] = []
-    var timesCompleteArray: [Int] = []
-    var colorsArray: [String] = []
-    var timesPerDayArray: [Int] = []
+
     var indexOfEdit = NSIndexPath()
-    var palatteIdentifier = 0
 
     let colorDisplayArray = ["purple","blue","green","yellow","orange","red"]
 
@@ -73,15 +68,15 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     // fills edit scrren with correct data
     func updateWithCorrectValues(){
   
-        selectedColor = colorsArray[indexOfEdit.item]
-        habitName = habitNamesArray[indexOfEdit.item]
-        habitPerDay = timesPerDayArray[indexOfEdit.item]
-        habitCurrent = timesCompleteArray[indexOfEdit.item]
+        selectedColor = colorsArray[0][indexOfEdit.item]
+        habitName = habitNamesArray[0][indexOfEdit.item]
+        habitPerDay = timesPerDayArray[0][indexOfEdit.item]
+        habitCurrent = timesCompleteArray[0][indexOfEdit.item]
         
         renameHabitTextField.text = habitName
         timesPerDayLabel.text = String(habitPerDay)
         timesCompletedTodayLabel.text = String(habitCurrent)
-        selectedColorLocation = colorDisplayArray.index(of: selectedColor)!
+        selectedColorLocation = colorDisplayArray.firstIndex(of: selectedColor)!
         renameDoneButton.setTitleColor(UIColor.white, for: .normal)
     }
     
@@ -131,7 +126,7 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
         if renameHabitTextField.text != ""{
             renameDoneButton.setTitleColor(UIColor.white, for: .normal)
             
-        } else{
+        }else{
             renameDoneButton.setTitleColor(lightGrey, for: .normal)
         }
     }
@@ -192,22 +187,14 @@ class CellEditingView: UIViewController, UICollectionViewDelegate, UICollectionV
     // segue when save clicked
    @IBAction func saveAndFinish(_ sender: UIButton) {
        if habitName != ""{
-        habitNamesArray[indexOfEdit.item] = habitName
-        timesPerDayArray[indexOfEdit.item] = habitPerDay
-        timesCompleteArray[indexOfEdit.item] = habitCurrent
-        colorsArray[indexOfEdit.item] = selectedColor
+        habitNamesArray[0][indexOfEdit.item] = habitName
+        timesPerDayArray[0][indexOfEdit.item] = habitPerDay
+        timesCompleteArray[0][indexOfEdit.item] = habitCurrent
+        colorsArray[0][indexOfEdit.item] = selectedColor
         
         performSegue(withIdentifier: "unwindToInitialViewController2", sender: self)
         }
     }
-    
-    // data passed back to beginning
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dvc = segue.destination as! ViewController
-        dvc.habitNamesArray = habitNamesArray
-        dvc.timesPerDayArray = timesPerDayArray
-        dvc.timesCompleteArray = timesCompleteArray
-        dvc.colorsArray  = colorsArray
-    }
+
     
 }

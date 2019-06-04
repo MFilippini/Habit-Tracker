@@ -10,42 +10,25 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBOutlet weak var habitPanels: UICollectionView!
+    @IBOutlet weak var allHabitDisplays: UICollectionView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     
-    var editClicked = false
     
     // First Time Opening App Preset Habits
-    
-    var habitNamesArray: [String] = ["Walk the Dog","Workout","Meditate","Drink Water"]
-    var timesCompleteArray: [Int] = [1,1,2,3]
-    var colorsArray = ["red","orange","purple","blue"]
-    var timesPerDayArray: [Int] = [3,2,4,8]
-//    var habits =
-//        [
-//            "daily":[ ["Walk the Dog",1,"red",3],
-//                    ["Workout",1,"orange",2],
-//                    ["Meditate",2,"purple",4],
-//                    ["Drink Water",3,"blue",5],
-//                    ["Go For A Walk",1,"yellow",2]],
-//           "weekly":[ [] ],
-//           "monthly":[ ["Take Meds",0,"red",1] ]
-//        ]
-    
-    var palatteIdentifier = 0
-    
-    
+//    var habitNamesArray: [String] = ["Walk the Dog","Workout","Meditate","Drink Water"]
+//    var timesCompleteArray: [Int] = [1,1,2,3]
+//    var colorsArray = ["red","orange","purple","blue"]
+//    var timesPerDayArray: [Int] = [3,2,4,8]
+//    var palatteIdentifier = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarItem()
-        habitPanels.dataSource = self
-        habitPanels.delegate = self
-        setupButtons()
-    }
-    
-    func setupButtons() {
+        
+        allHabitDisplays.dataSource = self
+        allHabitDisplays.delegate = self
+        
         // Makes button fit theme
         addButton.layer.borderWidth = 3
         addButton.layer.borderColor = lightGrey.cgColor
@@ -64,33 +47,37 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //gets save data
     override func viewDidAppear(_ animated: Bool) {
+        
+        print(habitNamesArray)
+        
+        
         if let savedNames = UserDefaults.standard.object(forKey: "habitNames") as? Array<String>{
-            habitNamesArray = savedNames
+            habitNamesArray[0] = savedNames
         }
         if let savedColors = UserDefaults.standard.object(forKey: "colors") as? Array<String>{
-            colorsArray = savedColors
+            colorsArray[0] = savedColors
         }
         if let savedPerDay = UserDefaults.standard.object(forKey: "timesADay") as? Array<Int>{
-            timesPerDayArray = savedPerDay
+            timesPerDayArray[0] = savedPerDay
         }
         if let palatte = UserDefaults.standard.object(forKey: "palatte") as? Int{
             palatteIdentifier = palatte
         }
 
         if let savedCompletions = UserDefaults.standard.object(forKey: "timesComplete") as? Array<Int>{
-            timesCompleteArray = savedCompletions
+            timesCompleteArray[0] = savedCompletions
             if let day = UserDefaults.standard.object(forKey: "lastDay") as? String{
                 let cal = Calendar.current
                 if(day != "\(cal.component(.day, from: Date())):\(cal.component(.month, from: Date())):\(cal.component(.year, from: Date()))"){
                     timesCompleteArray.removeAll()
                     for _ in savedCompletions{
-                        timesCompleteArray.append(0)
+                        timesCompleteArray[0].append(0)
                     }
                     saveData()
                 }
             }
         }
-        habitPanels.reloadData()
+        allHabitDisplays.reloadData()
     }
     
     
@@ -169,61 +156,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         ring.add(progressBarAnimate,forKey: nil)
     }
+
     
-    // collection view setup
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return habitNamesArray.count
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = habitPanels.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HabitCell
-        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
+        let cell = allHabitDisplays.dequeueReusableCell(withReuseIdentifier: "DisplayCell", for: indexPath) as! AllHabitsDisplayCell
         
-        // changes text when edit mode is on
-        if !editClicked{
-            cell.labelHabitName.text = habitNamesArray[indexPath.item]
-        } else {
-            cell.labelHabitName.text = ("Edit: "+habitNamesArray[indexPath.item])
-        }
-        
-        //avoids crashing
-        cell.viewForProgressWheel.layer.addSublayer(CALayer())
-        
-        makeCircle(cell: cell, indexOfCell: indexPath.item)
-        
+        cell.awakeFromNib()
+        cell.habitPanels.reloadData()
+
         return cell
-    }
-    
-    // lets collection view know when tapped
-    @objc func tap(_ sender: UITapGestureRecognizer) {
-        
-        let location = sender.location(in: self.habitPanels)
-        let indexPath = self.habitPanels.indexPathForItem(at: location)
-        let haptic = UINotificationFeedbackGenerator()
-        if let index = indexPath {
-            //different actions when edit mode
-            
-            if(!editClicked){
-                haptic.prepare() // prepare haptic
-                let timesPerDay = timesPerDayArray[index.item]
-                
-                // asks if can increment times complete
-                if (timesCompleteArray[index.item]<timesPerDay){
-                    timesCompleteArray[index.item] += 1
-                    habitPanels.reloadItems(at: [index])
-                    haptic.notificationOccurred(.success) // haptic
-                } else {
-                    haptic.notificationOccurred(.warning) // haptic
-                }
-                
-                // resaves data
-                saveData()
-            } else {
-                // if edit mode uses manual segue
-                performSegue(withIdentifier: "toEditPanel", sender: index)
-            }
-            
-        }
     }
     
     // manual segue to send different data
@@ -231,51 +176,35 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         performSegue(withIdentifier: "addNewHabit", sender: nil)
     }
     
+    
     // when edit clicked
     @IBAction func editClicked(_ sender: Any) {
-        editClicked = !editClicked
-        if editClicked{
+        editOn = !editOn
+        if editOn{
             editButton.setTitle("Done", for: .normal)
         }else{
             editButton.setTitle("Edit", for: .normal)
         }
-        habitPanels.reloadData()
+        allHabitDisplays.reloadData()
     }
-    
     
     
     // exits edit mode when view reloaded from segue
     func editReset(){
-        if editClicked{
-            editClicked = false
+        if editOn{
+            editOn = false
             editButton.setTitle("Edit", for: .normal)
-            //habitPanels.reloadData()
+            allHabitDisplays.reloadData()
         }
     }
     
     // prepare for segue with different cases to send different info
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "addNewHabit"?:
-            let dvc = segue.destination as! AddNewHabitScreen
-            dvc.habitNamesArray = habitNamesArray
-            dvc.timesCompleteArray = timesCompleteArray
-            dvc.timesPerDayArray = timesPerDayArray
-            dvc.colorsArray = colorsArray
-            dvc.palatteIdentifier = palatteIdentifier
-        case "toEditPanel"?:
+        if(segue.identifier == "toEditPanel"){
             let dvc = segue.destination as! CellEditingView
-            dvc.habitNamesArray = habitNamesArray
-            dvc.timesCompleteArray = timesCompleteArray
-            dvc.timesPerDayArray = timesPerDayArray
-            dvc.colorsArray = colorsArray
-            dvc.palatteIdentifier = palatteIdentifier
             dvc.indexOfEdit = sender as! NSIndexPath
-        default: break
         }
     }
-    
-    
     
     
     
